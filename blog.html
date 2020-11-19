@@ -1,0 +1,15 @@
+---
+layout: category
+title: 
+permalink: /Blog/
+---
+<h1 style="text-align:justify; margin-left:20px">Latest Posts</h1>
+
+<ul>
+  {% for post in site.posts %}
+    <li>
+      <h2 style="text-align:justify; margin-left:20px"><a href="{{ post.url }}">{{ post.title }}</a></h2>
+      {{ post.excerpt }}
+    </li>
+  {% endfor %}
+</ul>

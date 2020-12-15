@@ -8,7 +8,7 @@ date: 2020-10-03
 
 Print `Hello, World!` using `python`
 
-```fortran
+```python
 print("Hello, World!")
 ```
 

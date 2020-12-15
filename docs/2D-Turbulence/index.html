@@ -7,10 +7,11 @@
 -->
 <html lang="en" class="no-js">
   <head>
-    <meta charset="utf-8">
+    <head>
+<meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>2D-Turbulence - Marin Lauber</title>
-<meta name="description" content="Intro">
+<!-- begin _includes/seo.html --><title>Pseudo-spectral method for 2D Turbulence - Marin Lauber</title>
+<meta name="description" content="Mathematical Formualtion">
 
 
   <meta name="author" content="Marin Lauber">
@@ -22,15 +23,13 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Marin Lauber">
-<meta property="og:title" content="2D-Turbulence">
+<meta property="og:title" content="Pseudo-spectral method for 2D Turbulence">
 <meta property="og:url" content="http://localhost:4000/2D-Turbulence/">
 
 
-  <meta property="og:description" content="Intro">
+  <meta property="og:description" content="Mathematical Formualtion">
 
 
-
-  <meta property="og:image" content="http://localhost:4000/assets/images/vort.png">
 
 
 
@@ -100,7 +99,8 @@
 <![endif]-->
 
 
-
+<meta name="google-site-verification" content="TQx-UZU6AE1OC_AWiWdRAcK2kJDwuiIJBH_Ydjd41oc" />
+</head>
     <!-- start custom head snippets -->
 
 <!-- insert favicons. use https://realfavicongenerator.net/ -->
@@ -166,24 +166,6 @@
 
     <div class="initial-content">
       
-  
-
-
-
-
-
-
-
-<div class="page__hero"
-  style=" background-image: url('');"
->
-  
-    <img src="/assets/images/vort.png" alt="2D-Turbulence" class="page__hero-image">
-  
-  
-</div>
-
-
 
 
 
@@ -316,15 +298,15 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="2D-Turbulence">
-    <meta itemprop="description" content="Intro">
+    <meta itemprop="headline" content="Pseudo-spectral method for 2D Turbulence">
+    <meta itemprop="description" content="Mathematical Formualtion">
     <meta itemprop="datePublished" content="2020-11-20T00:00:00+01:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">2D-Turbulence
+          <h1 id="page-title" class="page__title" itemprop="headline">Pseudo-spectral method for 2D Turbulence
 </h1>
           
 
@@ -340,7 +322,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          less than 1 minute read
+          14 minute read
         
       </span>
     
@@ -352,11 +334,470 @@
 
       <section class="page__content" itemprop="text">
         
-        <p><strong><em>Intro</em></strong></p>
+        <h2 id="mathematical-formualtion">Mathematical Formualtion</h2>
 
-<p>Hello</p>
+<h3 id="vorticity-equation">Vorticity equation</h3>
+
+<p>The vorticity (or <em>Helmholtz’s</em>) equation describes the transport of vorticity. We can obtain it by applying the curl operator to the <em>Navier-Stokes</em> equations</p>
+
+<p><a id="1.1"></a>
+\begin{equation}
+\nabla \times\left(  \frac{\partial\boldsymbol{u}}{\partial t} + (\boldsymbol{u}\cdot \nabla)\boldsymbol{u} = -\frac{1}{\rho}\nabla p + \nu \nabla^2 \boldsymbol{u}\right),  \tag{1.1}
+\end{equation}</p>
+
+<p>where $\boldsymbol{u}$ is the velocity field and $p$ is the pressure field. The convective term can be re-arranged to a more suitable form</p>
+
+<p>\begin{equation}
+\boldsymbol{u}\times\left(\nabla\times\boldsymbol{u}\right) + \left(\boldsymbol{u}\cdot\nabla\right)\boldsymbol{u} = \nabla\left(\frac{\boldsymbol{u}^2}{2}\right) \rightarrow  \left(\boldsymbol{u}\cdot\nabla\right)\boldsymbol{u} = \nabla\left(\frac{\boldsymbol{u}^2}{2}\right) + \boldsymbol{\omega}\times\boldsymbol{u},
+\end{equation}</p>
+
+<p>using definition of the vorticity ($\boldsymbol{\omega}=\nabla\times\boldsymbol{u}$). Substitution in <a href="#1.1">(1.1)</a> gives</p>
+
+<p>\begin{equation}
+\nabla \times\left(  \frac{\partial\boldsymbol{u}}{\partial t} + \nabla\left(\frac{\boldsymbol{u}^2}{2}\right) + \boldsymbol{\omega} \times\boldsymbol{u} = -\frac{1}{\rho}\nabla p + \nu \nabla^2 \boldsymbol{u}\right).
+\end{equation}</p>
+
+<p>Distributing the curl operator and making use of the definition of the vorticity, we have</p>
+
+<p>\begin{equation}
+\frac{\partial\boldsymbol{\omega}}{\partial t} + \nabla \times\nabla\left(\frac{\boldsymbol{u}^2}{2}\right) + \nabla \times\left(\boldsymbol{\omega} \times\boldsymbol{u}\right) = -\nabla \times\left( \frac{1}{\rho}\nabla p\right) + \nu \nabla^2 \boldsymbol{\omega}.
+\end{equation}</p>
+
+<p>The third term can be expanded using the <em>curl of the curl</em> vector identity</p>
+
+<p>\begin{equation}
+\frac{\partial\boldsymbol{\omega}}{\partial t} + \nabla \times\nabla\left(\frac{\boldsymbol{u}^2}{2}\right) + \boldsymbol{u}\cdot\nabla\boldsymbol{\omega} - \boldsymbol{u}\nabla\cdot\boldsymbol{\omega} - \boldsymbol{\omega}\cdot\nabla\boldsymbol{u} + \boldsymbol{\omega}\nabla\cdot\boldsymbol{u} = -\nabla \times\left( \frac{1}{\rho}\nabla p\right) + \nu \nabla^2 \boldsymbol{\omega}.
+\end{equation}</p>
+
+<p>The fourth term vanishes as $\nabla\cdot\boldsymbol{\omega}\equiv 0$ (the divergence of the curl of a vector field is always zero). For an incompressible flow the sixth term equaly vanishes</p>
+
+<p>\begin{equation}
+	\frac{\partial\boldsymbol{\omega}}{\partial t} + \nabla \times\nabla\left(\frac{\boldsymbol{u}^2}{2}\right) + \boldsymbol{u}\cdot\nabla\boldsymbol{\omega} - \boldsymbol{\omega}\cdot\nabla\boldsymbol{u}  = -\nabla \times\left( \frac{1}{\rho}\nabla p\right) + \nu \nabla^2 \boldsymbol{\omega}.
+\end{equation}</p>
+
+<p>The second term, which is the <em>curl of a tensor</em>, can be shown to vanish as well. Indeed, the curl of a tensor  $\boldsymbol{S}$ is defined as</p>
+
+<p>\begin{equation}
+	(\nabla\times\boldsymbol{S})\cdot\boldsymbol{a} = \nabla\times(\boldsymbol{S}^\top \cdot\boldsymbol{a}) \quad \forall \boldsymbol{a}, 
+\end{equation}</p>
+
+<p>where $\boldsymbol{a}$ is a vector. In this case, the tensor $\boldsymbol{S}$ is given by the gradient of a vector field, and as gradient and divergence commute</p>
+
+<p>\begin{equation}
+	\left(\nabla \times\nabla\left(\frac{\boldsymbol{u}^2}{2}\right)\right)\cdot\boldsymbol{a} = \nabla\times\left(\nabla^\top\left(\frac{\boldsymbol{u}^2}{2}\right)\cdot\boldsymbol{a}\right) = \nabla\times\left(\nabla\left(\frac{\boldsymbol{u}^2}{2}\cdot\boldsymbol{a}\right)\right) = \nabla\times\nabla\psi\equiv0.
+\end{equation}</p>
+
+<p>As the curl of the gradient of a scalar field is always zero. Finally, the pressure term can be expanded using the product rule</p>
+
+<p>\begin{equation}
+	\nabla \times\left( \frac{1}{\rho}\nabla p\right) = \nabla\left( \frac{1}{\rho}\right) \times\nabla p + \left( \frac{1}{\rho}\right)\nabla \times\nabla p = \frac{1}{\rho^2}\nabla\rho\times\nabla p.
+\end{equation}</p>
+
+<p>The last term is zero. For a flow with constant entropy (incompressible, homentropic), the pressure is solely a function of density, this means that the two vector $\nabla\rho$ and $\nabla p$ are aligned and the fist term equaly vanishes. (More precisely, the baroclinic term which account for the change in the vorticity field due to the interaction of density and pressure surfaces <a href="#Bailly">(Bailly et <em>al.</em>)</a> vanishes). The vorticity equation is therefore given by</p>
+
+<p>\begin{equation}
+	\frac{\partial\boldsymbol{\omega}}{\partial t} + \boldsymbol{u}\cdot\nabla\boldsymbol{\omega} = \boldsymbol{\omega}\cdot\nabla\boldsymbol{u} + \nu \nabla^2 \boldsymbol{\omega}.
+\end{equation}</p>
+
+<p>In 2D, these equations can be simplified further by noting that the component of the velocity field are</p>
+
+<p>\begin{equation}
+\boldsymbol{u} = (u, v, 0), \quad \frac{\partial}{\partial z} =0.
+\end{equation}</p>
+
+<p>The vorticity is, by definition, normal to the $x$-$y$ plane ($\boldsymbol{\omega}=(0, 0, \omega_z)$). This means that the term $\boldsymbol{\omega}\cdot\nabla\boldsymbol{u}$ is zero, as is easily demonstrated</p>
+
+\[\boldsymbol{\omega}\cdot\nabla\boldsymbol{u} = \left(\underbrace{\omega_x}_{0}\frac{\partial}{\partial x} + \underbrace{\omega_y}_{0}\frac{\partial}{\partial y} + \omega_z\underbrace{\frac{\partial}{\partial z}}_{0}\right)\boldsymbol{u}.\]
+
+<p>This term is the so-called vortex-stretching term. It is the mean by which the energy is cascaded from the large scales to the smaller scales following the $k^{-5/3}$ rule. In 2D this means that the angular velocity of a particle is conserved, and the length of a vortex tube cannot change due to continuity <a href="#MIT">, see MIT notes</a>.</p>
+
+<p>In 3D, the vortex-stretching term has the form $\omega_{j}\frac{\partial u_i}{\partial x_j}$, thus looking at, say the second component, we have</p>
+
+<p>\begin{equation}
+	\omega_{j}\frac{\partial u_i}{\partial x_j} = \omega_{1}\frac{\partial u_2}{\partial x_1} + \omega_{2}\frac{\partial u_2}{\partial x_2} + \omega_{3}\frac{\partial u_2}{\partial x_3}, 
+\end{equation}</p>
+
+<p>the first and the third components can be seen as <em>vortex-turning</em> and the second component is the vortex-stretching.</p>
+
+<p>We also note that because the vorticity field has only one non-zero component, the only equation for the transport of vorticity is given by</p>
+
+<p><a id="1.2"></a>
+\begin{equation}
+	\frac{\partial\omega}{\partial t} +u\frac{\partial\omega}{\partial x} + v\frac{\partial\omega}{\partial y} =  \frac{1}{Re} \left(\frac{\partial^2\omega}{\partial x^2}+ \frac{\partial^2\omega}{\partial y^2}\right).
+\tag{1.2}
+\end{equation}</p>
+
+<p>Where $Re$ is the Reynold’s number of the flow.</p>
+
+<h2 id="stream-function">Stream function</h2>
+
+<p>To remove the implicit dependency on the velocity field from the vorticity equation, we introduce a vector-valued stream function $\boldsymbol{\psi}$. We will now show that for 2D flows this is in fact a scalar function. Using the definition of the stream function, we have</p>
+
+<p>\begin{equation}
+	\boldsymbol{u} = \nabla\times\boldsymbol{\psi}, \qquad u_i = \varepsilon_{ijk}\frac{\partial \psi_k}{\partial x_j},
+\end{equation}</p>
+
+<p>where the only two non-zero components of the velocity field are</p>
+
+<p>\begin{equation}
+	 u_1 = \varepsilon_{123}\frac{\partial \psi_3}{\partial x_2}=\frac{\partial \psi_3}{\partial x_2}, \qquad u_2 = \varepsilon_{213}\frac{\partial \psi_3}{\partial x_1}=-\frac{\partial \psi_3}{\partial x_1}.
+\end{equation}</p>
+
+<p>With $\varepsilon_{ijk}$, the Levi-Civita permutation symbol. Thus only one component of the stream-function is non-zero, and it can be seen as a scalar field $\psi$, with the following relationship to the velocity field</p>
+
+<p>\begin{equation}
+	u = \frac{\partial \psi}{\partial y}, \,\,\,\, v = -\frac{\partial \psi}{\partial x}.
+\end{equation}</p>
+
+<p>We can substitute these relation into the vorticity equation <a href="#1.2">(1.2)</a>, giving</p>
+
+<p><a id="1.3"></a>
+\begin{equation}
+	\frac{\partial\omega}{\partial t} +\frac{\partial \psi}{\partial y}\frac{\partial\omega}{\partial x} - \frac{\partial \psi}{\partial x}\frac{\partial\omega}{\partial y} =  \frac{1}{Re} \left(\frac{\partial^2\omega}{\partial x^2}+ \frac{\partial^2\omega}{\partial y^2}\right).
+\tag{1.3}
+\end{equation}</p>
+
+<p>A very useful property of the stream function is that is existence guarantees the flow to be solenoidal (satisfies continuity). Indeed, substitution of the definition of the stream function into the continuity equation gives</p>
+
+<p>\begin{equation}
+	\nabla\cdot\boldsymbol{u} = \nabla\cdot(\nabla\times\boldsymbol{\psi})\equiv 0.
+\end{equation}</p>
+
+<p><a href="#1.3">(1.3)</a> still has 2 unknowns, $\psi$ and $\omega$, fortunately we can build a Poisson equation for the vorticity by substituting the velocity components, in terms of the stream function, in the definition of the only non-zero component of the vorticity</p>
+
+<p>\begin{equation}
+	\omega_{i}=\varepsilon_{ijk}\frac{\partial u_k}{\partial x_j} \qquad \rightarrow \qquad \omega =\omega_{z}=\frac{\partial v}{\partial x} - \frac{\partial u}{\partial y}
+\end{equation}</p>
+
+<p>giving</p>
+
+<p><a id="1.4"></a>
+\begin{eqnarray}
+  \omega =-\frac{\partial }{\partial x}\frac{\partial \psi}{\partial x} - \frac{\partial }{\partial y}\frac{\partial \psi}{\partial y} &amp;=&amp; -\frac{\partial^2 \psi}{\partial x^2} - \frac{\partial^2 \psi}{\partial x^2},\nonumber<br />
+	-\omega&amp;=&amp;\frac{\partial^2 \psi}{\partial x^2} + \frac{\partial^2 \psi}{\partial x^2}.
+    \tag{1.4}
+\end{eqnarray}</p>
+
+<p>Equation <a href="#1.3">(1.3)</a> together with <a href="#1.4">(1.4)</a> can be solved to simulate the transport of a vorticity field.</p>
+
+<h2 id="numerical-method">Numerical method</h2>
+
+<h3 id="spectral-collocation-method">Spectral collocation method</h3>
+
+<p>For periodic problems, such as the one of homogeneous isotropic decaying turbulence in a periodic domain, collocation methods using trigonometric polynomial expansions are unmatched in terms of accuracy and precision. However, they tend to be an order of magnitude more expensive (computationally) when compared to high-order finite difference schemes. Fortunately, when using trigonometric basis functions, the use of Fast Fourier Transform (<em>FFT</em>’s) routines allows for a reduction in the computational time. We describe here the implementation of such a method to solve <a href="#1.3">(1.3)</a> and <a href="#1.4">(1.4)</a>.</p>
+
+<p>We define the forward Fourier transform of a discrete field $u$ as (transforming from Fourier to physical space), following <a href="#San">San et <em>al.</em></a></p>
+
+<p><a id="2.1"></a>
+\begin{equation}
+  u_{i,j} = \sum_{m=-\frac{N_x}{2}}^{\frac{N_x}{2}-1}\sum_{n=-\frac{M_y}{2}}^{\frac{M_y}{2}-1}\tilde{u}_{m,n}e^{\boldsymbol{i}\left( \frac{2\pi m}{L_x} x_i + \frac{2\pi n}{L_y}y_j \right)},
+ \tag{2.1}
+\end{equation}</p>
+
+<p>with its opposite transform, the backward Fourier transform (transforming from physical to Fourier space)</p>
+
+\[\tilde{u}_{m,n} = \frac{1}{N_x N_y} \sum_{i=0}^{N_x-1} \sum_{j=0}^{N_y-1} u_{i,j} e^{\boldsymbol{-i} \left( \frac{2\pi m}{L_x} x_i + \frac{2\pi n}{L_y}y_j \right)}.\]
+
+<p>We note here that the transforms are normalised, a forward, followed by a backward transform recover the initial discrete field. In this case we have chosen to normalise the backward transform.
+The wave numbers are defined as</p>
+
+<p>\begin{equation}
+	k_x = \frac{2\pi m}{L_x}, \qquad k_y = \frac{2\pi n}{L_y}.
+\end{equation}</p>
+
+<p>The natural ordering of Fourier coefficients is as shown in <a href="#2.1">(2.1)</a>, however, <em>FFT</em> routines organise them in a different way, for a reason of algorithm efficiency</p>
+
+<p>\begin{equation}
+	k_x = \left[0, 1, \cdots, \frac{N_x}{2}-1, -\frac{N_x}{2}, \cdots, -2, -1 \right],
+\end{equation}</p>
+
+<p>for an even number of grid points.</p>
+
+<p>The $N_x$ discrete collocation (grid) points are uniformly space in our $[L_x, L_y]$ domain as</p>
+
+<p>\begin{equation}
+	x_i = \frac{iL_x}{N_x} ,\qquad y_i = \frac{iL_y}{N_y},
+\end{equation}</p>
+
+<p>with $i=0, 1, \cdots, N_x/N_y$. Because the problem is periodic, $x_0 = x_{N_x}$, we do not include the last grid point in the simulations, as collocation methods using periodic basis functions automatically impose the periodicity on the problem.</p>
+
+<p>The high precision of the spectral collocation method comes from its ability to threat spatial derivatives. By transforming a discrete physical field to Fourier-space, what would otherwise be done using a differential scheme (truncated to a certain accuracy), derivatives are evaluated by multiplying the Fourier coefficients by the corresponding complex wave number, for example, the $n^{th}$  $x$-derivative of a discrete field $u$ is given by</p>
+
+<p>\begin{equation}
+	\frac{\partial^{(n)} u_{i, j}}{\partial x^{(n)}} = \sum_{m=-\frac{N_x}{2}}^{\frac{N_x}{2}-1}\sum_{n=-\frac{M_y}{2}}^{\frac{M_y}{2}-1}\tilde{u}_{m,n}(\boldsymbol{i}k_x)^{(n)}e^{\boldsymbol{i}\left( \frac{2\pi m}{L_x} x_i + \frac{2\pi n}{L_y}y_j \right)},
+\end{equation}</p>
+
+<p>this is the power of spectral collocation methods. The only errors associated with this operation are the interpolation and truncation errors \cite{spectral}, which are much smaller than the finite-difference equivalent.</p>
+
+<p>Applying these operators to the vorticity transport equation result in a transport equation for the discrete Fourier coefficients</p>
+
+\[\frac{\partial\tilde{\omega}_{m,n}}{\partial t} + (\boldsymbol{i}k_y\tilde{\psi}_{m,n}\circ\boldsymbol{i}k_x\tilde{\omega}_{m,n}) - (\boldsymbol{i}k_x\tilde{\psi}_{m,n}\circ\boldsymbol{i}k_y\tilde{\omega}_{m,n}) = \frac{1}{Re}\left[\left(-k_x^2 - k_y^2\right)\tilde{\omega}_{m,n}\right]\]
+
+<p>where the $(\cdots\circ\cdots)$ operator represents a convolution sum. Treating of this term in Fourier space involves solving triad interactions, this is very expansive, $O(N^2)$.
+In the pseudo-spectral approach, this term is treated in physical space with the help of the convolution theorem, which reduces the cost to $O(45/4N\log_2 (3/2N))$.</p>
+
+<h4 id="aliasing">Aliasing</h4>
+
+<p>To prevent high frequencies modes of being falsly represented on the discrete grid dealiasing is employed. Here we use $3/2$ rule to pad the wave number during the transforms. Instead of using the inverse <em>FFT</em> with $N$ points, we use $M = 3/2N$ points. The new Fourier coefficients are zero-padded <a href="#Canuto">(Canuto et <em>al.</em>)</a>, that is</p>
+
+\[\begin{split}
+	\tilde{\omega}_{m, n} &amp;=&amp; \tilde{\omega}_{m, n}, \quad\quad |m|\le N_x, \quad |n|\le N_y,\\
+	\tilde{\omega}_{m, n} &amp;=&amp; 0  \quad\quad\quad\quad |m|&gt; N_x, \quad |n|&gt; N_y.
+\end{split}\]
+
+<p>Once we have obtained the two terms in the convolution sum in physical space via the backward transform and using $M$ points, we simply proceed to a multiplication. The result is then transformed back in Fourier space using the forward transform, still with $M$ points. We then discard all modes whose wave numbers are greater than $N_x$ and $N_y$. In summary, the convolution sums are treated as</p>
+
+\[(\boldsymbol{i}k_y\tilde{\psi}_{m,n}\circ\boldsymbol{i}k_x\tilde{\omega}_{m,n}) = \left[\mathcal{F}_{M}\left(\mathcal{F}^{-1}_{M}(\boldsymbol{i}k_y\tilde{\psi}_{m,n})\mathcal{F}^{-1}_{M}(\boldsymbol{i}k_x\tilde{\omega}_{m,n})\right)\right]_{N}\,,\]
+
+<p>where \(\mathcal{F}_{M}\) represent a <em>Fast Fourier Transform</em> using $M$ points, but we are ultimately interested only in $N$ of them, and the remaining are discarded.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">_add_convection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="s">"""
+    Convective term. To prevent alliasing, we zero-pad the array before
+    using the convolution theorem to evaluate it in physical space.
+    """</span>
+    <span class="c1"># initialize padded arrays
+</span>    <span class="n">j1f_padded</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="p">.</span><span class="n">mx</span><span class="p">,</span><span class="bp">self</span><span class="p">.</span><span class="n">mk</span><span class="p">),</span><span class="n">dtype</span><span class="o">=</span><span class="s">'complex128'</span><span class="p">)</span>
+    <span class="n">j2f_padded</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="p">.</span><span class="n">mx</span><span class="p">,</span><span class="bp">self</span><span class="p">.</span><span class="n">mk</span><span class="p">),</span><span class="n">dtype</span><span class="o">=</span><span class="s">'complex128'</span><span class="p">)</span>
+    <span class="n">j3f_padded</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="p">.</span><span class="n">mx</span><span class="p">,</span><span class="bp">self</span><span class="p">.</span><span class="n">mk</span><span class="p">),</span><span class="n">dtype</span><span class="o">=</span><span class="s">'complex128'</span><span class="p">)</span>
+    <span class="n">j4f_padded</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="p">.</span><span class="n">mx</span><span class="p">,</span><span class="bp">self</span><span class="p">.</span><span class="n">mk</span><span class="p">),</span><span class="n">dtype</span><span class="o">=</span><span class="s">'complex128'</span><span class="p">)</span>
+
+    <span class="c1"># populate
+</span>    <span class="n">j1f_padded</span><span class="p">[</span><span class="bp">self</span><span class="p">.</span><span class="n">padder</span><span class="p">,</span> <span class="p">:</span><span class="bp">self</span><span class="p">.</span><span class="n">nk</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0j</span><span class="o">*</span><span class="bp">self</span><span class="p">.</span><span class="n">kx</span><span class="p">[:</span><span class="bp">self</span><span class="p">.</span><span class="n">nk</span>     <span class="p">]</span><span class="o">*</span><span class="bp">self</span><span class="p">.</span><span class="n">psih</span><span class="p">[:,:]</span>
+    <span class="n">j2f_padded</span><span class="p">[</span><span class="bp">self</span><span class="p">.</span><span class="n">padder</span><span class="p">,</span> <span class="p">:</span><span class="bp">self</span><span class="p">.</span><span class="n">nk</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0j</span><span class="o">*</span><span class="bp">self</span><span class="p">.</span><span class="n">ky</span><span class="p">[:,</span> <span class="n">np</span><span class="p">.</span><span class="n">newaxis</span><span class="p">]</span>  <span class="o">*</span><span class="bp">self</span><span class="p">.</span><span class="n">wh</span><span class="p">[:,:]</span>
+    <span class="n">j3f_padded</span><span class="p">[</span><span class="bp">self</span><span class="p">.</span><span class="n">padder</span><span class="p">,</span> <span class="p">:</span><span class="bp">self</span><span class="p">.</span><span class="n">nk</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0j</span><span class="o">*</span><span class="bp">self</span><span class="p">.</span><span class="n">ky</span><span class="p">[:,</span> <span class="n">np</span><span class="p">.</span><span class="n">newaxis</span><span class="p">]</span><span class="o">*</span><span class="bp">self</span><span class="p">.</span><span class="n">psih</span><span class="p">[:,:]</span>
+    <span class="n">j4f_padded</span><span class="p">[</span><span class="bp">self</span><span class="p">.</span><span class="n">padder</span><span class="p">,</span> <span class="p">:</span><span class="bp">self</span><span class="p">.</span><span class="n">nk</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0j</span><span class="o">*</span><span class="bp">self</span><span class="p">.</span><span class="n">kx</span><span class="p">[:</span><span class="bp">self</span><span class="p">.</span><span class="n">nk</span>     <span class="p">]</span>  <span class="o">*</span><span class="bp">self</span><span class="p">.</span><span class="n">wh</span><span class="p">[:,:]</span>
+    
+    <span class="c1"># backward transform
+</span>    <span class="n">j1</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">fft</span><span class="p">.</span><span class="n">irfft2</span><span class="p">(</span><span class="n">j1f_padded</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">j2</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">fft</span><span class="p">.</span><span class="n">irfft2</span><span class="p">(</span><span class="n">j2f_padded</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">j3</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">fft</span><span class="p">.</span><span class="n">irfft2</span><span class="p">(</span><span class="n">j3f_padded</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">j4</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">fft</span><span class="p">.</span><span class="n">irfft2</span><span class="p">(</span><span class="n">j4f_padded</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    
+    <span class="c1"># forward transform
+</span>    <span class="n">jacpf</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">fft</span><span class="p">.</span><span class="n">rfft2</span><span class="p">(</span><span class="n">j1</span><span class="o">*</span><span class="n">j2</span> <span class="o">-</span> <span class="n">j3</span><span class="o">*</span><span class="n">j4</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+
+    <span class="c1"># this term is the result of padding, padder allows for easier sclicing
+</span>    <span class="bp">self</span><span class="p">.</span><span class="n">dwhdt</span><span class="p">[:,:]</span> <span class="o">=</span> <span class="n">jacpf</span><span class="p">[</span><span class="bp">self</span><span class="p">.</span><span class="n">padder</span><span class="p">,</span> <span class="p">:</span><span class="bp">self</span><span class="p">.</span><span class="n">nk</span><span class="p">]</span><span class="o">*</span><span class="bp">self</span><span class="p">.</span><span class="n">pad</span><span class="o">**</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> 
+
+</code></pre></div></div>
+
+<h4 id="a-note-on-ffts-in-python">A note on FFTs in Python</h4>
+
+<p>These examples use the strandard numpy <em>FFT</em> routines. Those are highly inefficient. A much better FFT library is <a href="https://pypi.org/project/pyFFTW/">pyFFTw</a>, but this increase in speed comes at the cost of more complexity. In brief, arrays that will be transformed must be aligned in memory and this requires modifying their content instead of assigning them new values every time we update their values, which explains the <code class="language-plaintext highlighter-rouge">dwhdt[:,:]</code> part. For an example on how to use pyFFTw see <a href="https://github.com/marinlauber/my-numerical-recipes/blob/master/pyFFTW.ipynb">here</a>.</p>
+
+<h4 id="stream-function-1">Stream-function</h4>
+
+<p>The Fourier coefficients of the stream function are obtained by the explicit relationship between vorticity and stream-function</p>
+
+\[-\tilde{\omega}_{m, n} = (-k_x^2 - k_y^2)\tilde{\psi}_{m,n} \qquad\rightarrow\qquad \tilde{\psi}_{m,n} = \frac{\tilde{\omega}_{m, n}}{(k_x^2 + k_y^2)}.\]
+
+<p>We note here that the mode $\tilde{\psi}_{0,0}$ is the results of a division by zero and represents the mean value of $\psi$. To avoid issues with round-up errors accumulating and poluting the solution, it is explicitly set to zero each computation of the stream-function.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">_get_psih</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="s">"""
+    Spectral stream-function from spectral vorticity
+    """</span>
+    <span class="c1"># k2I stores inverse of k^2, with zero at [0, 0]
+</span>    <span class="bp">self</span><span class="p">.</span><span class="n">psih</span><span class="p">[:,:]</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">wh</span><span class="p">[:,:]</span> <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">k2I</span><span class="p">[:,:]</span>
+</code></pre></div></div>
+
+<h3 id="time-integration">Time integration</h3>
+
+<p>Using spectral operators for the spatial derivatives ensures that the discretisation error of spatial terms is kept to a minimum. In order to keep the global discretisation errors low, high-order temporal integrator are required. We implement both a third and a fourth-order Runge-Kutta method.
+The third-order TVD Runge-Kutta method is defined as~<a href="#Spectral">(spectral</a></p>
+
+\[\begin{split}
+	\tilde{\omega}^{(1)} &amp;= \tilde{\omega}^{n} + \Delta t \mathcal{L}(\tilde{\omega}^n),\\
+	\tilde{\omega}^{(2)} &amp;= \frac{3}{4}\tilde{\omega}^{n} + \frac{1}{4}\tilde{\omega}^{(1)} +\frac{1}{4}\Delta t\mathcal{L}(\tilde{\omega}^{(1)}),\\
+	\tilde{\omega}^{n+1} &amp;= \frac{1}{3}\tilde{\omega}^n + \frac{2}{3}\tilde{\omega}^{(2)} + \frac{2}{3}\Delta t\mathcal{L}(\tilde{\omega}^{(2)}),
+\end{split}\]
+
+<p>where $\mathcal{L}(\tilde{\omega}_n)$ represents all the spatial operators of the transport equation of the Fourier coefficients. Another scheme of order $s$ (for linear problems) that is also TVD and can be easily implemented is</p>
+
+\[\begin{split}
+  \tilde{\omega}^{(1)} &amp;= \tilde{\omega}^{n} + \frac{1}{s}\Delta t \mathcal{L}(\tilde{\omega}^n),\\
+  \tilde{\omega}^{(2)} &amp;= \tilde{\omega}^{n} + \frac{1}{s-1}\Delta t \mathcal{L}(\tilde{\omega}^{(1)}),\\
+  \cdots &amp;\\
+  \tilde{\omega}^{n+1} &amp;= \tilde{\omega}^n + \frac{1}{1}\Delta t\mathcal{L}(\tilde{\omega}^{(s)}).
+\end{split}\]
+
+<p>Applying the time integration to the fourier coefficients allows us to save two transform per time-steps.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+    <span class="s">"""
+    Explicit low-storage S-order Runge-Kutta method from
+    Jameson, Schmidt and Turkel (1981).
+    Input:
+        s : float
+            - desired order of the method, default is 3rd order
+    """</span>
+    <span class="c1"># initialise
+</span>    <span class="bp">self</span><span class="p">.</span><span class="n">w0</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">wh</span>
+
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        
+        <span class="c1"># invert Poisson equation for the stream function
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">_get_psih</span><span class="p">()</span>
+
+        <span class="c1"># get convective forces (resets dwhdt)
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">_add_convection</span><span class="p">()</span>
+
+        <span class="c1"># add diffusion
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">_add_diffusion</span><span class="p">()</span>
+
+        <span class="c1"># step in time
+</span>        <span class="bp">self</span><span class="p">.</span><span class="n">wh</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">w0</span> <span class="o">+</span> <span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">dt</span><span class="o">/</span><span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">dwhdt</span>
+
+    <span class="bp">self</span><span class="p">.</span><span class="n">time</span> <span class="o">+=</span> <span class="bp">self</span><span class="p">.</span><span class="n">dt</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">it</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">_cfl_limit</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h4 id="adaptive-time-step">Adaptive time-step</h4>
+
+<p>The time-step is adjusted based on the Courrant condition in the worst cell of the domain. For a third-order Runge-Kutta scheme, the maximum CFL number is $\sqrt{3}$. This gives the following time-setp, for stability</p>
+
+<p>\begin{equation}
+  \Delta t = \frac{\sqrt{3}}{D_c + D_{\mu}},
+\end{equation}</p>
+
+<p>where $D_c$ and $D_{\mu}$ are the convective and diffusive velocity scales</p>
+
+\[\begin{split}
+  D_c &amp;= \max\left(\pi\left(\frac{1+\vert u\vert}{\Delta x} +\frac{1+\vert v\vert}{\Delta y} \right)\right),\\
+  D_{\mu} &amp;= \max\left(\pi^2\left(\frac{1}{\Delta x^2} + \frac{1}{\Delta y^2}\right)\right).
+\end{split}\]
+
+<p>These are derived from the advection-diffusion equation (which is very similar to <a href="#1.3">(1.3)</a>), by writting it as a first order ODE and applying Fourier transform to the original equation. The convective and diffusive time-scales are then obtained by considering the worst case in the domain.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">_cfl_limit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="s">"""
+    Adjust time-step based on the courant condition
+    """</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">get_u</span><span class="p">()</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">get_v</span><span class="p">()</span>
+    <span class="n">Dc</span> <span class="o">=</span>  <span class="n">np</span><span class="p">.</span><span class="nb">max</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">((</span><span class="mf">1.</span><span class="o">+</span><span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">u</span><span class="p">))</span> <span class="o">/</span> <span class="bp">self</span><span class="p">.</span><span class="n">dx</span> <span class="o">+</span> <span class="p">(</span><span class="mf">1.</span><span class="o">+</span><span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">))</span> <span class="o">/</span> <span class="bp">self</span><span class="p">.</span><span class="n">dy</span><span class="p">))</span>
+    <span class="n">Dmu</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nb">max</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">pi</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">dx</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="p">.</span><span class="n">dy</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)))</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">dt</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">3.</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">Dc</span> <span class="o">+</span> <span class="n">Dmu</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="validation">Validation</h2>
+
+<h3 id="taylor-green-vortex">Taylor-Green vortex</h3>
+
+<p>We validate the numerical method described above using the Taylor-Green vortex, a known solution to the Navier-Stokes equation. Expressed in its 2D vorticity formulation, it reads</p>
+
+<p><a id="4.1"></a>
+\begin{equation}
+	\omega^e(x, y, t) = 2\kappa\cos(\kappa x)\cos(\kappa y)e^{-2\kappa^2t/Re}, \tag{4.1}
+\end{equation}</p>
+
+<p>where $\kappa=4$ is the number of vortices in each direction and $Re$ is the Reynolds number of the flow and is set to 1.0 for those simulations (dissipation is important in this flow).</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">flow</span> <span class="o">=</span> <span class="n">Fluid</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="n">Re</span><span class="o">=</span><span class="mf">1.</span><span class="p">)</span> <span class="c1"># generate a 128x128 grid
+</span><span class="n">flow</span><span class="p">.</span><span class="n">init_solver</span><span class="p">()</span>
+<span class="n">flow</span><span class="p">.</span><span class="n">init_field</span><span class="p">(</span><span class="n">TaylorGreen</span><span class="p">)</span>
+<span class="n">finish</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">start_time</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+
+<span class="c1"># loop to solve
+</span><span class="k">while</span><span class="p">(</span><span class="n">flow</span><span class="p">.</span><span class="n">time</span><span class="o">&lt;=</span><span class="n">finish</span><span class="p">):</span>
+
+    <span class="c1">#  update using RK
+</span>    <span class="n">flow</span><span class="p">.</span><span class="n">update</span><span class="p">()</span>
+
+    <span class="c1">#  print every 100 iterations
+</span>    <span class="k">if</span> <span class="p">(</span><span class="n">flow</span><span class="p">.</span><span class="n">it</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Iteration %d, time %f, time remaining %f. TKE: %f, ENS: %f"</span> <span class="o">%</span><span class="p">(</span><span class="n">flow</span><span class="p">.</span><span class="n">it</span><span class="p">,</span>
+              <span class="n">flow</span><span class="p">.</span><span class="n">time</span><span class="p">,</span> <span class="n">finish</span><span class="o">-</span><span class="n">flow</span><span class="p">.</span><span class="n">time</span><span class="p">,</span> <span class="n">flow</span><span class="p">.</span><span class="n">tke</span><span class="p">(),</span> <span class="n">flow</span><span class="p">.</span><span class="n">enstrophy</span><span class="p">()))</span>
+
+<span class="n">end_time</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">Execution time for %d iterations is %f seconds."</span> <span class="o">%</span><span class="p">(</span><span class="n">flow</span><span class="p">.</span><span class="n">it</span><span class="p">,</span> <span class="n">end_time</span><span class="o">-</span><span class="n">start_time</span><span class="p">))</span>
+</code></pre></div></div>
+<p>and you should get the following results</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Iteration 100, time 0.020564, time remaining 0.079436. TKE: 0.180244, ENS: 23585.873276
+Iteration 200, time 0.041258, time remaining 0.058742. TKE: 0.129470, ENS: 16941.804099
+Iteration 300, time 0.061970, time remaining 0.038030. TKE: 0.092971, ENS: 12165.670770
+Iteration 400, time 0.082698, time remaining 0.017302. TKE: 0.066744, ENS: 8733.753359
+
+Execution time for 484 iterations is 11.454845 seconds.
+</code></pre></div></div>
+
+<p>We use the $L_2$-norm of the error between the exact solution and the simulation to quantify the error</p>
+
+\[L_2 = \sqrt{\frac{1}{N_xN_y}\sum_{i=1}^{N_x} \sum_{j=1}^{N_y}|\omega^{e}_{i, j} - \omega_{i, j}|^2},\]
+
+<p>and the $L_\infty$-norm</p>
+
+\[L\infty = \max{\vert \omega^{e}_{i, j} - \omega_{i, j} \vert}.\]
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># get final results
+</span><span class="n">flow</span><span class="p">.</span><span class="n">wh_to_w</span><span class="p">()</span>
+<span class="n">w_n</span> <span class="o">=</span> <span class="n">flow</span><span class="p">.</span><span class="n">w</span>
+
+<span class="c1"># exact solution
+</span><span class="n">w_e</span> <span class="o">=</span> <span class="n">TaylorGreen</span><span class="p">(</span><span class="n">flow</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">flow</span><span class="p">.</span><span class="n">y</span><span class="p">,</span> <span class="n">Re</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="n">flow</span><span class="p">.</span><span class="n">time</span><span class="p">))</span>
+
+<span class="c1"># error norms
+</span><span class="k">print</span><span class="p">(</span><span class="s">"L2-norm   of the error in the Taylor-Green vortex on a %dx%d grid is %e."</span> <span class="o">%</span> <span class="p">(</span><span class="n">flow</span><span class="p">.</span><span class="n">nx</span><span class="p">,</span> <span class="n">flow</span><span class="p">.</span><span class="n">ny</span><span class="p">,</span> <span class="n">L2</span><span class="p">(</span><span class="n">w_e</span> <span class="o">-</span> <span class="n">w_n</span><span class="p">)))</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"Linf-norm of the error in the Taylor-Green vortex on a %dx%d grid is %e."</span> <span class="o">%</span> <span class="p">(</span><span class="n">flow</span><span class="p">.</span><span class="n">nx</span><span class="p">,</span> <span class="n">flow</span><span class="p">.</span><span class="n">ny</span><span class="p">,</span> <span class="n">Linf</span><span class="p">(</span><span class="n">w_e</span> <span class="o">-</span> <span class="n">w_n</span><span class="p">)))</span>
+</code></pre></div></div>
+
+<p>This is pretty good!</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>L2-norm   of the error in the Taylor-Green vortex on a 128x128 grid is 4.829892e-13.
+Linf-norm of the error in the Taylor-Green vortex on a 128x128 grid is 9.661161e-13..
+</code></pre></div></div>
+
+<h3 id="decaying-turbulence">Decaying Turbulence</h3>
+
+<p>We can also generate a random vorticity field, following <a href="#MW">J. C. McWilliams</a> whose initial conditions are a Gaussian random realization for each Fourier component $\tilde{\psi}$</p>
+
+\[\tilde{\psi}_{ij} \leftarrow \mathcal{N}(\mu, \sigma^2),\]
+
+<p>where at each vector wavenumber the ensemble variance is proportional to the scalar wavenumber function</p>
+
+\[\vert\psi\vert^2 = \kappa^{-1}\left[1 + \left(\frac{\kappa}{\kappa_0}\right)^4\right]^{-1},\]
+
+<p>where $\kappa$ is the wavenumber magnitude. This spectrum is broad banded and peaks around $\kappa_0$ (set to $\kappa_0 = 6$ in the following). An aplitude factor is chosen such that the kinetic energy <a href="#4.2">(4.2)</a> is equal to 0.5 initially.</p>
+
+<p>This field can simply be generated by passing the <code class="language-plaintext highlighter-rouge">"McWilliams"</code> function to the flow field initialization function.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">flow</span> <span class="o">=</span> <span class="n">Fluid</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="n">Re</span><span class="o">=</span><span class="mf">100.</span><span class="p">)</span>
+<span class="n">flow</span><span class="p">.</span><span class="n">init_solver</span><span class="p">()</span>
+<span class="n">flow</span><span class="p">.</span><span class="n">init_field</span><span class="p">(</span><span class="n">McWilliams</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="energy-spectrum">Energy Spectrum</h3>
+
+<p>For homogeneous turbulence, we can define the energy spectrum to be a function of the stream-function</p>
+
+<p><a id="4.2"></a>
+\begin{equation}
+	E(k, t) = \sum_{k-\Delta k \le |\boldsymbol{ k}| \le k+\Delta k} \frac{1}{2} k^2 |\tilde{\psi}(\boldsymbol{ k}, t) |^2, \tag{4.2}
+\end{equation}</p>
+
+<p>where $\tilde{\psi}$ is readily obtained from the known vorticity field $\tilde{\omega}$. Each contribution to the final energy spectrum consist of the sum of all the energy contribution at each wavenumber falling within a prescribed bin size, or spectral band, $\Delta k$. The default number of bin used is 200, and the spectral band is defined as the Nyquist frequency devided by the number of bins.</p>
+
+<h3 id="results">Results</h3>
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/TJrBldYK88Q" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+
+<h3 id="references">References</h3>
+
+<p>[1]<a id="Bailly"></a> C. Bailly, G. Comte-Bellot. <em>Turbulence</em>. Springer Series in: Experimental Fluid Mechanics. 2015.</p>
+
+<p>[2]<a id="MIT"></a> MIT. <a href="https://ocw.mit.edu/courses/mechanical-engineering/2-20-marine-hydrodynamics-13-021-spring-2005/lecture-notes/"><em>Marine Hydrodynamics Lecture 9</em></a>. MIT Marine Hydrodynamics lectures notes. 2005.</p>
+
+<p>[3]<a id="San"></a> O. San, A. E. Staples. <a href="https://www.sciencedirect.com/science/article/abs/pii/S0045793012001363"><em>High-order methods for decaying two-dimensional homogeneous isotropic turbulence</em></a>. Computer &amp; Fluids 63. p: 105–127. 2012.</p>
+
+<p>[4]<a id="Canuto"></a> C. Canuto, M. Y. Hussaini, A.Quarteroni, T. A. Zang. <em>Spectral Methods in Fluid Dynamics</em>. Springer Series in: Computational Physics. 1988.</p>
+
+<p>[4]<a id="MW"></a> J. C. McWilliams. <a href="https://www.cambridge.org/core/journals/journal-of-fluid-mechanics/article/emergence-of-isolated-coherent-vortices-in-turbulent-flow/3EB789299B1A730265A5EC522E35B630"><em>The emergence of isolated coherent vortices in turbulent flow</em></a>. Journal of fluid mechanics 146. p: 21–43. 1984.</p>
+
+<hr />
 
 
 <!-- <ul class="taxonomy__index">
@@ -364,7 +805,7 @@
   
     <li>
       <a href="#2020">
-        <strong>2020</strong> <span class="taxonomy__count">3</span>
+        <strong>2020</strong> <span class="taxonomy__count">4</span>
       </a>
     </li>
   
@@ -426,7 +867,7 @@
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/2D-Turbulence/" rel="permalink">2D-Turbulence
+        <a href="/APS-DFD/" rel="permalink">APS-Division of Fluid Dynamics
 </a>
       
     </h2>
@@ -451,7 +892,47 @@
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">Intro
+    <p class="archive__item-excerpt" itemprop="description">73rd Annual Meeting of the APS Division of Fluid Dynamics
+</p>
+  </article>
+</div>
+
+      
+        
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/2D-Turbulence/" rel="permalink">Pseudo-spectral method for 2D Turbulence
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          14 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Mathematical Formualtion
 </p>
   </article>
 </div>
@@ -521,7 +1002,7 @@
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=2D-Turbulence%20http%3A%2F%2Flocalhost%3A4000%2F2D-Turbulence%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Pseudo-spectral+method+for+2D+Turbulence%20http%3A%2F%2Flocalhost%3A4000%2F2D-Turbulence%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
   <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2F2D-Turbulence%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
@@ -536,7 +1017,7 @@
 ">Previous</a>
     
     
-      <a href="/Compact-Poisson-Equation/" class="pagination--pager" title="Compact Schemes for the Poisson Equation
+      <a href="/APS-DFD/" class="pagination--pager" title="APS-Division of Fluid Dynamics
 ">Next</a>
     
   </nav>
@@ -587,6 +1068,46 @@
 
 
     <p class="archive__item-excerpt" itemprop="description">This notebook demonstrates how to solve Poisson’s equation using Compact finite-difference schemes.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/APS-DFD/" rel="permalink">APS-Division of Fluid Dynamics
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">73rd Annual Meeting of the APS Division of Fluid Dynamics
 </p>
   </article>
 </div>

@@ -1,7 +1,6 @@
 ---
 title: Gallery
-layout: single
-classes: wide
+layout: archive
 permalink: /Gallery/
 author_profile: true
 comments: true

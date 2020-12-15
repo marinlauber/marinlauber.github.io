@@ -20,7 +20,7 @@ title                    : "Marin Lauber"
 title_separator          : "-"
 subtitle                 : "PhD Candidate, Maritime Engineering Research Group, University of Southampton"
 name                     : "Marin Lauber"
-description              : "Marin Lauber's Personnal Website"
+description              : "Marin Lauber"
 url                      : "https://marinlauber.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 destination              : ./docs

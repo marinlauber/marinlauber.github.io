@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-12-15T12:22:44+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Marin Lauber</title><subtitle>Marin Lauber's Personnal Website</subtitle><author><name>Marin Lauber</name><email>M.Lauber@soton.ac.uk</email></author><entry><title type="html">Compact Schemes for the Poisson Equation</title><link href="http://localhost:4000/Compact-Poisson-Equation/" rel="alternate" type="text/html" title="Compact Schemes for the Poisson Equation" /><published>2020-12-15T00:00:00+01:00</published><updated>2020-12-15T00:00:00+01:00</updated><id>http://localhost:4000/Compact-Poisson-Equation</id><content type="html" xml:base="http://localhost:4000/Compact-Poisson-Equation/">&lt;p&gt;This notebook demonstrates how to solve Poisson’s equation using Compact finite-difference schemes.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-12-15T17:24:23+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Marin Lauber</title><subtitle>Marin Lauber</subtitle><author><name>Marin Lauber</name><email>M.Lauber@soton.ac.uk</email></author><entry><title type="html">Compact Schemes for the Poisson Equation</title><link href="http://localhost:4000/Compact-Poisson-Equation/" rel="alternate" type="text/html" title="Compact Schemes for the Poisson Equation" /><published>2020-12-15T00:00:00+01:00</published><updated>2020-12-15T00:00:00+01:00</updated><id>http://localhost:4000/Compact-Poisson-Equation</id><content type="html" xml:base="http://localhost:4000/Compact-Poisson-Equation/">&lt;p&gt;This notebook demonstrates how to solve Poisson’s equation using Compact finite-difference schemes.&lt;/p&gt;
 
 &lt;div
   class=&quot;jupyter-notebook&quot;
@@ -11,16 +11,495 @@
       height=&quot;100%&quot;
       onload=&quot;this.parentElement.style.paddingBottom = (this.contentWindow.document.documentElement.scrollHeight + 10) + 'px'&quot;&gt;&lt;/iframe&gt;
   &lt;/div&gt;
-&lt;/div&gt;</content><author><name>Marin Lauber</name><email>M.Lauber@soton.ac.uk</email></author><summary type="html">This notebook demonstrates how to solve Poisson’s equation using Compact finite-difference schemes.</summary></entry><entry><title type="html">2D-Turbulence</title><link href="http://localhost:4000/2D-Turbulence/" rel="alternate" type="text/html" title="2D-Turbulence" /><published>2020-11-20T00:00:00+01:00</published><updated>2020-11-20T00:00:00+01:00</updated><id>http://localhost:4000/2D-Turbulence</id><content type="html" xml:base="http://localhost:4000/2D-Turbulence/">&lt;p&gt;&lt;strong&gt;&lt;em&gt;Intro&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;</content><author><name>Marin Lauber</name><email>M.Lauber@soton.ac.uk</email></author><summary type="html">This notebook demonstrates how to solve Poisson’s equation using Compact finite-difference schemes.</summary></entry><entry><title type="html">APS-Division of Fluid Dynamics</title><link href="http://localhost:4000/APS-DFD/" rel="alternate" type="text/html" title="APS-Division of Fluid Dynamics" /><published>2020-11-22T00:00:00+01:00</published><updated>2020-11-22T00:00:00+01:00</updated><id>http://localhost:4000/APS-DFD</id><content type="html" xml:base="http://localhost:4000/APS-DFD/">&lt;h3 style=&quot;margin-top: 30px; margin-bottom: 0px; color:rgba(95,205,252,0.8) ; text-align:center;&quot;&gt;73rd Annual Meeting of the APS Division of Fluid Dynamics&lt;/h3&gt;
 
-&lt;p&gt;Hello&lt;/p&gt;
+&lt;h1 style=&quot;margin-top: 30px; margin-bottom: 0px; text-align:center;&quot;&gt;Pressure Treatment in Immersed Boundary Methods&lt;/h1&gt;
 
-&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/TJrBldYK88Q&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;</content><author><name>Marin Lauber</name><email>M.Lauber@soton.ac.uk</email></author><summary type="html">Intro</summary></entry><entry><title type="html">My First Post</title><link href="http://localhost:4000/HelloWorld/" rel="alternate" type="text/html" title="My First Post" /><published>2020-10-03T00:00:00+02:00</published><updated>2020-10-03T00:00:00+02:00</updated><id>http://localhost:4000/HelloWorld</id><content type="html" xml:base="http://localhost:4000/HelloWorld/">&lt;p&gt;&lt;strong&gt;Code Snippets&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 style=&quot;margin-top: 30px; margin-bottom: 0px; text-align:center;&quot;&gt;M.Lauber  and G.D. Weymouth&lt;/h3&gt;
+
+&lt;p style=&quot;margin-top: 30px; margin-bottom: 0px; color:rgba(0, 0, 0, 0.68); text-align:center;&quot;&gt;Maritime Engineering Group, University of Southampton&lt;/p&gt;
+&lt;p style=&quot;margin-top: 30px; margin-bottom: 0px; color:rgba(0, 0, 0, 0.68); text-align:center;&quot;&gt;8.3 Computational Fluid Dynamics: Immersed Boundary Methods&lt;/p&gt;
+
+&lt;h3&gt;Abstract :&lt;/h3&gt;
+
+&lt;p&gt;
+Immersed boundary methods are extensively used for fluid-structure interaction problems involving large deformations and complex motion of the body. When the driving force of the flow is the body itself, correctly capturing the pressure forces is extremely important, however, very few immersed boundary methods correctly impose the no-penetration condition which can lead to substantial errors in those forces. 
+&lt;/p&gt;
+
+&lt;p&gt;
+We show by means of numerical simulation of a 3D flapping wings that the correct pressure flux treatment on the immersed boundary must be applied in order to satisfy the no-slip/no-penetration boundary condition on thin immersed bodies. 
+&lt;/p&gt;
+
+&lt;h3 style=&quot;margin-top: 30px; margin-bottom: 0px&quot;&gt; &lt;a href=&quot;https://meetings.aps.org/Meeting/DFD20/Session/F12.12&quot; id=&quot;Marin-thin-BDIM&quot;&gt; Immersed boundary simulations of thin flexible structures&lt;/a&gt;&lt;/h3&gt;
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/0hK1I5bEBOM&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;</content><author><name>Marin Lauber</name><email>M.Lauber@soton.ac.uk</email></author><summary type="html">73rd Annual Meeting of the APS Division of Fluid Dynamics</summary></entry><entry><title type="html">Pseudo-spectral method for 2D Turbulence</title><link href="http://localhost:4000/2D-Turbulence/" rel="alternate" type="text/html" title="Pseudo-spectral method for 2D Turbulence" /><published>2020-11-20T00:00:00+01:00</published><updated>2020-11-20T00:00:00+01:00</updated><id>http://localhost:4000/2D-Turbulence</id><content type="html" xml:base="http://localhost:4000/2D-Turbulence/">&lt;h2 id=&quot;mathematical-formualtion&quot;&gt;Mathematical Formualtion&lt;/h2&gt;
+
+&lt;h3 id=&quot;vorticity-equation&quot;&gt;Vorticity equation&lt;/h3&gt;
+
+&lt;p&gt;The vorticity (or &lt;em&gt;Helmholtz’s&lt;/em&gt;) equation describes the transport of vorticity. We can obtain it by applying the curl operator to the &lt;em&gt;Navier-Stokes&lt;/em&gt; equations&lt;/p&gt;
+
+&lt;p&gt;&lt;a id=&quot;1.1&quot;&gt;&lt;/a&gt;
+\begin{equation}
+\nabla \times\left(  \frac{\partial\boldsymbol{u}}{\partial t} + (\boldsymbol{u}\cdot \nabla)\boldsymbol{u} = -\frac{1}{\rho}\nabla p + \nu \nabla^2 \boldsymbol{u}\right),  \tag{1.1}
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;where $\boldsymbol{u}$ is the velocity field and $p$ is the pressure field. The convective term can be re-arranged to a more suitable form&lt;/p&gt;
+
+&lt;p&gt;\begin{equation}
+\boldsymbol{u}\times\left(\nabla\times\boldsymbol{u}\right) + \left(\boldsymbol{u}\cdot\nabla\right)\boldsymbol{u} = \nabla\left(\frac{\boldsymbol{u}^2}{2}\right) \rightarrow  \left(\boldsymbol{u}\cdot\nabla\right)\boldsymbol{u} = \nabla\left(\frac{\boldsymbol{u}^2}{2}\right) + \boldsymbol{\omega}\times\boldsymbol{u},
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;using definition of the vorticity ($\boldsymbol{\omega}=\nabla\times\boldsymbol{u}$). Substitution in &lt;a href=&quot;#1.1&quot;&gt;(1.1)&lt;/a&gt; gives&lt;/p&gt;
+
+&lt;p&gt;\begin{equation}
+\nabla \times\left(  \frac{\partial\boldsymbol{u}}{\partial t} + \nabla\left(\frac{\boldsymbol{u}^2}{2}\right) + \boldsymbol{\omega} \times\boldsymbol{u} = -\frac{1}{\rho}\nabla p + \nu \nabla^2 \boldsymbol{u}\right).
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;Distributing the curl operator and making use of the definition of the vorticity, we have&lt;/p&gt;
+
+&lt;p&gt;\begin{equation}
+\frac{\partial\boldsymbol{\omega}}{\partial t} + \nabla \times\nabla\left(\frac{\boldsymbol{u}^2}{2}\right) + \nabla \times\left(\boldsymbol{\omega} \times\boldsymbol{u}\right) = -\nabla \times\left( \frac{1}{\rho}\nabla p\right) + \nu \nabla^2 \boldsymbol{\omega}.
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;The third term can be expanded using the &lt;em&gt;curl of the curl&lt;/em&gt; vector identity&lt;/p&gt;
+
+&lt;p&gt;\begin{equation}
+\frac{\partial\boldsymbol{\omega}}{\partial t} + \nabla \times\nabla\left(\frac{\boldsymbol{u}^2}{2}\right) + \boldsymbol{u}\cdot\nabla\boldsymbol{\omega} - \boldsymbol{u}\nabla\cdot\boldsymbol{\omega} - \boldsymbol{\omega}\cdot\nabla\boldsymbol{u} + \boldsymbol{\omega}\nabla\cdot\boldsymbol{u} = -\nabla \times\left( \frac{1}{\rho}\nabla p\right) + \nu \nabla^2 \boldsymbol{\omega}.
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;The fourth term vanishes as $\nabla\cdot\boldsymbol{\omega}\equiv 0$ (the divergence of the curl of a vector field is always zero). For an incompressible flow the sixth term equaly vanishes&lt;/p&gt;
+
+&lt;p&gt;\begin{equation}
+	\frac{\partial\boldsymbol{\omega}}{\partial t} + \nabla \times\nabla\left(\frac{\boldsymbol{u}^2}{2}\right) + \boldsymbol{u}\cdot\nabla\boldsymbol{\omega} - \boldsymbol{\omega}\cdot\nabla\boldsymbol{u}  = -\nabla \times\left( \frac{1}{\rho}\nabla p\right) + \nu \nabla^2 \boldsymbol{\omega}.
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;The second term, which is the &lt;em&gt;curl of a tensor&lt;/em&gt;, can be shown to vanish as well. Indeed, the curl of a tensor  $\boldsymbol{S}$ is defined as&lt;/p&gt;
+
+&lt;p&gt;\begin{equation}
+	(\nabla\times\boldsymbol{S})\cdot\boldsymbol{a} = \nabla\times(\boldsymbol{S}^\top \cdot\boldsymbol{a}) \quad \forall \boldsymbol{a}, 
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;where $\boldsymbol{a}$ is a vector. In this case, the tensor $\boldsymbol{S}$ is given by the gradient of a vector field, and as gradient and divergence commute&lt;/p&gt;
+
+&lt;p&gt;\begin{equation}
+	\left(\nabla \times\nabla\left(\frac{\boldsymbol{u}^2}{2}\right)\right)\cdot\boldsymbol{a} = \nabla\times\left(\nabla^\top\left(\frac{\boldsymbol{u}^2}{2}\right)\cdot\boldsymbol{a}\right) = \nabla\times\left(\nabla\left(\frac{\boldsymbol{u}^2}{2}\cdot\boldsymbol{a}\right)\right) = \nabla\times\nabla\psi\equiv0.
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;As the curl of the gradient of a scalar field is always zero. Finally, the pressure term can be expanded using the product rule&lt;/p&gt;
+
+&lt;p&gt;\begin{equation}
+	\nabla \times\left( \frac{1}{\rho}\nabla p\right) = \nabla\left( \frac{1}{\rho}\right) \times\nabla p + \left( \frac{1}{\rho}\right)\nabla \times\nabla p = \frac{1}{\rho^2}\nabla\rho\times\nabla p.
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;The last term is zero. For a flow with constant entropy (incompressible, homentropic), the pressure is solely a function of density, this means that the two vector $\nabla\rho$ and $\nabla p$ are aligned and the fist term equaly vanishes. (More precisely, the baroclinic term which account for the change in the vorticity field due to the interaction of density and pressure surfaces &lt;a href=&quot;#Bailly&quot;&gt;(Bailly et &lt;em&gt;al.&lt;/em&gt;)&lt;/a&gt; vanishes). The vorticity equation is therefore given by&lt;/p&gt;
+
+&lt;p&gt;\begin{equation}
+	\frac{\partial\boldsymbol{\omega}}{\partial t} + \boldsymbol{u}\cdot\nabla\boldsymbol{\omega} = \boldsymbol{\omega}\cdot\nabla\boldsymbol{u} + \nu \nabla^2 \boldsymbol{\omega}.
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;In 2D, these equations can be simplified further by noting that the component of the velocity field are&lt;/p&gt;
+
+&lt;p&gt;\begin{equation}
+\boldsymbol{u} = (u, v, 0), \quad \frac{\partial}{\partial z} =0.
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;The vorticity is, by definition, normal to the $x$-$y$ plane ($\boldsymbol{\omega}=(0, 0, \omega_z)$). This means that the term $\boldsymbol{\omega}\cdot\nabla\boldsymbol{u}$ is zero, as is easily demonstrated&lt;/p&gt;
+
+\[\boldsymbol{\omega}\cdot\nabla\boldsymbol{u} = \left(\underbrace{\omega_x}_{0}\frac{\partial}{\partial x} + \underbrace{\omega_y}_{0}\frac{\partial}{\partial y} + \omega_z\underbrace{\frac{\partial}{\partial z}}_{0}\right)\boldsymbol{u}.\]
+
+&lt;p&gt;This term is the so-called vortex-stretching term. It is the mean by which the energy is cascaded from the large scales to the smaller scales following the $k^{-5/3}$ rule. In 2D this means that the angular velocity of a particle is conserved, and the length of a vortex tube cannot change due to continuity &lt;a href=&quot;#MIT&quot;&gt;, see MIT notes&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;In 3D, the vortex-stretching term has the form $\omega_{j}\frac{\partial u_i}{\partial x_j}$, thus looking at, say the second component, we have&lt;/p&gt;
+
+&lt;p&gt;\begin{equation}
+	\omega_{j}\frac{\partial u_i}{\partial x_j} = \omega_{1}\frac{\partial u_2}{\partial x_1} + \omega_{2}\frac{\partial u_2}{\partial x_2} + \omega_{3}\frac{\partial u_2}{\partial x_3}, 
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;the first and the third components can be seen as &lt;em&gt;vortex-turning&lt;/em&gt; and the second component is the vortex-stretching.&lt;/p&gt;
+
+&lt;p&gt;We also note that because the vorticity field has only one non-zero component, the only equation for the transport of vorticity is given by&lt;/p&gt;
+
+&lt;p&gt;&lt;a id=&quot;1.2&quot;&gt;&lt;/a&gt;
+\begin{equation}
+	\frac{\partial\omega}{\partial t} +u\frac{\partial\omega}{\partial x} + v\frac{\partial\omega}{\partial y} =  \frac{1}{Re} \left(\frac{\partial^2\omega}{\partial x^2}+ \frac{\partial^2\omega}{\partial y^2}\right).
+\tag{1.2}
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;Where $Re$ is the Reynold’s number of the flow.&lt;/p&gt;
+
+&lt;h2 id=&quot;stream-function&quot;&gt;Stream function&lt;/h2&gt;
+
+&lt;p&gt;To remove the implicit dependency on the velocity field from the vorticity equation, we introduce a vector-valued stream function $\boldsymbol{\psi}$. We will now show that for 2D flows this is in fact a scalar function. Using the definition of the stream function, we have&lt;/p&gt;
+
+&lt;p&gt;\begin{equation}
+	\boldsymbol{u} = \nabla\times\boldsymbol{\psi}, \qquad u_i = \varepsilon_{ijk}\frac{\partial \psi_k}{\partial x_j},
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;where the only two non-zero components of the velocity field are&lt;/p&gt;
+
+&lt;p&gt;\begin{equation}
+	 u_1 = \varepsilon_{123}\frac{\partial \psi_3}{\partial x_2}=\frac{\partial \psi_3}{\partial x_2}, \qquad u_2 = \varepsilon_{213}\frac{\partial \psi_3}{\partial x_1}=-\frac{\partial \psi_3}{\partial x_1}.
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;With $\varepsilon_{ijk}$, the Levi-Civita permutation symbol. Thus only one component of the stream-function is non-zero, and it can be seen as a scalar field $\psi$, with the following relationship to the velocity field&lt;/p&gt;
+
+&lt;p&gt;\begin{equation}
+	u = \frac{\partial \psi}{\partial y}, \,\,\,\, v = -\frac{\partial \psi}{\partial x}.
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;We can substitute these relation into the vorticity equation &lt;a href=&quot;#1.2&quot;&gt;(1.2)&lt;/a&gt;, giving&lt;/p&gt;
+
+&lt;p&gt;&lt;a id=&quot;1.3&quot;&gt;&lt;/a&gt;
+\begin{equation}
+	\frac{\partial\omega}{\partial t} +\frac{\partial \psi}{\partial y}\frac{\partial\omega}{\partial x} - \frac{\partial \psi}{\partial x}\frac{\partial\omega}{\partial y} =  \frac{1}{Re} \left(\frac{\partial^2\omega}{\partial x^2}+ \frac{\partial^2\omega}{\partial y^2}\right).
+\tag{1.3}
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;A very useful property of the stream function is that is existence guarantees the flow to be solenoidal (satisfies continuity). Indeed, substitution of the definition of the stream function into the continuity equation gives&lt;/p&gt;
+
+&lt;p&gt;\begin{equation}
+	\nabla\cdot\boldsymbol{u} = \nabla\cdot(\nabla\times\boldsymbol{\psi})\equiv 0.
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;#1.3&quot;&gt;(1.3)&lt;/a&gt; still has 2 unknowns, $\psi$ and $\omega$, fortunately we can build a Poisson equation for the vorticity by substituting the velocity components, in terms of the stream function, in the definition of the only non-zero component of the vorticity&lt;/p&gt;
+
+&lt;p&gt;\begin{equation}
+	\omega_{i}=\varepsilon_{ijk}\frac{\partial u_k}{\partial x_j} \qquad \rightarrow \qquad \omega =\omega_{z}=\frac{\partial v}{\partial x} - \frac{\partial u}{\partial y}
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;giving&lt;/p&gt;
+
+&lt;p&gt;&lt;a id=&quot;1.4&quot;&gt;&lt;/a&gt;
+\begin{eqnarray}
+  \omega =-\frac{\partial }{\partial x}\frac{\partial \psi}{\partial x} - \frac{\partial }{\partial y}\frac{\partial \psi}{\partial y} &amp;amp;=&amp;amp; -\frac{\partial^2 \psi}{\partial x^2} - \frac{\partial^2 \psi}{\partial x^2},\nonumber&lt;br /&gt;
+	-\omega&amp;amp;=&amp;amp;\frac{\partial^2 \psi}{\partial x^2} + \frac{\partial^2 \psi}{\partial x^2}.
+    \tag{1.4}
+\end{eqnarray}&lt;/p&gt;
+
+&lt;p&gt;Equation &lt;a href=&quot;#1.3&quot;&gt;(1.3)&lt;/a&gt; together with &lt;a href=&quot;#1.4&quot;&gt;(1.4)&lt;/a&gt; can be solved to simulate the transport of a vorticity field.&lt;/p&gt;
+
+&lt;h2 id=&quot;numerical-method&quot;&gt;Numerical method&lt;/h2&gt;
+
+&lt;h3 id=&quot;spectral-collocation-method&quot;&gt;Spectral collocation method&lt;/h3&gt;
+
+&lt;p&gt;For periodic problems, such as the one of homogeneous isotropic decaying turbulence in a periodic domain, collocation methods using trigonometric polynomial expansions are unmatched in terms of accuracy and precision. However, they tend to be an order of magnitude more expensive (computationally) when compared to high-order finite difference schemes. Fortunately, when using trigonometric basis functions, the use of Fast Fourier Transform (&lt;em&gt;FFT&lt;/em&gt;’s) routines allows for a reduction in the computational time. We describe here the implementation of such a method to solve &lt;a href=&quot;#1.3&quot;&gt;(1.3)&lt;/a&gt; and &lt;a href=&quot;#1.4&quot;&gt;(1.4)&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;We define the forward Fourier transform of a discrete field $u$ as (transforming from Fourier to physical space), following &lt;a href=&quot;#San&quot;&gt;San et &lt;em&gt;al.&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a id=&quot;2.1&quot;&gt;&lt;/a&gt;
+\begin{equation}
+  u_{i,j} = \sum_{m=-\frac{N_x}{2}}^{\frac{N_x}{2}-1}\sum_{n=-\frac{M_y}{2}}^{\frac{M_y}{2}-1}\tilde{u}_{m,n}e^{\boldsymbol{i}\left( \frac{2\pi m}{L_x} x_i + \frac{2\pi n}{L_y}y_j \right)},
+ \tag{2.1}
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;with its opposite transform, the backward Fourier transform (transforming from physical to Fourier space)&lt;/p&gt;
+
+\[\tilde{u}_{m,n} = \frac{1}{N_x N_y} \sum_{i=0}^{N_x-1} \sum_{j=0}^{N_y-1} u_{i,j} e^{\boldsymbol{-i} \left( \frac{2\pi m}{L_x} x_i + \frac{2\pi n}{L_y}y_j \right)}.\]
+
+&lt;p&gt;We note here that the transforms are normalised, a forward, followed by a backward transform recover the initial discrete field. In this case we have chosen to normalise the backward transform.
+The wave numbers are defined as&lt;/p&gt;
+
+&lt;p&gt;\begin{equation}
+	k_x = \frac{2\pi m}{L_x}, \qquad k_y = \frac{2\pi n}{L_y}.
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;The natural ordering of Fourier coefficients is as shown in &lt;a href=&quot;#2.1&quot;&gt;(2.1)&lt;/a&gt;, however, &lt;em&gt;FFT&lt;/em&gt; routines organise them in a different way, for a reason of algorithm efficiency&lt;/p&gt;
+
+&lt;p&gt;\begin{equation}
+	k_x = \left[0, 1, \cdots, \frac{N_x}{2}-1, -\frac{N_x}{2}, \cdots, -2, -1 \right],
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;for an even number of grid points.&lt;/p&gt;
+
+&lt;p&gt;The $N_x$ discrete collocation (grid) points are uniformly space in our $[L_x, L_y]$ domain as&lt;/p&gt;
+
+&lt;p&gt;\begin{equation}
+	x_i = \frac{iL_x}{N_x} ,\qquad y_i = \frac{iL_y}{N_y},
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;with $i=0, 1, \cdots, N_x/N_y$. Because the problem is periodic, $x_0 = x_{N_x}$, we do not include the last grid point in the simulations, as collocation methods using periodic basis functions automatically impose the periodicity on the problem.&lt;/p&gt;
+
+&lt;p&gt;The high precision of the spectral collocation method comes from its ability to threat spatial derivatives. By transforming a discrete physical field to Fourier-space, what would otherwise be done using a differential scheme (truncated to a certain accuracy), derivatives are evaluated by multiplying the Fourier coefficients by the corresponding complex wave number, for example, the $n^{th}$  $x$-derivative of a discrete field $u$ is given by&lt;/p&gt;
+
+&lt;p&gt;\begin{equation}
+	\frac{\partial^{(n)} u_{i, j}}{\partial x^{(n)}} = \sum_{m=-\frac{N_x}{2}}^{\frac{N_x}{2}-1}\sum_{n=-\frac{M_y}{2}}^{\frac{M_y}{2}-1}\tilde{u}_{m,n}(\boldsymbol{i}k_x)^{(n)}e^{\boldsymbol{i}\left( \frac{2\pi m}{L_x} x_i + \frac{2\pi n}{L_y}y_j \right)},
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;this is the power of spectral collocation methods. The only errors associated with this operation are the interpolation and truncation errors \cite{spectral}, which are much smaller than the finite-difference equivalent.&lt;/p&gt;
+
+&lt;p&gt;Applying these operators to the vorticity transport equation result in a transport equation for the discrete Fourier coefficients&lt;/p&gt;
+
+\[\frac{\partial\tilde{\omega}_{m,n}}{\partial t} + (\boldsymbol{i}k_y\tilde{\psi}_{m,n}\circ\boldsymbol{i}k_x\tilde{\omega}_{m,n}) - (\boldsymbol{i}k_x\tilde{\psi}_{m,n}\circ\boldsymbol{i}k_y\tilde{\omega}_{m,n}) = \frac{1}{Re}\left[\left(-k_x^2 - k_y^2\right)\tilde{\omega}_{m,n}\right]\]
+
+&lt;p&gt;where the $(\cdots\circ\cdots)$ operator represents a convolution sum. Treating of this term in Fourier space involves solving triad interactions, this is very expansive, $O(N^2)$.
+In the pseudo-spectral approach, this term is treated in physical space with the help of the convolution theorem, which reduces the cost to $O(45/4N\log_2 (3/2N))$.&lt;/p&gt;
+
+&lt;h4 id=&quot;aliasing&quot;&gt;Aliasing&lt;/h4&gt;
+
+&lt;p&gt;To prevent high frequencies modes of being falsly represented on the discrete grid dealiasing is employed. Here we use $3/2$ rule to pad the wave number during the transforms. Instead of using the inverse &lt;em&gt;FFT&lt;/em&gt; with $N$ points, we use $M = 3/2N$ points. The new Fourier coefficients are zero-padded &lt;a href=&quot;#Canuto&quot;&gt;(Canuto et &lt;em&gt;al.&lt;/em&gt;)&lt;/a&gt;, that is&lt;/p&gt;
+
+\[\begin{split}
+	\tilde{\omega}_{m, n} &amp;amp;=&amp;amp; \tilde{\omega}_{m, n}, \quad\quad |m|\le N_x, \quad |n|\le N_y,\\
+	\tilde{\omega}_{m, n} &amp;amp;=&amp;amp; 0  \quad\quad\quad\quad |m|&amp;gt; N_x, \quad |n|&amp;gt; N_y.
+\end{split}\]
+
+&lt;p&gt;Once we have obtained the two terms in the convolution sum in physical space via the backward transform and using $M$ points, we simply proceed to a multiplication. The result is then transformed back in Fourier space using the forward transform, still with $M$ points. We then discard all modes whose wave numbers are greater than $N_x$ and $N_y$. In summary, the convolution sums are treated as&lt;/p&gt;
+
+\[(\boldsymbol{i}k_y\tilde{\psi}_{m,n}\circ\boldsymbol{i}k_x\tilde{\omega}_{m,n}) = \left[\mathcal{F}_{M}\left(\mathcal{F}^{-1}_{M}(\boldsymbol{i}k_y\tilde{\psi}_{m,n})\mathcal{F}^{-1}_{M}(\boldsymbol{i}k_x\tilde{\omega}_{m,n})\right)\right]_{N}\,,\]
+
+&lt;p&gt;where \(\mathcal{F}_{M}\) represent a &lt;em&gt;Fast Fourier Transform&lt;/em&gt; using $M$ points, but we are ultimately interested only in $N$ of them, and the remaining are discarded.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;_add_convection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+    Convective term. To prevent alliasing, we zero-pad the array before
+    using the convolution theorem to evaluate it in physical space.
+    &quot;&quot;&quot;&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# initialize padded arrays
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;j1f_padded&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dtype&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'complex128'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;j2f_padded&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dtype&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'complex128'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;j3f_padded&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dtype&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'complex128'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;j4f_padded&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zeros&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dtype&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'complex128'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;# populate
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;j1f_padded&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;padder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.0j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nk&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;psih&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,:]&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;j2f_padded&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;padder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.0j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ky&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;newaxis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wh&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,:]&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;j3f_padded&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;padder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.0j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ky&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;newaxis&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;psih&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,:]&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;j4f_padded&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;padder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.0j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nk&lt;/span&gt;     &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wh&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,:]&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;# backward transform
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;j1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fft&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;irfft2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j1f_padded&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;axes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;j2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fft&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;irfft2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j2f_padded&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;axes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;j3&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fft&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;irfft2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j3f_padded&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;axes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;j4&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fft&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;irfft2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j4f_padded&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;axes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;# forward transform
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;jacpf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fft&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rfft2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j3&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;axes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;# this term is the result of padding, padder allows for easier sclicing
+&lt;/span&gt;    &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dwhdt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,:]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;jacpf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;padder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nk&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pad&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; 
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;a-note-on-ffts-in-python&quot;&gt;A note on FFTs in Python&lt;/h4&gt;
+
+&lt;p&gt;These examples use the strandard numpy &lt;em&gt;FFT&lt;/em&gt; routines. Those are highly inefficient. A much better FFT library is &lt;a href=&quot;https://pypi.org/project/pyFFTW/&quot;&gt;pyFFTw&lt;/a&gt;, but this increase in speed comes at the cost of more complexity. In brief, arrays that will be transformed must be aligned in memory and this requires modifying their content instead of assigning them new values every time we update their values, which explains the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dwhdt[:,:]&lt;/code&gt; part. For an example on how to use pyFFTw see &lt;a href=&quot;https://github.com/marinlauber/my-numerical-recipes/blob/master/pyFFTW.ipynb&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;stream-function-1&quot;&gt;Stream-function&lt;/h4&gt;
+
+&lt;p&gt;The Fourier coefficients of the stream function are obtained by the explicit relationship between vorticity and stream-function&lt;/p&gt;
+
+\[-\tilde{\omega}_{m, n} = (-k_x^2 - k_y^2)\tilde{\psi}_{m,n} \qquad\rightarrow\qquad \tilde{\psi}_{m,n} = \frac{\tilde{\omega}_{m, n}}{(k_x^2 + k_y^2)}.\]
+
+&lt;p&gt;We note here that the mode $\tilde{\psi}_{0,0}$ is the results of a division by zero and represents the mean value of $\psi$. To avoid issues with round-up errors accumulating and poluting the solution, it is explicitly set to zero each computation of the stream-function.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;_get_psih&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+    Spectral stream-function from spectral vorticity
+    &quot;&quot;&quot;&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# k2I stores inverse of k^2, with zero at [0, 0]
+&lt;/span&gt;    &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;psih&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,:]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wh&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,:]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k2I&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,:]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;time-integration&quot;&gt;Time integration&lt;/h3&gt;
+
+&lt;p&gt;Using spectral operators for the spatial derivatives ensures that the discretisation error of spatial terms is kept to a minimum. In order to keep the global discretisation errors low, high-order temporal integrator are required. We implement both a third and a fourth-order Runge-Kutta method.
+The third-order TVD Runge-Kutta method is defined as~&lt;a href=&quot;#Spectral&quot;&gt;(spectral&lt;/a&gt;&lt;/p&gt;
+
+\[\begin{split}
+	\tilde{\omega}^{(1)} &amp;amp;= \tilde{\omega}^{n} + \Delta t \mathcal{L}(\tilde{\omega}^n),\\
+	\tilde{\omega}^{(2)} &amp;amp;= \frac{3}{4}\tilde{\omega}^{n} + \frac{1}{4}\tilde{\omega}^{(1)} +\frac{1}{4}\Delta t\mathcal{L}(\tilde{\omega}^{(1)}),\\
+	\tilde{\omega}^{n+1} &amp;amp;= \frac{1}{3}\tilde{\omega}^n + \frac{2}{3}\tilde{\omega}^{(2)} + \frac{2}{3}\Delta t\mathcal{L}(\tilde{\omega}^{(2)}),
+\end{split}\]
+
+&lt;p&gt;where $\mathcal{L}(\tilde{\omega}_n)$ represents all the spatial operators of the transport equation of the Fourier coefficients. Another scheme of order $s$ (for linear problems) that is also TVD and can be easily implemented is&lt;/p&gt;
+
+\[\begin{split}
+  \tilde{\omega}^{(1)} &amp;amp;= \tilde{\omega}^{n} + \frac{1}{s}\Delta t \mathcal{L}(\tilde{\omega}^n),\\
+  \tilde{\omega}^{(2)} &amp;amp;= \tilde{\omega}^{n} + \frac{1}{s-1}\Delta t \mathcal{L}(\tilde{\omega}^{(1)}),\\
+  \cdots &amp;amp;\\
+  \tilde{\omega}^{n+1} &amp;amp;= \tilde{\omega}^n + \frac{1}{1}\Delta t\mathcal{L}(\tilde{\omega}^{(s)}).
+\end{split}\]
+
+&lt;p&gt;Applying the time integration to the fourier coefficients allows us to save two transform per time-steps.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+    Explicit low-storage S-order Runge-Kutta method from
+    Jameson, Schmidt and Turkel (1981).
+    Input:
+        s : float
+            - desired order of the method, default is 3rd order
+    &quot;&quot;&quot;&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# initialise
+&lt;/span&gt;    &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wh&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        
+        &lt;span class=&quot;c1&quot;&gt;# invert Poisson equation for the stream function
+&lt;/span&gt;        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_get_psih&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;# get convective forces (resets dwhdt)
+&lt;/span&gt;        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_add_convection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;# add diffusion
+&lt;/span&gt;        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_add_diffusion&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+        &lt;span class=&quot;c1&quot;&gt;# step in time
+&lt;/span&gt;        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wh&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dwhdt&lt;/span&gt;
+
+    &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dt&lt;/span&gt;
+    &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_cfl_limit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;adaptive-time-step&quot;&gt;Adaptive time-step&lt;/h4&gt;
+
+&lt;p&gt;The time-step is adjusted based on the Courrant condition in the worst cell of the domain. For a third-order Runge-Kutta scheme, the maximum CFL number is $\sqrt{3}$. This gives the following time-setp, for stability&lt;/p&gt;
+
+&lt;p&gt;\begin{equation}
+  \Delta t = \frac{\sqrt{3}}{D_c + D_{\mu}},
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;where $D_c$ and $D_{\mu}$ are the convective and diffusive velocity scales&lt;/p&gt;
+
+\[\begin{split}
+  D_c &amp;amp;= \max\left(\pi\left(\frac{1+\vert u\vert}{\Delta x} +\frac{1+\vert v\vert}{\Delta y} \right)\right),\\
+  D_{\mu} &amp;amp;= \max\left(\pi^2\left(\frac{1}{\Delta x^2} + \frac{1}{\Delta y^2}\right)\right).
+\end{split}\]
+
+&lt;p&gt;These are derived from the advection-diffusion equation (which is very similar to &lt;a href=&quot;#1.3&quot;&gt;(1.3)&lt;/a&gt;), by writting it as a first order ODE and applying Fourier transform to the original equation. The convective and diffusive time-scales are then obtained by considering the worst case in the domain.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;_cfl_limit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+    Adjust time-step based on the courant condition
+    &quot;&quot;&quot;&lt;/span&gt;
+    &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Dc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pi&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;1.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;abs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;1.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;abs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;Dmu&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pi&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dx&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+    &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sqrt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;3.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Dc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Dmu&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;validation&quot;&gt;Validation&lt;/h2&gt;
+
+&lt;h3 id=&quot;taylor-green-vortex&quot;&gt;Taylor-Green vortex&lt;/h3&gt;
+
+&lt;p&gt;We validate the numerical method described above using the Taylor-Green vortex, a known solution to the Navier-Stokes equation. Expressed in its 2D vorticity formulation, it reads&lt;/p&gt;
+
+&lt;p&gt;&lt;a id=&quot;4.1&quot;&gt;&lt;/a&gt;
+\begin{equation}
+	\omega^e(x, y, t) = 2\kappa\cos(\kappa x)\cos(\kappa y)e^{-2\kappa^2t/Re}, \tag{4.1}
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;where $\kappa=4$ is the number of vortices in each direction and $Re$ is the Reynolds number of the flow and is set to 1.0 for those simulations (dissipation is important in this flow).&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;flow&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Fluid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;128&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;128&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Re&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;1.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# generate a 128x128 grid
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;flow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;init_solver&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;flow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;init_field&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TaylorGreen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;finish&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.1&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;start_time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# loop to solve
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;flow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;finish&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;#  update using RK
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;flow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;#  print every 100 iterations
+&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;flow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;it&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Iteration %d, time %f, time remaining %f. TKE: %f, ENS: %f&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;flow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+              &lt;span class=&quot;n&quot;&gt;flow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;finish&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;flow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;flow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tke&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;flow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;enstrophy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()))&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;end_time&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Execution time for %d iterations is %f seconds.&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;flow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;it&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;end_time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start_time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;and you should get the following results&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Iteration 100, time 0.020564, time remaining 0.079436. TKE: 0.180244, ENS: 23585.873276
+Iteration 200, time 0.041258, time remaining 0.058742. TKE: 0.129470, ENS: 16941.804099
+Iteration 300, time 0.061970, time remaining 0.038030. TKE: 0.092971, ENS: 12165.670770
+Iteration 400, time 0.082698, time remaining 0.017302. TKE: 0.066744, ENS: 8733.753359
+
+Execution time for 484 iterations is 11.454845 seconds.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We use the $L_2$-norm of the error between the exact solution and the simulation to quantify the error&lt;/p&gt;
+
+\[L_2 = \sqrt{\frac{1}{N_xN_y}\sum_{i=1}^{N_x} \sum_{j=1}^{N_y}|\omega^{e}_{i, j} - \omega_{i, j}|^2},\]
+
+&lt;p&gt;and the $L_\infty$-norm&lt;/p&gt;
+
+\[L\infty = \max{\vert \omega^{e}_{i, j} - \omega_{i, j} \vert}.\]
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# get final results
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;flow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wh_to_w&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;w_n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;flow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# exact solution
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w_e&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;TaylorGreen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;flow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;flow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Re&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;flow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# error norms
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;L2-norm   of the error in the Taylor-Green vortex on a %dx%d grid is %e.&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;flow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;flow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ny&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;L2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w_e&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;w_n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Linf-norm of the error in the Taylor-Green vortex on a %dx%d grid is %e.&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;flow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;flow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ny&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Linf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w_e&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;w_n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)))&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This is pretty good!&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;L2-norm   of the error in the Taylor-Green vortex on a 128x128 grid is 4.829892e-13.
+Linf-norm of the error in the Taylor-Green vortex on a 128x128 grid is 9.661161e-13..
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;decaying-turbulence&quot;&gt;Decaying Turbulence&lt;/h3&gt;
+
+&lt;p&gt;We can also generate a random vorticity field, following &lt;a href=&quot;#MW&quot;&gt;J. C. McWilliams&lt;/a&gt; whose initial conditions are a Gaussian random realization for each Fourier component $\tilde{\psi}$&lt;/p&gt;
+
+\[\tilde{\psi}_{ij} \leftarrow \mathcal{N}(\mu, \sigma^2),\]
+
+&lt;p&gt;where at each vector wavenumber the ensemble variance is proportional to the scalar wavenumber function&lt;/p&gt;
+
+\[\vert\psi\vert^2 = \kappa^{-1}\left[1 + \left(\frac{\kappa}{\kappa_0}\right)^4\right]^{-1},\]
+
+&lt;p&gt;where $\kappa$ is the wavenumber magnitude. This spectrum is broad banded and peaks around $\kappa_0$ (set to $\kappa_0 = 6$ in the following). An aplitude factor is chosen such that the kinetic energy &lt;a href=&quot;#4.2&quot;&gt;(4.2)&lt;/a&gt; is equal to 0.5 initially.&lt;/p&gt;
+
+&lt;p&gt;This field can simply be generated by passing the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;McWilliams&quot;&lt;/code&gt; function to the flow field initialization function.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;flow&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Fluid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;128&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;128&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Re&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;100.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;flow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;init_solver&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;flow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;init_field&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;McWilliams&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;energy-spectrum&quot;&gt;Energy Spectrum&lt;/h3&gt;
+
+&lt;p&gt;For homogeneous turbulence, we can define the energy spectrum to be a function of the stream-function&lt;/p&gt;
+
+&lt;p&gt;&lt;a id=&quot;4.2&quot;&gt;&lt;/a&gt;
+\begin{equation}
+	E(k, t) = \sum_{k-\Delta k \le |\boldsymbol{ k}| \le k+\Delta k} \frac{1}{2} k^2 |\tilde{\psi}(\boldsymbol{ k}, t) |^2, \tag{4.2}
+\end{equation}&lt;/p&gt;
+
+&lt;p&gt;where $\tilde{\psi}$ is readily obtained from the known vorticity field $\tilde{\omega}$. Each contribution to the final energy spectrum consist of the sum of all the energy contribution at each wavenumber falling within a prescribed bin size, or spectral band, $\Delta k$. The default number of bin used is 200, and the spectral band is defined as the Nyquist frequency devided by the number of bins.&lt;/p&gt;
+
+&lt;h3 id=&quot;results&quot;&gt;Results&lt;/h3&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/TJrBldYK88Q&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+
+&lt;h3 id=&quot;references&quot;&gt;References&lt;/h3&gt;
+
+&lt;p&gt;[1]&lt;a id=&quot;Bailly&quot;&gt;&lt;/a&gt; C. Bailly, G. Comte-Bellot. &lt;em&gt;Turbulence&lt;/em&gt;. Springer Series in: Experimental Fluid Mechanics. 2015.&lt;/p&gt;
+
+&lt;p&gt;[2]&lt;a id=&quot;MIT&quot;&gt;&lt;/a&gt; MIT. &lt;a href=&quot;https://ocw.mit.edu/courses/mechanical-engineering/2-20-marine-hydrodynamics-13-021-spring-2005/lecture-notes/&quot;&gt;&lt;em&gt;Marine Hydrodynamics Lecture 9&lt;/em&gt;&lt;/a&gt;. MIT Marine Hydrodynamics lectures notes. 2005.&lt;/p&gt;
+
+&lt;p&gt;[3]&lt;a id=&quot;San&quot;&gt;&lt;/a&gt; O. San, A. E. Staples. &lt;a href=&quot;https://www.sciencedirect.com/science/article/abs/pii/S0045793012001363&quot;&gt;&lt;em&gt;High-order methods for decaying two-dimensional homogeneous isotropic turbulence&lt;/em&gt;&lt;/a&gt;. Computer &amp;amp; Fluids 63. p: 105–127. 2012.&lt;/p&gt;
+
+&lt;p&gt;[4]&lt;a id=&quot;Canuto&quot;&gt;&lt;/a&gt; C. Canuto, M. Y. Hussaini, A.Quarteroni, T. A. Zang. &lt;em&gt;Spectral Methods in Fluid Dynamics&lt;/em&gt;. Springer Series in: Computational Physics. 1988.&lt;/p&gt;
+
+&lt;p&gt;[4]&lt;a id=&quot;MW&quot;&gt;&lt;/a&gt; J. C. McWilliams. &lt;a href=&quot;https://www.cambridge.org/core/journals/journal-of-fluid-mechanics/article/emergence-of-isolated-coherent-vortices-in-turbulent-flow/3EB789299B1A730265A5EC522E35B630&quot;&gt;&lt;em&gt;The emergence of isolated coherent vortices in turbulent flow&lt;/em&gt;&lt;/a&gt;. Journal of fluid mechanics 146. p: 21–43. 1984.&lt;/p&gt;
+
+&lt;hr /&gt;</content><author><name>Marin Lauber</name><email>M.Lauber@soton.ac.uk</email></author><summary type="html">Mathematical Formualtion</summary></entry><entry><title type="html">My First Post</title><link href="http://localhost:4000/HelloWorld/" rel="alternate" type="text/html" title="My First Post" /><published>2020-10-03T00:00:00+02:00</published><updated>2020-10-03T00:00:00+02:00</updated><id>http://localhost:4000/HelloWorld</id><content type="html" xml:base="http://localhost:4000/HelloWorld/">&lt;p&gt;&lt;strong&gt;Code Snippets&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;Print &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Hello, World!&lt;/code&gt; using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python&lt;/code&gt;&lt;/p&gt;
 
-&lt;div class=&quot;language-fortran highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Hello, World!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello, World!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;strong&gt;Equations&lt;/strong&gt;&lt;/p&gt;
 

@@ -4,4 +4,16 @@ var store = [{
         "tags": [],
         "url": "http://localhost:4000/HelloWorld/",
         "teaser": null
+      },{
+        "title": "2D-Turbulence",
+        "excerpt":"Intro   Hello    ","categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/2D-Turbulence/",
+        "teaser": null
+      },{
+        "title": "Compact Schemes for the Poisson Equation",
+        "excerpt":"This notebook demonstrates how to solve Poisson’s equation using Compact finite-difference schemes.                 ","categories": [],
+        "tags": [],
+        "url": "http://localhost:4000/Compact-Poisson-Equation/",
+        "teaser": null
       }]

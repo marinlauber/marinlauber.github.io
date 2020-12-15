@@ -1,4 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-11-20T09:07:52+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Marin Lauber</title><subtitle>Marin Lauber's Personnal Website</subtitle><author><name>Marin Lauber</name><email>M.Lauber@soton.ac.uk</email></author><entry><title type="html">My First Post</title><link href="http://localhost:4000/HelloWorld/" rel="alternate" type="text/html" title="My First Post" /><published>2020-10-03T00:00:00+02:00</published><updated>2020-10-03T00:00:00+02:00</updated><id>http://localhost:4000/HelloWorld</id><content type="html" xml:base="http://localhost:4000/HelloWorld/">&lt;p&gt;&lt;strong&gt;Code Snippets&lt;/strong&gt;&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-12-15T12:13:54+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Marin Lauber</title><subtitle>Marin Lauber's Personnal Website</subtitle><author><name>Marin Lauber</name><email>M.Lauber@soton.ac.uk</email></author><entry><title type="html">Compact Schemes for the Poisson Equation</title><link href="http://localhost:4000/Compact-Poisson-Equation/" rel="alternate" type="text/html" title="Compact Schemes for the Poisson Equation" /><published>2020-12-15T00:00:00+01:00</published><updated>2020-12-15T00:00:00+01:00</updated><id>http://localhost:4000/Compact-Poisson-Equation</id><content type="html" xml:base="http://localhost:4000/Compact-Poisson-Equation/">&lt;p&gt;This notebook demonstrates how to solve Poisson’s equation using Compact finite-difference schemes.&lt;/p&gt;
+
+&lt;div
+  class=&quot;jupyter-notebook&quot;
+  style=&quot;position: relative; width: 100%; margin: 0 auto;&quot;&gt;
+  &lt;div class=&quot;jupyter-notebook-iframe-container&quot;&gt;
+    &lt;iframe
+      src=&quot;/notebooks/Compact-Schemes-for-Poisson-Equation.ipynb.html&quot;
+      style=&quot;position: absolute; top: 0; left: 0; border-style: none;&quot;
+      width=&quot;100%&quot;
+      height=&quot;100%&quot;
+      onload=&quot;this.parentElement.style.paddingBottom = (this.contentWindow.document.documentElement.scrollHeight + 10) + 'px'&quot;&gt;&lt;/iframe&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</content><author><name>Marin Lauber</name><email>M.Lauber@soton.ac.uk</email></author><summary type="html">This notebook demonstrates how to solve Poisson’s equation using Compact finite-difference schemes.</summary></entry><entry><title type="html">2D-Turbulence</title><link href="http://localhost:4000/2D-Turbulence/" rel="alternate" type="text/html" title="2D-Turbulence" /><published>2020-11-20T00:00:00+01:00</published><updated>2020-11-20T00:00:00+01:00</updated><id>http://localhost:4000/2D-Turbulence</id><content type="html" xml:base="http://localhost:4000/2D-Turbulence/">&lt;p&gt;&lt;strong&gt;&lt;em&gt;Intro&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Hello&lt;/p&gt;
+
+&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/TJrBldYK88Q&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;</content><author><name>Marin Lauber</name><email>M.Lauber@soton.ac.uk</email></author><summary type="html">Intro</summary></entry><entry><title type="html">My First Post</title><link href="http://localhost:4000/HelloWorld/" rel="alternate" type="text/html" title="My First Post" /><published>2020-10-03T00:00:00+02:00</published><updated>2020-10-03T00:00:00+02:00</updated><id>http://localhost:4000/HelloWorld</id><content type="html" xml:base="http://localhost:4000/HelloWorld/">&lt;p&gt;&lt;strong&gt;Code Snippets&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;Print &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Hello, World!&lt;/code&gt; using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python&lt;/code&gt;&lt;/p&gt;
 

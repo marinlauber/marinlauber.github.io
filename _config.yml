@@ -207,6 +207,7 @@ plugins:
   - jekyll-feed
   - jekyll-include-cache
   - jekyll-jupyter-notebook
+  - jekyll-sitemap
 
 # mimic GitHub Pages with --safe
 whitelist:

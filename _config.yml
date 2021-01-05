@@ -208,6 +208,7 @@ plugins:
   - jekyll-include-cache
   - jekyll-jupyter-notebook
   - jekyll-sitemap
+  - jekyll-seo-tag
 
 # mimic GitHub Pages with --safe
 whitelist:

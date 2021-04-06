@@ -498,6 +498,7 @@ where $\tilde{\psi}$ is readily obtained from the known vorticity field $\tilde{
 </video> -->
 <video autoplay="autoplay" loop="loop" width="800" height="450" codecs="h264" controls>
   <source src="/assets/images/2D_Turbulence/output.mp4" type="video/mp4">
+  <source src="/assets/images/2D_Turbulence/comp_2560x1440_final.mp4" type="video/mp4">
 </video>
 
 ### References

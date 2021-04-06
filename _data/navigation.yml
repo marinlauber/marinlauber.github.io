@@ -1,7 +1,5 @@
 # main links
 main:
-  # - title: "Quick-Start Guide"
-  #   url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
   - title: "Publications"
     url: /Publications/
   - title: "Research"
@@ -10,9 +8,5 @@ main:
     url: /Gallery/
   - title: Blog
     url: /Blog/
-  # - title: "Movies"
-  #   url: /Movies/
-  # - title: "CV"
-  #   url: /CV/
-  # - title: "Data"
-  #   url: /Data/
+  - title: "CV"
+    url: /CV/Curriculum_Vitae_Marin_Lauber.pdf

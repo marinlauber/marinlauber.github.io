@@ -4,6 +4,8 @@ title: "Pseudo-spectral method for 2D Turbulence"
 date: 2020-11-20
 ---
 
+Accurate simulation of 2D Turbulence
+
 ## Mathematical Formualtion
 
 ### Vorticity equation
@@ -490,7 +492,13 @@ where $\tilde{\psi}$ is readily obtained from the known vorticity field $\tilde{
 
 ### Results
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/TJrBldYK88Q" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/TJrBldYK88Q" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+<!-- <video autoplay="autoplay" loop="loop" width="800" height="450" codecs="h264" controls>
+  <source src="/assets/images/2D_Turbulence/out.mp4" type="video/mp4">
+</video> -->
+<video autoplay="autoplay" loop="loop" width="800" height="450" codecs="h264" controls>
+  <source src="/assets/images/2D_Turbulence/output.mp4" type="video/mp4">
+</video>
 
 ### References
 

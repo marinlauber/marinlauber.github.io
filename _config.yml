@@ -206,7 +206,6 @@ plugins:
   - jekyll-gist
   - jekyll-feed
   - jekyll-include-cache
-  - jekyll-jupyter-notebook
   - jekyll-sitemap
   - jekyll-seo-tag
 

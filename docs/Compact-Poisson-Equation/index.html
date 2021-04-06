@@ -10,7 +10,7 @@
     <meta charset="utf-8">
 
 <!-- begin _includes/seo.html --><title>Compact Schemes for the Poisson Equation - Marin Lauber</title>
-<meta name="description" content="This notebook demonstrates how to solve Poisson’s equation using Compact finite-difference schemes.">
+<meta name="description" content="If you prefer to follow in the notebook directly, you can also get the notebook.">
 
 
   <meta name="author" content="Marin Lauber">
@@ -26,7 +26,7 @@
 <meta property="og:url" content="https://marinlauber.github.io/Compact-Poisson-Equation/">
 
 
-  <meta property="og:description" content="This notebook demonstrates how to solve Poisson’s equation using Compact finite-difference schemes.">
+  <meta property="og:description" content="If you prefer to follow in the notebook directly, you can also get the notebook.">
 
 
 
@@ -151,6 +151,8 @@
               <a href="/Gallery/">Gallery</a>
             </li><li class="masthead__menu-item">
               <a href="/Blog/">Blog</a>
+            </li><li class="masthead__menu-item">
+              <a href="/CV/Curriculum_Vitae_Marin_Lauber.pdf">CV</a>
             </li></ul>
         
         <button class="greedy-nav__toggle hidden" type="button">
@@ -299,7 +301,7 @@
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
     <meta itemprop="headline" content="Compact Schemes for the Poisson Equation">
-    <meta itemprop="description" content="This notebook demonstrates how to solve Poisson’s equation using Compact finite-difference schemes.">
+    <meta itemprop="description" content="If you prefer to follow in the notebook directly, you can also get the notebook.">
     <meta itemprop="datePublished" content="2020-12-15T00:00:00+01:00">
     
 
@@ -322,7 +324,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          less than 1 minute read
+          8 minute read
         
       </span>
     
@@ -334,21 +336,357 @@
 
       <section class="page__content" itemprop="text">
         
-        <p>This notebook demonstrates how to solve Poisson’s equation using Compact finite-difference schemes.</p>
+        <p>If you prefer to follow in the notebook directly, you can also <a href="/notebooks/Compact-Schemes-for-Poisson-Equation.ipynb">get the notebook</a>.</p>
 
-<div
-  class="jupyter-notebook"
-  style="position: relative; width: 100%; margin: 0 auto;">
-  <div class="jupyter-notebook-iframe-container">
-    <iframe
-      src="/notebooks/Compact-Schemes-for-Poisson-Equation.ipynb.html"
-      style="position: absolute; top: 0; left: 0; border-style: none;"
-      width="100%"
-      height="100%"
-      onload="this.parentElement.style.paddingBottom = (this.contentWindow.document.documentElement.scrollHeight + 10) + 'px'"></iframe>
-  </div>
-</div>
+<h3 id="introduction">Introduction</h3>
 
+<p>Finite differnce schemes can be derived from a taylor series expansion up to very large <a href="https://en.wikipedia.org/wiki/Finite_difference_coefficient">accuracy</a>. The idea is to gain accuracy by increasing the number of points in the stencil. This works well, but can be cumbersome computationally as the stencils become very large and the modifications to the stencil that are required at the boundaries to maintain a uniform global accuracy are complex. This is where compact schemes become an interesting alternative.</p>
+
+<hr />
+
+<h3 id="compact-nth-order-derivative">Compact n$^{th}$-order derivative</h3>
+
+<p>Compact schemes are derived using a Taylor series expansion. Say we wish to construct a compact scheme with a three-point stencil using the value of the function at $x_{i-1}$, $x_i$ and $x_{i+1}$. If we used standard central difference schemes, this will only results in a 2$^{nd}$-order accurate approximation of \(f'(x_i)\). In compact schemes, we not increase the order of accuracy by inclding neighbouring points of the unkown function derivative on the left-hand-side.</p>
+
+<p>For the n$^{th}$ derivative we have the following system</p>
+
+\[L_{i-1}f^{(n)}_{i-1} + L_{i}f^{(n)}_{i} + L_{i+1}f^{(n)}_{i+1} = R_{i-1}f_{i-1} + R_{i}f_{i} + R_{i+1}f_{i+1},\]
+
+<p>where $L_j$ and $R_j$ are unkown coefficients. They are found by solving the linear system</p>
+
+\[\begin{bmatrix}
+    \begin{matrix}
+        0 &amp; 0 &amp; 0
+    \end{matrix} &amp; \begin{matrix}
+        1 &amp; 1 &amp; 1\\
+    \end{matrix}\\
+    Q^{(n)} &amp; \begin{matrix}
+h_{i-1} &amp; 0 &amp; h_{i+1}\\
+h_{i-1}^2/2! &amp; 0 &amp; h_{i+1}^2/2!\\
+h_{i-1}^3/3! &amp; 0 &amp; h_{i+1}^3/3!\\
+h_{i-1}^4/4! &amp; 0 &amp; h_{i+1}^4/4!
+\end{matrix}\\
+\begin{matrix}
+        0 &amp; 1 &amp; 0
+    \end{matrix} &amp; \begin{matrix}
+        0 &amp; 0 &amp; 0\\
+    \end{matrix}\\
+\end{bmatrix}\begin{bmatrix}
+L_{i-1} \\ L_{i} \\ L_{i+1} \\ -R_{i-1} \\ -R_{i} \\ -R_{i+1}\\
+\end{bmatrix}=\begin{bmatrix}
+0\\ 0\\ 0\\ 0\\ 0\\ 1\\
+\end{bmatrix},\]
+
+<p>where $h_{i-1}=x_{i-1}-x_i$ and $h_{i+1} = x_{i+1}-x_i$. The sub-matrix $Q^{(n)}$ depends on the derivative required. For the first derivative, we have</p>
+
+\[Q^{(1)} = \begin{bmatrix}
+1 &amp; 1 &amp; 1\\
+h_{i-1} &amp; 0 &amp; h_{i+1}\\
+h_{i-1}^2/2! &amp; 0 &amp; h_{i+1}^2/2!\\
+h_{i-1}^3/3! &amp; 0 &amp; h_{i+1}^3/3!\\
+\end{bmatrix}\]
+
+<p>and for the second derivative</p>
+
+\[Q^{(2)} = \begin{bmatrix}
+0 &amp; 0 &amp; 0\\
+1 &amp; 1 &amp; 1\\
+h_{i-1} &amp; 0 &amp; h_{i+1}\\
+h_{i-1}^2/2! &amp; 0 &amp; h_{i+1}^2/2!\\
+\end{bmatrix}.\]
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">get_compact_coeffs</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">hi</span><span class="p">):</span>
+    <span class="c1"># assumes uniform grid
+</span>    <span class="n">h_i</span> <span class="o">=</span> <span class="o">-</span><span class="n">hi</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]),</span><span class="mf">1.</span><span class="p">))</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+                  <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">h_i</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">hi</span><span class="p">],</span>
+                  <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">h_i</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">fact</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">hi</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">fact</span><span class="p">(</span><span class="mi">2</span><span class="p">)],</span>
+                  <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">h_i</span><span class="o">**</span><span class="mi">3</span><span class="o">/</span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">hi</span><span class="o">**</span><span class="mi">3</span><span class="o">/</span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">)],</span>
+                  <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">h_i</span><span class="o">**</span><span class="mi">4</span><span class="o">/</span><span class="n">fact</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">hi</span><span class="o">**</span><span class="mi">4</span><span class="o">/</span><span class="n">fact</span><span class="p">(</span><span class="mi">4</span><span class="p">)],</span>
+                  <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+    <span class="n">insert</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span>           <span class="mi">1</span><span class="p">,</span>                <span class="mi">1</span><span class="p">],</span>
+                       <span class="p">[</span><span class="n">h_i</span><span class="p">,</span>         <span class="mi">0</span><span class="p">,</span>               <span class="n">hi</span><span class="p">],</span>
+                       <span class="p">[</span><span class="n">h_i</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">fact</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">hi</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">fact</span><span class="p">(</span><span class="mi">2</span><span class="p">)],</span>
+                       <span class="p">[</span><span class="n">h_i</span><span class="o">**</span><span class="mi">3</span><span class="o">/</span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">hi</span><span class="o">**</span><span class="mi">3</span><span class="o">/</span><span class="n">fact</span><span class="p">(</span><span class="mi">3</span><span class="p">)]])</span>
+    <span class="n">L</span><span class="p">[</span><span class="n">n</span><span class="p">:</span><span class="mi">5</span><span class="p">,:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">insert</span><span class="p">[:</span><span class="o">-</span><span class="n">n</span><span class="o">+</span><span class="mi">5</span><span class="p">,:]</span>
+    <span class="n">vec</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">solve</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">r</span><span class="p">),</span> <span class="mi">8</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">vec</span><span class="p">[:</span><span class="mi">3</span><span class="p">],</span> <span class="o">-</span><span class="n">vec</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span>
+</code></pre></div></div>
+
+<p>We can check that for a first derivative, we recover the standard Pade ($4^{th}$-order) <a href="https://github.com/marinlauber/my-numerical-recipes/blob/master/Compact-Schemes.ipynb">coefficients</a>, which are</p>
+
+\[L = \left[\frac{1}{4}, 1, \frac{1}{4}\right], \qquad R = \left[-\frac{3}{4}, 0., \frac{3}{4}\right]\]
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pade</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.</span><span class="o">/</span><span class="mf">4.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="o">/</span><span class="mf">4.</span><span class="p">,</span> <span class="o">-</span><span class="mf">3.</span><span class="o">/</span><span class="mf">4.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">3.</span><span class="o">/</span><span class="mf">4.</span><span class="p">])</span>
+<span class="n">np</span><span class="p">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">hstack</span><span class="p">(</span><span class="n">get_compact_coeffs</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">pade</span><span class="p">)</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+<p>We can now write a function that, given a function $f$, on a uniform grid with spacing $dx$, return the $n^{th}$ derivative of that function. Because for each point we solve for the compact coefficients, we can in theory get compact schemes on non-uniform grid with the same accuracy. Here we will only focus on uniform grids.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">derive_compact</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">dx</span><span class="p">):</span>
+    
+    <span class="c1"># get coeffs
+</span>    <span class="n">L</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">get_compact_coeffs</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dx</span><span class="p">)</span>
+    
+    <span class="c1"># temp array
+</span>    <span class="n">sol</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    
+    <span class="c1"># compact scheme on interior points
+</span>    <span class="n">sol</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">R</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">f</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="n">R</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">f</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">R</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">f</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    
+    <span class="c1"># boundary points
+</span>    <span class="n">sol</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">R</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">f</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span> <span class="o">+</span> <span class="n">R</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">f</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">R</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">f</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">sol</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">R</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">f</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">R</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">f</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">R</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">f</span><span class="p">[</span><span class="o">-</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">sol</span><span class="p">[</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">R</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">f</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">R</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">f</span><span class="p">[</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">R</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">f</span><span class="p">[</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="n">sol</span><span class="p">[</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">R</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">f</span><span class="p">[</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">R</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">f</span><span class="p">[</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">R</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">f</span><span class="p">[</span> <span class="mi">2</span><span class="p">]</span>
+    
+    <span class="c1"># build ugly matrix by hand
+</span>    <span class="n">A</span> <span class="o">=</span> <span class="n">sparse</span><span class="p">.</span><span class="n">diags</span><span class="p">(</span><span class="n">L</span><span class="p">,[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">f</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">f</span><span class="p">))).</span><span class="n">toarray</span><span class="p">()</span>
+    <span class="c1"># periodic BS's
+</span>    <span class="n">A</span><span class="p">[</span> <span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">L</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">A</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">L</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        
+    <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">sol</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>We can then test the method on a known function, with known first and second derivaive. For simplicity, we will use trigonometric functions, which have an infinite number of well-behaved derivatives</p>
+
+\[f(x) = \sin(x), \,\, x\in[0, 2\pi).\]
+
+<p>With</p>
+
+\[\frac{d}{dx}f(x) = \cos(x), \quad \frac{d^2}{dx^2}f(x) = -\sin(x), \,\, x\in[0, 2\pi).\]
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">N</span> <span class="o">=</span> <span class="mi">128</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">dx</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="p">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">retstep</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">function</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># first derivative
+</span><span class="n">sol</span> <span class="o">=</span> <span class="n">derive_compact</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">function</span><span class="p">,</span> <span class="n">dx</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'First derivative L2 norm:  '</span><span class="p">,</span> <span class="n">norm</span><span class="p">(</span><span class="n">sol</span><span class="o">-</span><span class="n">np</span><span class="p">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+
+<span class="c1"># second derivative
+</span><span class="n">sol</span> <span class="o">=</span> <span class="n">derive_compact</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">function</span><span class="p">,</span> <span class="n">dx</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'Second derivative L2 norm: '</span><span class="p">,</span> <span class="n">norm</span><span class="p">(</span><span class="n">sol</span><span class="o">+</span><span class="n">np</span><span class="p">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+</code></pre></div></div>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>First derivative L2 norm:   2.00356231982653e-09
+Second derivative L2 norm:  1.5119843767976088e-09
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="poisson-equation-with-compact-schemes">Poisson Equation With Compact Schemes</h3>
+
+<p>We aim to solve the following one-dimensionnal Poisson equation with Dirichlet boundary conditions</p>
+
+\[\begin{split}
+    -&amp;\frac{d^2}{dx^2}u(x) = f(x), \quad a&lt;x&lt;b\\
+    &amp;u(a) = 0, \quad u(b) = 0\\
+\end{split}\]
+
+<p>where $a, b\in\mathbb{R}$, $u(x)$ is the unkown function and $f(x)$ is some given source term.</p>
+
+<p>The approach that we will use here is different, in this case, we know the value of the derivatie of the function $u$, they are equal to the source term. We want to re-write our Poisson equation in terms of the unkown function $u$ (and not it’s derivative \(u'\)) as a function of $f$. To do so, we discretize the left side of the Poisson equation (\(u''_i\)) using a compact finite difference scheme with fourth-order accuracy on a uniform grid with grid points located at $x_i = a+ih,$  $ h=(b-a)/M,$ with $i=0, 1, 2,…, M$ where $M$ is a positive integer, as we would if the derivatives where the unknown. This gives</p>
+
+\[\frac{1}{10}u''_{i-1} + u''_i + \frac{1}{10}u''_{i+1} = \frac{6}{5}\frac{u_{i+1} + 2u_i + u_{i-1}}{h^2},\]
+
+<p>or in a more common form,</p>
+
+\[u''_{i-1} + 10u''_i + u''_{i+1} = \frac{12}{h^2}\left(u_{i+1} + 2u_i + u_{i-1}\right).\]
+
+<p>Because we are using points $\pm1$ away from $x_i$, this results in a tri-diagonal system</p>
+
+\[AU''= \frac{12}{h^2}BU,\]
+
+<p>where \(U'' = (u''_1,u''_2,...,u''_M)^\top\) and \(U = (u_1,u_2,...,u_M)^\top\in \mathbb{R}^{M-1}\). The tri-diagonal matrix \(A, B \in \mathbb{R}^{M-1\times M-1}\) are</p>
+
+\[A = \begin{bmatrix}
+10 &amp; 1 &amp; 0 &amp;\dots &amp; 0 &amp; 0 \\
+1 &amp; 10 &amp; 1 &amp;\dots &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 10 &amp;\dots &amp; 0 &amp; 0 \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \\
+0 &amp; 0 &amp; 0 &amp; \dots &amp; 10 &amp; 1 \\
+0 &amp; 0 &amp; 0 &amp;\dots &amp; 1 &amp; 10 \\
+\end{bmatrix}, \qquad B = \begin{bmatrix}
+-2 &amp; 1 &amp; 0 &amp;\dots &amp; 0 &amp; 0 \\
+1 &amp; -2 &amp; 1 &amp;\dots &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; -2 &amp;\dots &amp; 0 &amp; 0 \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots \\
+0 &amp; 0 &amp; 0 &amp; \dots &amp; -2 &amp; 1 \\
+0 &amp; 0 &amp; 0 &amp;\dots &amp; 1 &amp; -2 \\
+\end{bmatrix}.\]
+
+<p>To find the unkwon values of $U$, we just need to invert the system, but \(U''\) is still unkown! Well actually, it is know from the Poisson problem \(-u''(x_i)=f(x_i), i=1,2,...,M-1\) i.e. \(-U''=F\). Substituting this result in the previous linear system gives</p>
+
+\[-\frac{12}{h^2}BU = AF,\]
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">build_AB</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">sparse</span><span class="p">.</span><span class="n">diags</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span><span class="mf">10.</span><span class="p">,</span><span class="mf">1.</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">M</span><span class="p">)).</span><span class="n">toarray</span><span class="p">()</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="n">sparse</span><span class="p">.</span><span class="n">diags</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span><span class="o">-</span><span class="mf">2.</span><span class="p">,</span><span class="mf">1.</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">M</span><span class="p">)).</span><span class="n">toarray</span><span class="p">()</span>
+    <span class="c1"># dont forget BC, here homogeneous Dirichlet
+</span>    <span class="n">B</span><span class="p">[</span> <span class="mi">0</span><span class="p">,:]</span><span class="o">=</span><span class="mf">0.</span><span class="p">;</span> <span class="n">B</span><span class="p">[</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+    <span class="n">B</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,:]</span><span class="o">=</span><span class="mf">0.</span><span class="p">;</span> <span class="n">B</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span>
+    <span class="k">return</span> <span class="n">A</span><span class="p">,</span> <span class="o">-</span><span class="mf">12.</span><span class="o">/</span><span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">B</span>
+</code></pre></div></div>
+
+<p>To obtaine the solution $U$, we simply need to solve it! The $B$ matrix is symmetric and positively-definite, it is trivial to solve.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">SolvePoissonCompact</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">M</span><span class="p">):</span>
+    <span class="n">u0</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">A</span><span class="p">,</span> <span class="n">B</span> <span class="o">=</span> <span class="n">build_AB</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+    <span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="n">linalg</span><span class="p">.</span><span class="n">solve</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr />
+
+<h4 id="example-1">Example 1.</h4>
+
+<p>In the first example, we consider the problem with homogeneous Dirichlet boundary conditions</p>
+
+\[\begin{cases}
+    -u''(x) = \pi^2\sin(\pi x), &amp; 0 &lt; x &lt;2,\\
+      u(0)=0, \quad u(2) = 0.
+\end{cases}\]
+
+<p>The exact solution is $u_e(x)=\sin(\pi x)$.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">M</span> <span class="o">=</span> <span class="mi">64</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">retstep</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">pi</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="p">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+<span class="n">u_e</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+<span class="n">u_num</span> <span class="o">=</span>  <span class="n">SolvePoissonCompact</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">M</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">u_num</span><span class="o">-</span><span class="n">u_e</span><span class="p">))</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u_e</span><span class="p">,</span> <span class="s">'-s'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u_num</span><span class="p">,</span><span class="s">'-o'</span><span class="p">)</span>
+</code></pre></div></div>
+<p>which gives you</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>6.02248257496857e-06
+</code></pre></div></div>
+<p><img src="/notebooks/figure_1.png" width="800" /></p>
+
+<hr />
+
+<h4 id="example-2">Example 2.</h4>
+
+<p>Now with non-zero Dirichlet Boundry conditions</p>
+
+\[\begin{cases}
+    -u''(x) = 12e^{-x^2}(-x^2+1/2), &amp; -8 &lt; x &lt;8,\\
+      u(-8)=-8, \quad u(8) = 8.
+\end{cases}\]
+
+<p>The exact solution is $u_e(x)=3e^{-x^2}$. In the numerical computation, we make use of a change of variable $U(x)=u(x)-x$ to solve this problem. Applying the numerical algorithm, we now have</p>
+
+\[\begin{cases}
+    -U''(x) = 12e^{-x^2}(-x^2+1/2), &amp; -8 &lt; x &lt;8,\\
+      U(-8)=-0, \quad U(8) = 0.
+\end{cases}\]
+
+<p>and the approximate numerical solution at a grid point is found as $u(x) = U(x)=x$.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="n">M</span> <span class="o">=</span> <span class="mi">64</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">8.</span><span class="p">,</span> <span class="mf">8.</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">retstep</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="mf">12.</span><span class="o">*</span><span class="n">np</span><span class="p">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">u_e</span> <span class="o">=</span> <span class="mf">3.</span><span class="o">*</span><span class="n">np</span><span class="p">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="n">x</span>
+    <span class="n">u_num</span> <span class="o">=</span> <span class="n">SolvePoissonCompact</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">M</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">u_num</span><span class="o">-</span><span class="n">u_e</span><span class="p">))</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u_e</span><span class="p">,</span> <span class="s">'-s'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u_num</span><span class="o">+</span><span class="n">x</span><span class="p">,</span><span class="s">'-o'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.5864429590964948
+</code></pre></div></div>
+
+<p><img src="/notebooks/figure_2.png" width="800" /></p>
+
+<hr />
+
+<h3 id="using-faste-fourier-transforms-to-solve-the-poisson-equation">Using Faste Fourier Transforms to Solve the Poisson Equation</h3>
+
+<p>We actually do not need ton inverte the system described earlier to get the solution, <a href="https://www.sciencedirect.com/science/article/pii/S0898122116300761">see</a>. We can use the Sine transform for $U\in\mathbb{R}^{M-1}$</p>
+
+\[\begin{split}
+    u_j &amp;= \sum_{k=1}^{M-1}\hat{u}_k\sin\left(\frac{jk\pi}{M}\right), \,\, j=1,2,...,M-1,\\
+    \hat{u_k} &amp;= \frac{2}{M}\sum_{j=1}^{M-1}u_j\sin\left(\frac{ik\pi}{M}\right), \,\, j=1,2,...,M-1,
+\end{split}\]
+
+<p>from whcih we can approximate $u_{i+1}$, $u_{i-1}$, \(u''_{i+1}\), \(u''_{i-1}\) as</p>
+
+\[\begin{align}
+   u_{i+1}=\sum_{k=1}^{M-1}\hat{u}_k\sin\left(\frac{(i+1)k\pi}{M}\right),\qquad &amp; u_{i-1} = \sum_{k=1}^{M-1}\hat{u}_k\sin\left(\frac{(i-1)k\pi}{M}\right)\\
+   u''_{i} =\sum_{k=1}^{M-1}\hat{u}''_k\sin\left(\frac{ik\pi}{M}\right),\qquad &amp; u''_{i+1} =\sum_{k=1}^{M-1}\hat{u}''_k\sin\left(\frac{(i+1)k\pi}{M}\right)\\
+   u''_{i-1} =\sum_{k=1}^{M-1}\hat{u}''_k\sin\left(\frac{(i-1)k\pi}{M}\right). &amp; \\
+\end{align}\]
+
+<p>Subsituting in the compact discretization of the Poisson equation gives,</p>
+
+\[\begin{split}
+\sum_{k=1}^{M-1}\hat{u}''_k\left\{ \frac{1}{10}\sin\left(\frac{(i-1)k\pi}{M}\right) + \sin\left(\frac{ik\pi}{M}\right) + \frac{1}{10}\sin\left(\frac{(i+1)k\pi}{M}\right) \right\} =\\
+\frac{6}{5h^2}\sum_{k=1}^{M-1}\hat{u}_k\left\{ \sin\left(\frac{(i-1)k\pi}{M}\right) +\sin\left(\frac{(i+1)k\pi}{M}\right) - 2\sin\left(\frac{ik\pi}{M}\right) \right\}
+\end{split}\]
+
+<p>or, after rearranging</p>
+
+\[\hat{u}_k = -\hat{u}''_k\left(\frac{24\sin^2\left(\frac{k\pi}{2M}\right)}{h^2}\right)^{-1}\left(\cos\left(\frac{k\pi}{M}\right)+5\right), \,\, k\in 1,2,..,M-1.\]
+
+<p>In addition, we obtain \(-u''_{i} = f_i \,(i=1,2,...,M-1)\). By the inverse Sine transform, we get to know \(-\hat{u}''_k=\hat{f}_k \, (k=1,2,...,M-1)\), which allows us to solve for $\hat{u}$</p>
+
+\[\hat{u}_k = \hat{f}_k\left(\frac{24\sin^2\left(\frac{k\pi}{2M}\right)}{h^2}\right)^{-1}\left(\cos\left(\frac{k\pi}{M}\right)+5\right), \,\, k\in 1,2,..,M-1.\]
+
+<blockquote>
+  <p><strong><em>Note:</em></strong> We use a spectral method to solve the tri-diagonal system, this doesn’t mean we solve it with spectral accuracy, here the modified wavenumber makes the spectral method the exact same accuracy as the compact scheme.</p>
+</blockquote>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">SolvePoissonSine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">M</span><span class="p">):</span>
+    <span class="n">f_k</span> <span class="o">=</span> <span class="n">fftpack</span><span class="p">.</span><span class="n">dst</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="s">'ortho'</span><span class="p">)</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">M</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">u_k</span> <span class="o">=</span> <span class="n">f_k</span><span class="o">*</span><span class="p">(</span><span class="mi">24</span><span class="o">*</span><span class="n">np</span><span class="p">.</span><span class="n">sin</span><span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="n">np</span><span class="p">.</span><span class="n">pi</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">M</span><span class="p">))</span><span class="o">**</span><span class="mf">2.</span><span class="o">/</span><span class="n">h</span><span class="o">**</span><span class="mf">2.</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mf">1.</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">pi</span><span class="o">*</span><span class="n">k</span><span class="o">/</span><span class="n">M</span><span class="p">)</span><span class="o">+</span><span class="mf">5.</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">fftpack</span><span class="p">.</span><span class="n">idst</span><span class="p">(</span><span class="n">u_k</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="s">'ortho'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">M</span> <span class="o">=</span> <span class="mi">64</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">retstep</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="mf">12.</span><span class="o">*</span><span class="n">np</span><span class="p">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">u_e</span> <span class="o">=</span> <span class="mf">3.</span><span class="o">*</span><span class="n">np</span><span class="p">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="n">x</span>
+<span class="n">u_num</span> <span class="o">=</span> <span class="n">SolvePoissonSine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">M</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">u_num</span><span class="o">-</span><span class="n">u_e</span><span class="p">))</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u_num</span> <span class="o">+</span> <span class="n">x</span><span class="p">,</span> <span class="s">'-o'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u_e</span><span class="p">,</span> <span class="s">'s'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>0.5864429590964948
+</code></pre></div></div>
+
+<p><img src="/notebooks/figure_3.png" width="800" /></p>
+
+<hr />
+
+<h3 id="order-of-accuracy">Order of Accuracy</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">L2_com</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">L2_Sine</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">Resolutions</span> <span class="o">=</span> <span class="mf">2.</span><span class="o">**</span><span class="n">np</span><span class="p">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">9</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">N</span> <span class="ow">in</span> <span class="n">Resolutions</span><span class="p">:</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">N</span><span class="p">),</span> <span class="n">retstep</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">pi</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="p">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">u_e</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">u_num</span> <span class="o">=</span> <span class="n">SolvePoissonCompact</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">u_num</span><span class="o">-</span><span class="n">u_e</span><span class="p">)</span>
+    <span class="n">L2_com</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+    <span class="n">u_num</span> <span class="o">=</span> <span class="n">SolvePoissonSine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">u_num</span><span class="o">-</span><span class="n">u_e</span><span class="p">)</span>
+    <span class="n">L2_Sine</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">Resolutions</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">L2_com</span><span class="p">),</span> <span class="s">'--o'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'Compact Schemes'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">Resolutions</span><span class="p">,</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">L2_Sine</span><span class="p">),</span> <span class="s">':s'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">'Sine Transform'</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">Resolutions</span><span class="p">,</span> <span class="n">Resolutions</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">),</span> <span class="s">':k'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s">"$4^{th}$-order"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">"Resolution (N)"</span><span class="p">);</span> <span class="n">plt</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s">"$L_2$-norm Error"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">legend</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="/notebooks/figure_4.png" width="800" /></p>
 
 
 <!-- <ul class="taxonomy__index">
@@ -396,14 +734,14 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          less than 1 minute read
+          8 minute read
         
       </span>
     
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">This notebook demonstrates how to solve Poisson’s equation using Compact finite-difference schemes.
+    <p class="archive__item-excerpt" itemprop="description">If you prefer to follow in the notebook directly, you can also get the notebook.
 </p>
   </article>
 </div>
@@ -443,7 +781,7 @@
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">73rd Annual Meeting of the APS Division of Fluid Dynamics
+    <p class="archive__item-excerpt" itemprop="description">Abstract and video of my talk at APS-DFD 2020
 </p>
   </article>
 </div>
@@ -483,7 +821,7 @@
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">Mathematical Formualtion
+    <p class="archive__item-excerpt" itemprop="description">Accurate simulation of 2D Turbulence
 </p>
   </article>
 </div>
@@ -523,7 +861,7 @@
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">Code Snippets
+    <p class="archive__item-excerpt" itemprop="description">Trying all that markdown  has to offers
 </p>
   </article>
 </div>
@@ -617,7 +955,7 @@
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">73rd Annual Meeting of the APS Division of Fluid Dynamics
+    <p class="archive__item-excerpt" itemprop="description">Abstract and video of my talk at APS-DFD 2020
 </p>
   </article>
 </div>
@@ -657,7 +995,7 @@
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">Mathematical Formualtion
+    <p class="archive__item-excerpt" itemprop="description">Accurate simulation of 2D Turbulence
 </p>
   </article>
 </div>
@@ -697,7 +1035,7 @@
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">Code Snippets
+    <p class="archive__item-excerpt" itemprop="description">Trying all that markdown  has to offers
 </p>
   </article>
 </div>

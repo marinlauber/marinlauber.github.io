@@ -15,7 +15,6 @@ source "https://rubygems.org"
 
 gem "jekyll"
 gem "minimal-mistakes-jekyll"
-gem "jekyll-jupyter-notebook"
 gem "jekyll-sitemap"
 gem "jekyll-seo-tag"
 

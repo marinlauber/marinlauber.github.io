@@ -4,6 +4,8 @@ title: "My First Post"
 date: 2020-10-03
 ---
 
+Trying all that `markdown`  has to offers
+
 **Code Snippets**
 
 Print `Hello, World!` using `python`

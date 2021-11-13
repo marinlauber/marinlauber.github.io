@@ -1,5 +1,14 @@
 ## [marinlauber.gihub.io](https://marinlauber.github.io/)
 
+### How to compile the static websie
+
+This is from [here](https://jekyllrb.com/docs/)
+
+```shell
+bundle exec jekyll serve
+```
+
+and the resulting static website can be accessed at [http://127.0.0.1:4000](http://127.0.0.1:4000).
 
 #### How to solve the port in use error
 

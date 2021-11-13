@@ -22,4 +22,16 @@ var store = [{
         "tags": [],
         "url": "https://marinlauber.github.io/Compact-Poisson-Equation/",
         "teaser": null
+      },{
+        "title": "Advanced Scientific Matplotlib - Part 1/n",
+        "excerpt":"This series of blog post is here to give some of the tricks I use to produce high-quality figures, suitable for publications. Introduction Of course I am using matplotlib to create all sorts of figures and animations! Coupled with numpy and somethimes pandas to read and handle all sorts of...","categories": [],
+        "tags": [],
+        "url": "https://marinlauber.github.io/Avdanced-Matplotlib-1/",
+        "teaser": null
+      },{
+        "title": "Lagrangian Coherent Structures: Finite-Time Lyapunov Exponent",
+        "excerpt":"Computing FTLE fields with Julia Introduction In the study of dynamical systems, Lagrangian Coherent Structures (LCS) are an essential tool to distinguish material surface formed by trajectories that exert a consistent action on nearby trajectories. A classical examlpe of an attracting material surface in dynamical system is called an attractor,...","categories": [],
+        "tags": [],
+        "url": "https://marinlauber.github.io/Finite-Time-Lyapunov-Exponent/",
+        "teaser": null
       }]

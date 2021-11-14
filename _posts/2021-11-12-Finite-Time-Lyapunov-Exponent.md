@@ -8,11 +8,11 @@ Computing FTLE fields with Julia
 
 ## Introduction
 
-In the study of dynamical systems, Lagrangian Coherent Structures (LCS) are an essential tool to distinguish material surface formed by trajectories that exert a consistent action on nearby trajectories. A classical examlpe of an attracting material surface in dynamical system is called an attractor, see the [Lorenz System](https://en.wikipedia.org/wiki/Lorenz_system) for example.
+In the study of dynamical systems, Lagrangian Coherent Structures (LCS) are an essential tool to distinguish material surface formed by trajectories that exert a consistent action on nearby trajectories. A classical example of an attracting material surface in dynamical system is called an attractor, see the [Lorenz System](https://en.wikipedia.org/wiki/Lorenz_system) for example.
 
 One big advantage of using LCS (or in other words tracking particles trajectories) to analyse dynamical systems is their Galilean invariance, unlike Eulerian criteria.
 
-A common way of determining these LCS is trough ridges of the Finite-time Lyapunov (FTLE). In the following, I will detail and show how this ridges are computed based on numerical results of a simple flow field.
+A common way of determining these LCS is trough ridges of the Finite-time Lyapunov (FTLE). In the following, I will detail how this ridges are computed based on numerical results of a simple flow field.
 
 ## Double-Gyre flow
 

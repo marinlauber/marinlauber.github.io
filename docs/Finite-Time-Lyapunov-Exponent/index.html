@@ -340,11 +340,11 @@
 
 <h2 id="introduction">Introduction</h2>
 
-<p>In the study of dynamical systems, Lagrangian Coherent Structures (LCS) are an essential tool to distinguish material surface formed by trajectories that exert a consistent action on nearby trajectories. A classical examlpe of an attracting material surface in dynamical system is called an attractor, see the <a href="https://en.wikipedia.org/wiki/Lorenz_system">Lorenz System</a> for example.</p>
+<p>In the study of dynamical systems, Lagrangian Coherent Structures (LCS) are an essential tool to distinguish material surface formed by trajectories that exert a consistent action on nearby trajectories. A classical example of an attracting material surface in dynamical system is called an attractor, see the <a href="https://en.wikipedia.org/wiki/Lorenz_system">Lorenz System</a> for example.</p>
 
 <p>One big advantage of using LCS (or in other words tracking particles trajectories) to analyse dynamical systems is their Galilean invariance, unlike Eulerian criteria.</p>
 
-<p>A common way of determining these LCS is trough ridges of the Finite-time Lyapunov (FTLE). In the following, I will detail and show how this ridges are computed based on numerical results of a simple flow field.</p>
+<p>A common way of determining these LCS is trough ridges of the Finite-time Lyapunov (FTLE). In the following, I will detail how this ridges are computed based on numerical results of a simple flow field.</p>
 
 <h2 id="double-gyre-flow">Double-Gyre flow</h2>
 
@@ -515,6 +515,10 @@
 <span class="k">end</span>
 </code></pre></div></div>
 
+<p>The resulting advection of a uniform aprticle grid is shown below, the particles are colored with the instantaneous FTLE values</p>
+
+<p><img src="/assets/images/flow_map.gif" alt="flow_map" /></p>
+
 <p>Once we have integrated this flow map, we can extract the $x$ and $y$ coordinates of each points and compute the FTLE using our <code class="language-plaintext highlighter-rouge">Jacobian</code> function</p>
 
 <div class="language-julia highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># extract position</span>
@@ -544,6 +548,8 @@
 <h2 id="inspiration">Inspiration</h2>
 
 <p><a href="https://www.youtube.com/watch?v=lveOu7jLNh0">Steve Brunton’s brillant video!</a></p>
+
+<hr />
 
 
 <!-- <ul class="taxonomy__index">

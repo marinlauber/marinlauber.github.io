@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://marinlauber.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://marinlauber.github.io/" rel="alternate" type="text/html" /><updated>2021-11-13T16:46:31+01:00</updated><id>https://marinlauber.github.io/feed.xml</id><title type="html">Marin Lauber</title><subtitle>Marin Lauber</subtitle><author><name>Marin Lauber</name><email>M.Lauber@soton.ac.uk</email></author><entry><title type="html">Lagrangian Coherent Structures: Finite-Time Lyapunov Exponent</title><link href="https://marinlauber.github.io/Finite-Time-Lyapunov-Exponent/" rel="alternate" type="text/html" title="Lagrangian Coherent Structures: Finite-Time Lyapunov Exponent" /><published>2021-11-12T00:00:00+01:00</published><updated>2021-11-12T00:00:00+01:00</updated><id>https://marinlauber.github.io/Finite-Time-Lyapunov-Exponent</id><content type="html" xml:base="https://marinlauber.github.io/Finite-Time-Lyapunov-Exponent/">&lt;p&gt;Computing FTLE fields with Julia&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://marinlauber.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://marinlauber.github.io/" rel="alternate" type="text/html" /><updated>2021-11-14T09:52:29+01:00</updated><id>https://marinlauber.github.io/feed.xml</id><title type="html">Marin Lauber</title><subtitle>Marin Lauber</subtitle><author><name>Marin Lauber</name><email>M.Lauber@soton.ac.uk</email></author><entry><title type="html">Lagrangian Coherent Structures: Finite-Time Lyapunov Exponent</title><link href="https://marinlauber.github.io/Finite-Time-Lyapunov-Exponent/" rel="alternate" type="text/html" title="Lagrangian Coherent Structures: Finite-Time Lyapunov Exponent" /><published>2021-11-12T00:00:00+01:00</published><updated>2021-11-12T00:00:00+01:00</updated><id>https://marinlauber.github.io/Finite-Time-Lyapunov-Exponent</id><content type="html" xml:base="https://marinlauber.github.io/Finite-Time-Lyapunov-Exponent/">&lt;p&gt;Computing FTLE fields with Julia&lt;/p&gt;
 
 &lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
-&lt;p&gt;In the study of dynamical systems, Lagrangian Coherent Structures (LCS) are an essential tool to distinguish material surface formed by trajectories that exert a consistent action on nearby trajectories. A classical examlpe of an attracting material surface in dynamical system is called an attractor, see the &lt;a href=&quot;https://en.wikipedia.org/wiki/Lorenz_system&quot;&gt;Lorenz System&lt;/a&gt; for example.&lt;/p&gt;
+&lt;p&gt;In the study of dynamical systems, Lagrangian Coherent Structures (LCS) are an essential tool to distinguish material surface formed by trajectories that exert a consistent action on nearby trajectories. A classical example of an attracting material surface in dynamical system is called an attractor, see the &lt;a href=&quot;https://en.wikipedia.org/wiki/Lorenz_system&quot;&gt;Lorenz System&lt;/a&gt; for example.&lt;/p&gt;
 
 &lt;p&gt;One big advantage of using LCS (or in other words tracking particles trajectories) to analyse dynamical systems is their Galilean invariance, unlike Eulerian criteria.&lt;/p&gt;
 
-&lt;p&gt;A common way of determining these LCS is trough ridges of the Finite-time Lyapunov (FTLE). In the following, I will detail and show how this ridges are computed based on numerical results of a simple flow field.&lt;/p&gt;
+&lt;p&gt;A common way of determining these LCS is trough ridges of the Finite-time Lyapunov (FTLE). In the following, I will detail how this ridges are computed based on numerical results of a simple flow field.&lt;/p&gt;
 
 &lt;h2 id=&quot;double-gyre-flow&quot;&gt;Double-Gyre flow&lt;/h2&gt;
 
@@ -177,6 +177,10 @@
 &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
+&lt;p&gt;The resulting advection of a uniform aprticle grid is shown below, the particles are colored with the instantaneous FTLE values&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/flow_map.gif&quot; alt=&quot;flow_map&quot; /&gt;&lt;/p&gt;
+
 &lt;p&gt;Once we have integrated this flow map, we can extract the $x$ and $y$ coordinates of each points and compute the FTLE using our &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Jacobian&lt;/code&gt; function&lt;/p&gt;
 
 &lt;div class=&quot;language-julia highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# extract position&lt;/span&gt;
@@ -205,7 +209,9 @@
 
 &lt;h2 id=&quot;inspiration&quot;&gt;Inspiration&lt;/h2&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=lveOu7jLNh0&quot;&gt;Steve Brunton’s brillant video!&lt;/a&gt;&lt;/p&gt;</content><author><name>Marin Lauber</name><email>M.Lauber@soton.ac.uk</email></author><summary type="html">Computing FTLE fields with Julia</summary></entry><entry><title type="html">Advanced Scientific Matplotlib - Part 1/n</title><link href="https://marinlauber.github.io/Avdanced-Matplotlib-1/" rel="alternate" type="text/html" title="Advanced Scientific Matplotlib - Part 1/n" /><published>2021-07-05T00:00:00+02:00</published><updated>2021-07-05T00:00:00+02:00</updated><id>https://marinlauber.github.io/Avdanced-Matplotlib-1</id><content type="html" xml:base="https://marinlauber.github.io/Avdanced-Matplotlib-1/">&lt;p&gt;This series of blog post is here to give some of the tricks I use to produce high-quality figures, suitable for publications.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=lveOu7jLNh0&quot;&gt;Steve Brunton’s brillant video!&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;</content><author><name>Marin Lauber</name><email>M.Lauber@soton.ac.uk</email></author><summary type="html">Computing FTLE fields with Julia</summary></entry><entry><title type="html">Advanced Scientific Matplotlib - Part 1/n</title><link href="https://marinlauber.github.io/Avdanced-Matplotlib-1/" rel="alternate" type="text/html" title="Advanced Scientific Matplotlib - Part 1/n" /><published>2021-07-05T00:00:00+02:00</published><updated>2021-07-05T00:00:00+02:00</updated><id>https://marinlauber.github.io/Avdanced-Matplotlib-1</id><content type="html" xml:base="https://marinlauber.github.io/Avdanced-Matplotlib-1/">&lt;p&gt;This series of blog post is here to give some of the tricks I use to produce high-quality figures, suitable for publications.&lt;/p&gt;
 
 &lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 

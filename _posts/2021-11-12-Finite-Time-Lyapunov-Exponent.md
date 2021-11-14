@@ -208,6 +208,10 @@ for t ∈ T
 end
 ```
 
+The resulting advection of a uniform aprticle grid is shown below, the particles are colored with the instantaneous FTLE values
+
+<img src="/assets/images/flow_map.gif" alt="flow_map"/>
+
 Once we have integrated this flow map, we can extract the $x$ and $y$ coordinates of each points and compute the FTLE using our `Jacobian` function
 
 ```julia
@@ -239,3 +243,5 @@ We can notice that because the base flow is periodic, our FTLE field is also per
 ## Inspiration
 
 [Steve Brunton's brillant video!](https://www.youtube.com/watch?v=lveOu7jLNh0)
+
+---

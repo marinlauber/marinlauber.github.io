@@ -18,7 +18,7 @@ minimal_mistakes_skin    : #"dark" # "air", "aqua", "contrast", "dark", "dirt", 
 locale                   : "en-US"
 title                    : "Marin Lauber"
 title_separator          : "-"
-subtitle                 : "PhD Candidate, Maritime Engineering Research Group, University of Southampton"
+subtitle                 : "PhD, Computational Fluid-Structure Interaction"
 name                     : "Marin Lauber"
 description              : "Marin Lauber"
 url                      : "https://marinlauber.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
@@ -96,9 +96,9 @@ analytics:
 author:
   name             : "Marin Lauber"
   avatar           : "/assets/images/me.png"
-  bio              : "Fluid-Structure Interaction PhD at Southampton"
-  location         : "Southampton, UK"
-  email            : "M.Lauber@soton.ac.uk"
+  bio              : "PhD in Fluid-Structure Interaction"
+  location         : "Delft, NL"
+  email            : "M.Lauber@tudelft.nl"
   links:
     - label: "Website"
       icon: "fas fa-fw fa-link"

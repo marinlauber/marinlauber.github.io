@@ -23,7 +23,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Marin Lauber">
 <meta property="og:title" content="Pseudo-spectral method for 2D Turbulence">
-<meta property="og:url" content="https://marinlauber.github.io/2D-Turbulence/">
+<meta property="og:url" content="http://localhost:4000/2D-Turbulence/">
 
 
   <meta property="og:description" content="Accurate simulation of 2D Turbulence">
@@ -45,7 +45,7 @@
   
 
 
-<link rel="canonical" href="https://marinlauber.github.io/2D-Turbulence/">
+<link rel="canonical" href="http://localhost:4000/2D-Turbulence/">
 
 
 
@@ -56,7 +56,7 @@
     
       "@type": "Person",
       "name": "Marin Lauber",
-      "url": "https://marinlauber.github.io/"
+      "url": "http://localhost:4000/"
     
   }
 </script>
@@ -141,7 +141,7 @@
         
         <a class="site-title" href="/">
           Marin Lauber
-          <span class="site-subtitle">PhD Candidate, Maritime Engineering Research Group, University of Southampton</span>
+          <span class="site-subtitle">PhD, Computational Fluid-Structure Interaction</span>
         </a>
         <ul class="visible-links"><li class="masthead__menu-item">
               <a href="/Publications/">Publications</a>
@@ -193,7 +193,7 @@
     
     
       <div class="author__bio" itemprop="description">
-        <p>Fluid-Structure Interaction PhD at Southampton</p>
+        <p>PhD in Fluid-Structure Interaction</p>
 
       </div>
     
@@ -204,7 +204,7 @@
     <ul class="author__urls social-icons">
       
         <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
-          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Southampton, UK</span>
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Delft, NL</span>
         </li>
       
 
@@ -232,8 +232,8 @@
 
       
         <li>
-          <a href="mailto:M.Lauber@soton.ac.uk">
-            <meta itemprop="email" content="M.Lauber@soton.ac.uk" />
+          <a href="mailto:M.Lauber@tudelft.nl">
+            <meta itemprop="email" content="M.Lauber@tudelft.nl" />
             <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span>
           </a>
         </li>
@@ -555,34 +555,34 @@ In the pseudo-spectral approach, this term is treated in physical space with the
 
 <p>where \(\mathcal{F}_{M}\) represent a <em>Fast Fourier Transform</em> using $M$ points, but we are ultimately interested only in $N$ of them, and the remaining are discarded.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">_add_convection</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">_add_convection</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
     <span class="s">"""
     Convective term. To prevent alliasing, we zero-pad the array before
     using the convolution theorem to evaluate it in physical space.
     """</span>
     <span class="c1"># initialize padded arrays
-</span>    <span class="n">j1f_padded</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="p">.</span><span class="n">mx</span><span class="p">,</span><span class="bp">self</span><span class="p">.</span><span class="n">mk</span><span class="p">),</span><span class="n">dtype</span><span class="o">=</span><span class="s">'complex128'</span><span class="p">)</span>
-    <span class="n">j2f_padded</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="p">.</span><span class="n">mx</span><span class="p">,</span><span class="bp">self</span><span class="p">.</span><span class="n">mk</span><span class="p">),</span><span class="n">dtype</span><span class="o">=</span><span class="s">'complex128'</span><span class="p">)</span>
-    <span class="n">j3f_padded</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="p">.</span><span class="n">mx</span><span class="p">,</span><span class="bp">self</span><span class="p">.</span><span class="n">mk</span><span class="p">),</span><span class="n">dtype</span><span class="o">=</span><span class="s">'complex128'</span><span class="p">)</span>
-    <span class="n">j4f_padded</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="p">.</span><span class="n">mx</span><span class="p">,</span><span class="bp">self</span><span class="p">.</span><span class="n">mk</span><span class="p">),</span><span class="n">dtype</span><span class="o">=</span><span class="s">'complex128'</span><span class="p">)</span>
+</span>    <span class="n">j1f_padded</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">zeros</span><span class="p">((</span><span class="n">self</span><span class="p">.</span><span class="n">mx</span><span class="p">,</span><span class="n">self</span><span class="p">.</span><span class="n">mk</span><span class="p">),</span><span class="n">dtype</span><span class="o">=</span><span class="s">'complex128'</span><span class="p">)</span>
+    <span class="n">j2f_padded</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">zeros</span><span class="p">((</span><span class="n">self</span><span class="p">.</span><span class="n">mx</span><span class="p">,</span><span class="n">self</span><span class="p">.</span><span class="n">mk</span><span class="p">),</span><span class="n">dtype</span><span class="o">=</span><span class="s">'complex128'</span><span class="p">)</span>
+    <span class="n">j3f_padded</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">zeros</span><span class="p">((</span><span class="n">self</span><span class="p">.</span><span class="n">mx</span><span class="p">,</span><span class="n">self</span><span class="p">.</span><span class="n">mk</span><span class="p">),</span><span class="n">dtype</span><span class="o">=</span><span class="s">'complex128'</span><span class="p">)</span>
+    <span class="n">j4f_padded</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">zeros</span><span class="p">((</span><span class="n">self</span><span class="p">.</span><span class="n">mx</span><span class="p">,</span><span class="n">self</span><span class="p">.</span><span class="n">mk</span><span class="p">),</span><span class="n">dtype</span><span class="o">=</span><span class="s">'complex128'</span><span class="p">)</span>
 
     <span class="c1"># populate
-</span>    <span class="n">j1f_padded</span><span class="p">[</span><span class="bp">self</span><span class="p">.</span><span class="n">padder</span><span class="p">,</span> <span class="p">:</span><span class="bp">self</span><span class="p">.</span><span class="n">nk</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0j</span><span class="o">*</span><span class="bp">self</span><span class="p">.</span><span class="n">kx</span><span class="p">[:</span><span class="bp">self</span><span class="p">.</span><span class="n">nk</span>     <span class="p">]</span><span class="o">*</span><span class="bp">self</span><span class="p">.</span><span class="n">psih</span><span class="p">[:,:]</span>
-    <span class="n">j2f_padded</span><span class="p">[</span><span class="bp">self</span><span class="p">.</span><span class="n">padder</span><span class="p">,</span> <span class="p">:</span><span class="bp">self</span><span class="p">.</span><span class="n">nk</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0j</span><span class="o">*</span><span class="bp">self</span><span class="p">.</span><span class="n">ky</span><span class="p">[:,</span> <span class="n">np</span><span class="p">.</span><span class="n">newaxis</span><span class="p">]</span>  <span class="o">*</span><span class="bp">self</span><span class="p">.</span><span class="n">wh</span><span class="p">[:,:]</span>
-    <span class="n">j3f_padded</span><span class="p">[</span><span class="bp">self</span><span class="p">.</span><span class="n">padder</span><span class="p">,</span> <span class="p">:</span><span class="bp">self</span><span class="p">.</span><span class="n">nk</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0j</span><span class="o">*</span><span class="bp">self</span><span class="p">.</span><span class="n">ky</span><span class="p">[:,</span> <span class="n">np</span><span class="p">.</span><span class="n">newaxis</span><span class="p">]</span><span class="o">*</span><span class="bp">self</span><span class="p">.</span><span class="n">psih</span><span class="p">[:,:]</span>
-    <span class="n">j4f_padded</span><span class="p">[</span><span class="bp">self</span><span class="p">.</span><span class="n">padder</span><span class="p">,</span> <span class="p">:</span><span class="bp">self</span><span class="p">.</span><span class="n">nk</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0j</span><span class="o">*</span><span class="bp">self</span><span class="p">.</span><span class="n">kx</span><span class="p">[:</span><span class="bp">self</span><span class="p">.</span><span class="n">nk</span>     <span class="p">]</span>  <span class="o">*</span><span class="bp">self</span><span class="p">.</span><span class="n">wh</span><span class="p">[:,:]</span>
+</span>    <span class="n">j1f_padded</span><span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">padder</span><span class="p">,</span> <span class="p">:</span><span class="n">self</span><span class="p">.</span><span class="n">nk</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0j</span><span class="o">*</span><span class="n">self</span><span class="p">.</span><span class="n">kx</span><span class="p">[:</span><span class="n">self</span><span class="p">.</span><span class="n">nk</span>     <span class="p">]</span><span class="o">*</span><span class="n">self</span><span class="p">.</span><span class="n">psih</span><span class="p">[:,:]</span>
+    <span class="n">j2f_padded</span><span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">padder</span><span class="p">,</span> <span class="p">:</span><span class="n">self</span><span class="p">.</span><span class="n">nk</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0j</span><span class="o">*</span><span class="n">self</span><span class="p">.</span><span class="n">ky</span><span class="p">[:,</span> <span class="n">np</span><span class="p">.</span><span class="n">newaxis</span><span class="p">]</span>  <span class="o">*</span><span class="n">self</span><span class="p">.</span><span class="n">wh</span><span class="p">[:,:]</span>
+    <span class="n">j3f_padded</span><span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">padder</span><span class="p">,</span> <span class="p">:</span><span class="n">self</span><span class="p">.</span><span class="n">nk</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0j</span><span class="o">*</span><span class="n">self</span><span class="p">.</span><span class="n">ky</span><span class="p">[:,</span> <span class="n">np</span><span class="p">.</span><span class="n">newaxis</span><span class="p">]</span><span class="o">*</span><span class="n">self</span><span class="p">.</span><span class="n">psih</span><span class="p">[:,:]</span>
+    <span class="n">j4f_padded</span><span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">padder</span><span class="p">,</span> <span class="p">:</span><span class="n">self</span><span class="p">.</span><span class="n">nk</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0j</span><span class="o">*</span><span class="n">self</span><span class="p">.</span><span class="n">kx</span><span class="p">[:</span><span class="n">self</span><span class="p">.</span><span class="n">nk</span>     <span class="p">]</span>  <span class="o">*</span><span class="n">self</span><span class="p">.</span><span class="n">wh</span><span class="p">[:,:]</span>
     
     <span class="c1"># backward transform
-</span>    <span class="n">j1</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">fft</span><span class="p">.</span><span class="n">irfft2</span><span class="p">(</span><span class="n">j1f_padded</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
-    <span class="n">j2</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">fft</span><span class="p">.</span><span class="n">irfft2</span><span class="p">(</span><span class="n">j2f_padded</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
-    <span class="n">j3</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">fft</span><span class="p">.</span><span class="n">irfft2</span><span class="p">(</span><span class="n">j3f_padded</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
-    <span class="n">j4</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">fft</span><span class="p">.</span><span class="n">irfft2</span><span class="p">(</span><span class="n">j4f_padded</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+</span>    <span class="n">j1</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">fft</span><span class="p">.</span><span class="nf">irfft2</span><span class="p">(</span><span class="n">j1f_padded</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">j2</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">fft</span><span class="p">.</span><span class="nf">irfft2</span><span class="p">(</span><span class="n">j2f_padded</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">j3</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">fft</span><span class="p">.</span><span class="nf">irfft2</span><span class="p">(</span><span class="n">j3f_padded</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">j4</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">fft</span><span class="p">.</span><span class="nf">irfft2</span><span class="p">(</span><span class="n">j4f_padded</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
     
     <span class="c1"># forward transform
-</span>    <span class="n">jacpf</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">fft</span><span class="p">.</span><span class="n">rfft2</span><span class="p">(</span><span class="n">j1</span><span class="o">*</span><span class="n">j2</span> <span class="o">-</span> <span class="n">j3</span><span class="o">*</span><span class="n">j4</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+</span>    <span class="n">jacpf</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">fft</span><span class="p">.</span><span class="nf">rfft2</span><span class="p">(</span><span class="n">j1</span><span class="o">*</span><span class="n">j2</span> <span class="o">-</span> <span class="n">j3</span><span class="o">*</span><span class="n">j4</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
 
     <span class="c1"># this term is the result of padding, padder allows for easier sclicing
-</span>    <span class="bp">self</span><span class="p">.</span><span class="n">dwhdt</span><span class="p">[:,:]</span> <span class="o">=</span> <span class="n">jacpf</span><span class="p">[</span><span class="bp">self</span><span class="p">.</span><span class="n">padder</span><span class="p">,</span> <span class="p">:</span><span class="bp">self</span><span class="p">.</span><span class="n">nk</span><span class="p">]</span><span class="o">*</span><span class="bp">self</span><span class="p">.</span><span class="n">pad</span><span class="o">**</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> 
+</span>    <span class="n">self</span><span class="p">.</span><span class="n">dwhdt</span><span class="p">[:,:]</span> <span class="o">=</span> <span class="n">jacpf</span><span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">padder</span><span class="p">,</span> <span class="p">:</span><span class="n">self</span><span class="p">.</span><span class="n">nk</span><span class="p">]</span><span class="o">*</span><span class="n">self</span><span class="p">.</span><span class="n">pad</span><span class="o">**</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> 
 
 </code></pre></div></div>
 
@@ -598,12 +598,12 @@ In the pseudo-spectral approach, this term is treated in physical space with the
 
 <p>We note here that the mode $\tilde{\psi}_{0,0}$ is the results of a division by zero and represents the mean value of $\psi$. To avoid issues with round-up errors accumulating and poluting the solution, it is explicitly set to zero each computation of the stream-function.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">_get_psih</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">_get_psih</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
     <span class="s">"""
     Spectral stream-function from spectral vorticity
     """</span>
     <span class="c1"># k2I stores inverse of k^2, with zero at [0, 0]
-</span>    <span class="bp">self</span><span class="p">.</span><span class="n">psih</span><span class="p">[:,:]</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">wh</span><span class="p">[:,:]</span> <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">k2I</span><span class="p">[:,:]</span>
+</span>    <span class="n">self</span><span class="p">.</span><span class="n">psih</span><span class="p">[:,:]</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">wh</span><span class="p">[:,:]</span> <span class="o">*</span> <span class="n">self</span><span class="p">.</span><span class="n">k2I</span><span class="p">[:,:]</span>
 </code></pre></div></div>
 
 <h3 id="time-integration">Time integration</h3>
@@ -628,7 +628,7 @@ The third-order TVD Runge-Kutta method is defined as~<a href="#Spectral">(spectr
 
 <p>Applying the time integration to the fourier coefficients allows us to save two transform per time-steps.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
     <span class="s">"""
     Explicit low-storage S-order Runge-Kutta method from
     Jameson, Schmidt and Turkel (1981).
@@ -637,25 +637,25 @@ The third-order TVD Runge-Kutta method is defined as~<a href="#Spectral">(spectr
             - desired order of the method, default is 3rd order
     """</span>
     <span class="c1"># initialise
-</span>    <span class="bp">self</span><span class="p">.</span><span class="n">w0</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">wh</span>
+</span>    <span class="n">self</span><span class="p">.</span><span class="n">w0</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">wh</span>
 
-    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
         
         <span class="c1"># invert Poisson equation for the stream function
-</span>        <span class="bp">self</span><span class="p">.</span><span class="n">_get_psih</span><span class="p">()</span>
+</span>        <span class="n">self</span><span class="p">.</span><span class="nf">_get_psih</span><span class="p">()</span>
 
         <span class="c1"># get convective forces (resets dwhdt)
-</span>        <span class="bp">self</span><span class="p">.</span><span class="n">_add_convection</span><span class="p">()</span>
+</span>        <span class="n">self</span><span class="p">.</span><span class="nf">_add_convection</span><span class="p">()</span>
 
         <span class="c1"># add diffusion
-</span>        <span class="bp">self</span><span class="p">.</span><span class="n">_add_diffusion</span><span class="p">()</span>
+</span>        <span class="n">self</span><span class="p">.</span><span class="nf">_add_diffusion</span><span class="p">()</span>
 
         <span class="c1"># step in time
-</span>        <span class="bp">self</span><span class="p">.</span><span class="n">wh</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">w0</span> <span class="o">+</span> <span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">dt</span><span class="o">/</span><span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="p">.</span><span class="n">dwhdt</span>
+</span>        <span class="n">self</span><span class="p">.</span><span class="n">wh</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">w0</span> <span class="o">+</span> <span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">dt</span><span class="o">/</span><span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="n">self</span><span class="p">.</span><span class="n">dwhdt</span>
 
-    <span class="bp">self</span><span class="p">.</span><span class="n">time</span> <span class="o">+=</span> <span class="bp">self</span><span class="p">.</span><span class="n">dt</span>
-    <span class="bp">self</span><span class="p">.</span><span class="n">it</span> <span class="o">+=</span> <span class="mi">1</span>
-    <span class="bp">self</span><span class="p">.</span><span class="n">_cfl_limit</span><span class="p">()</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">time</span> <span class="o">+=</span> <span class="n">self</span><span class="p">.</span><span class="n">dt</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">it</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">self</span><span class="p">.</span><span class="nf">_cfl_limit</span><span class="p">()</span>
 </code></pre></div></div>
 
 <h4 id="adaptive-time-step">Adaptive time-step</h4>
@@ -675,15 +675,15 @@ The third-order TVD Runge-Kutta method is defined as~<a href="#Spectral">(spectr
 
 <p>These are derived from the advection-diffusion equation (which is very similar to <a href="#1.3">(1.3)</a>), by writting it as a first order ODE and applying Fourier transform to the original equation. The convective and diffusive time-scales are then obtained by considering the worst case in the domain.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">_cfl_limit</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">_cfl_limit</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
     <span class="s">"""
     Adjust time-step based on the courant condition
     """</span>
-    <span class="bp">self</span><span class="p">.</span><span class="n">get_u</span><span class="p">()</span>
-    <span class="bp">self</span><span class="p">.</span><span class="n">get_v</span><span class="p">()</span>
-    <span class="n">Dc</span> <span class="o">=</span>  <span class="n">np</span><span class="p">.</span><span class="nb">max</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">((</span><span class="mf">1.</span><span class="o">+</span><span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">u</span><span class="p">))</span> <span class="o">/</span> <span class="bp">self</span><span class="p">.</span><span class="n">dx</span> <span class="o">+</span> <span class="p">(</span><span class="mf">1.</span><span class="o">+</span><span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">v</span><span class="p">))</span> <span class="o">/</span> <span class="bp">self</span><span class="p">.</span><span class="n">dy</span><span class="p">))</span>
-    <span class="n">Dmu</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nb">max</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">pi</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">dx</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="p">.</span><span class="n">dy</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)))</span>
-    <span class="bp">self</span><span class="p">.</span><span class="n">dt</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">3.</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">Dc</span> <span class="o">+</span> <span class="n">Dmu</span><span class="p">)</span>
+    <span class="n">self</span><span class="p">.</span><span class="nf">get_u</span><span class="p">()</span>
+    <span class="n">self</span><span class="p">.</span><span class="nf">get_v</span><span class="p">()</span>
+    <span class="n">Dc</span> <span class="o">=</span>  <span class="n">np</span><span class="p">.</span><span class="nf">max</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">((</span><span class="mf">1.</span><span class="o">+</span><span class="nf">abs</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">u</span><span class="p">))</span> <span class="o">/</span> <span class="n">self</span><span class="p">.</span><span class="n">dx</span> <span class="o">+</span> <span class="p">(</span><span class="mf">1.</span><span class="o">+</span><span class="nf">abs</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">v</span><span class="p">))</span> <span class="o">/</span> <span class="n">self</span><span class="p">.</span><span class="n">dy</span><span class="p">))</span>
+    <span class="n">Dmu</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">max</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">pi</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">dx</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">self</span><span class="p">.</span><span class="n">dy</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)))</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">dt</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">sqrt</span><span class="p">(</span><span class="mf">3.</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">Dc</span> <span class="o">+</span> <span class="n">Dmu</span><span class="p">)</span>
 </code></pre></div></div>
 
 <h2 id="validation">Validation</h2>
@@ -699,25 +699,25 @@ The third-order TVD Runge-Kutta method is defined as~<a href="#Spectral">(spectr
 
 <p>where $\kappa=4$ is the number of vortices in each direction and $Re$ is the Reynolds number of the flow and is set to 1.0 for those simulations (dissipation is important in this flow).</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">flow</span> <span class="o">=</span> <span class="n">Fluid</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="n">Re</span><span class="o">=</span><span class="mf">1.</span><span class="p">)</span> <span class="c1"># generate a 128x128 grid
-</span><span class="n">flow</span><span class="p">.</span><span class="n">init_solver</span><span class="p">()</span>
-<span class="n">flow</span><span class="p">.</span><span class="n">init_field</span><span class="p">(</span><span class="n">TaylorGreen</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">flow</span> <span class="o">=</span> <span class="nc">Fluid</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="n">Re</span><span class="o">=</span><span class="mf">1.</span><span class="p">)</span> <span class="c1"># generate a 128x128 grid
+</span><span class="n">flow</span><span class="p">.</span><span class="nf">init_solver</span><span class="p">()</span>
+<span class="n">flow</span><span class="p">.</span><span class="nf">init_field</span><span class="p">(</span><span class="n">TaylorGreen</span><span class="p">)</span>
 <span class="n">finish</span> <span class="o">=</span> <span class="mf">0.1</span>
-<span class="n">start_time</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">start_time</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="nf">time</span><span class="p">()</span>
 
 <span class="c1"># loop to solve
-</span><span class="k">while</span><span class="p">(</span><span class="n">flow</span><span class="p">.</span><span class="n">time</span><span class="o">&lt;=</span><span class="n">finish</span><span class="p">):</span>
+</span><span class="nf">while</span><span class="p">(</span><span class="n">flow</span><span class="p">.</span><span class="n">time</span><span class="o">&lt;=</span><span class="n">finish</span><span class="p">):</span>
 
     <span class="c1">#  update using RK
-</span>    <span class="n">flow</span><span class="p">.</span><span class="n">update</span><span class="p">()</span>
+</span>    <span class="n">flow</span><span class="p">.</span><span class="nf">update</span><span class="p">()</span>
 
     <span class="c1">#  print every 100 iterations
-</span>    <span class="k">if</span> <span class="p">(</span><span class="n">flow</span><span class="p">.</span><span class="n">it</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="s">"Iteration %d, time %f, time remaining %f. TKE: %f, ENS: %f"</span> <span class="o">%</span><span class="p">(</span><span class="n">flow</span><span class="p">.</span><span class="n">it</span><span class="p">,</span>
-              <span class="n">flow</span><span class="p">.</span><span class="n">time</span><span class="p">,</span> <span class="n">finish</span><span class="o">-</span><span class="n">flow</span><span class="p">.</span><span class="n">time</span><span class="p">,</span> <span class="n">flow</span><span class="p">.</span><span class="n">tke</span><span class="p">(),</span> <span class="n">flow</span><span class="p">.</span><span class="n">enstrophy</span><span class="p">()))</span>
+</span>    <span class="nf">if </span><span class="p">(</span><span class="n">flow</span><span class="p">.</span><span class="n">it</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"Iteration %d, time %f, time remaining %f. TKE: %f, ENS: %f"</span> <span class="o">%</span><span class="p">(</span><span class="n">flow</span><span class="p">.</span><span class="n">it</span><span class="p">,</span>
+              <span class="n">flow</span><span class="p">.</span><span class="n">time</span><span class="p">,</span> <span class="n">finish</span><span class="o">-</span><span class="n">flow</span><span class="p">.</span><span class="n">time</span><span class="p">,</span> <span class="n">flow</span><span class="p">.</span><span class="nf">tke</span><span class="p">(),</span> <span class="n">flow</span><span class="p">.</span><span class="nf">enstrophy</span><span class="p">()))</span>
 
-<span class="n">end_time</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">Execution time for %d iterations is %f seconds."</span> <span class="o">%</span><span class="p">(</span><span class="n">flow</span><span class="p">.</span><span class="n">it</span><span class="p">,</span> <span class="n">end_time</span><span class="o">-</span><span class="n">start_time</span><span class="p">))</span>
+<span class="n">end_time</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="nf">time</span><span class="p">()</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">Execution time for %d iterations is %f seconds."</span> <span class="o">%</span><span class="p">(</span><span class="n">flow</span><span class="p">.</span><span class="n">it</span><span class="p">,</span> <span class="n">end_time</span><span class="o">-</span><span class="n">start_time</span><span class="p">))</span>
 </code></pre></div></div>
 <p>and you should get the following results</p>
 
@@ -738,15 +738,15 @@ Execution time for 484 iterations is 11.454845 seconds.
 \[L\infty = \max{\vert \omega^{e}_{i, j} - \omega_{i, j} \vert}.\]
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># get final results
-</span><span class="n">flow</span><span class="p">.</span><span class="n">wh_to_w</span><span class="p">()</span>
+</span><span class="n">flow</span><span class="p">.</span><span class="nf">wh_to_w</span><span class="p">()</span>
 <span class="n">w_n</span> <span class="o">=</span> <span class="n">flow</span><span class="p">.</span><span class="n">w</span>
 
 <span class="c1"># exact solution
-</span><span class="n">w_e</span> <span class="o">=</span> <span class="n">TaylorGreen</span><span class="p">(</span><span class="n">flow</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">flow</span><span class="p">.</span><span class="n">y</span><span class="p">,</span> <span class="n">Re</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="n">flow</span><span class="p">.</span><span class="n">time</span><span class="p">))</span>
+</span><span class="n">w_e</span> <span class="o">=</span> <span class="nc">TaylorGreen</span><span class="p">(</span><span class="n">flow</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">flow</span><span class="p">.</span><span class="n">y</span><span class="p">,</span> <span class="n">Re</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">time</span><span class="o">=</span><span class="n">flow</span><span class="p">.</span><span class="n">time</span><span class="p">))</span>
 
 <span class="c1"># error norms
-</span><span class="k">print</span><span class="p">(</span><span class="s">"L2-norm   of the error in the Taylor-Green vortex on a %dx%d grid is %e."</span> <span class="o">%</span> <span class="p">(</span><span class="n">flow</span><span class="p">.</span><span class="n">nx</span><span class="p">,</span> <span class="n">flow</span><span class="p">.</span><span class="n">ny</span><span class="p">,</span> <span class="n">L2</span><span class="p">(</span><span class="n">w_e</span> <span class="o">-</span> <span class="n">w_n</span><span class="p">)))</span>
-<span class="k">print</span><span class="p">(</span><span class="s">"Linf-norm of the error in the Taylor-Green vortex on a %dx%d grid is %e."</span> <span class="o">%</span> <span class="p">(</span><span class="n">flow</span><span class="p">.</span><span class="n">nx</span><span class="p">,</span> <span class="n">flow</span><span class="p">.</span><span class="n">ny</span><span class="p">,</span> <span class="n">Linf</span><span class="p">(</span><span class="n">w_e</span> <span class="o">-</span> <span class="n">w_n</span><span class="p">)))</span>
+</span><span class="nf">print</span><span class="p">(</span><span class="s">"L2-norm   of the error in the Taylor-Green vortex on a %dx%d grid is %e."</span> <span class="o">%</span> <span class="p">(</span><span class="n">flow</span><span class="p">.</span><span class="n">nx</span><span class="p">,</span> <span class="n">flow</span><span class="p">.</span><span class="n">ny</span><span class="p">,</span> <span class="nc">L2</span><span class="p">(</span><span class="n">w_e</span> <span class="o">-</span> <span class="n">w_n</span><span class="p">)))</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">"Linf-norm of the error in the Taylor-Green vortex on a %dx%d grid is %e."</span> <span class="o">%</span> <span class="p">(</span><span class="n">flow</span><span class="p">.</span><span class="n">nx</span><span class="p">,</span> <span class="n">flow</span><span class="p">.</span><span class="n">ny</span><span class="p">,</span> <span class="nc">Linf</span><span class="p">(</span><span class="n">w_e</span> <span class="o">-</span> <span class="n">w_n</span><span class="p">)))</span>
 </code></pre></div></div>
 
 <p>This is pretty good!</p>
@@ -769,9 +769,9 @@ Linf-norm of the error in the Taylor-Green vortex on a 128x128 grid is 9.661161e
 
 <p>This field can simply be generated by passing the <code class="language-plaintext highlighter-rouge">"McWilliams"</code> function to the flow field initialization function.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">flow</span> <span class="o">=</span> <span class="n">Fluid</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="n">Re</span><span class="o">=</span><span class="mf">100.</span><span class="p">)</span>
-<span class="n">flow</span><span class="p">.</span><span class="n">init_solver</span><span class="p">()</span>
-<span class="n">flow</span><span class="p">.</span><span class="n">init_field</span><span class="p">(</span><span class="n">McWilliams</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">flow</span> <span class="o">=</span> <span class="nc">Fluid</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="n">Re</span><span class="o">=</span><span class="mf">100.</span><span class="p">)</span>
+<span class="n">flow</span><span class="p">.</span><span class="nf">init_solver</span><span class="p">()</span>
+<span class="n">flow</span><span class="p">.</span><span class="nf">init_field</span><span class="p">(</span><span class="n">McWilliams</span><span class="p">)</span>
 </code></pre></div></div>
 
 <h3 id="energy-spectrum">Energy Spectrum</h3>
@@ -1107,11 +1107,11 @@ Linf-norm of the error in the Taylor-Green vortex on a 128x128 grid is 9.661161e
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=Pseudo-spectral+method+for+2D+Turbulence%20https%3A%2F%2Fmarinlauber.github.io%2F2D-Turbulence%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Pseudo-spectral+method+for+2D+Turbulence%20http%3A%2F%2Flocalhost%3A4000%2F2D-Turbulence%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmarinlauber.github.io%2F2D-Turbulence%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2F2D-Turbulence%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fmarinlauber.github.io%2F2D-Turbulence%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2F2D-Turbulence%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
@@ -1339,7 +1339,7 @@ Linf-norm of the error in the Taylor-Green vortex on a 128x128 grid is 9.661161e
   </ul>
 </div>
 
-<div class="page__footer-copyright">&copy; 2021 Marin Lauber. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+<div class="page__footer-copyright">&copy; 2023 Marin Lauber. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
 
       </footer>
     </div>

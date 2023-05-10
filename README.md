@@ -1,6 +1,6 @@
 ## [marinlauber.gihub.io](https://marinlauber.github.io/)
 
-### How to compile the static websie
+### How to compile the static website
 
 This is from [here](https://jekyllrb.com/docs/)
 

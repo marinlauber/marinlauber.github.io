@@ -42,7 +42,7 @@ var store = [{
         "teaser": null
       },{
         "title": "Topographic map of Switzerland",
-        "excerpt":"Introduction Mapping the data MN03 or LV03 into the more common WGS84 Approximate formulas for the transformation between Swiss projection coordinates and-WGS84 def MN03_to_WGS84(x,y,height): \"\"\"\" transform MN03/LV03 into WGS84 \"\"\" x = (x - 200000)/1000000 y = (y - 600000)/1000000 lat = 16.9023892 + 3.238272 * x - 0.270978 *...","categories": [],
+        "excerpt":"Introduction Switzerland is well known for it’s mountains, covering roughly 70% of the country’s total area. L’Office fédéral de topographie (swisstopo) has increadibly high-resolution elevation data (grid with spacing 25x25 meters) for the country. This can be used to generate beautiful elevation plots, like the one on the cover of...","categories": [],
         "tags": [],
         "url": "http://localhost:4000/Topographic-Map-Switzerland/",
         "teaser": null

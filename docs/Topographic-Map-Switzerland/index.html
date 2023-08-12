@@ -324,7 +324,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          1 minute read
+          3 minute read
         
       </span>
     
@@ -340,11 +340,20 @@
 
 <h1 id="introduction">Introduction</h1>
 
+<p>Switzerland is well known for it’s mountains, covering roughly 70% of the country’s total area. L’Office fédéral de topographie (swisstopo) has increadibly high-resolution elevation data (grid with spacing 25x25 meters) for the country. This can be used to generate beautiful elevation plots, like the one on the cover of this post.</p>
+
+<h4 id="requirements">Requirements</h4>
+
+<p>For this, you will need:</p>
+<ul>
+  <li>Python with <code class="language-plaintext highlighter-rouge">numpy</code>, <code class="language-plaintext highlighter-rouge">matplotlib</code>, <code class="language-plaintext highlighter-rouge">geopandas</code> and <code class="language-plaintext highlighter-rouge">shapely</code></li>
+</ul>
+
 <h3 id="mapping-the-data">Mapping the data</h3>
 
-<p>MN03 or LV03 into the more common WGS84</p>
+<p>The data is freely available <a href="https://data.geo.admin.ch/ch.swisstopo.digitales-hoehenmodell_25/data.zip">here</a> in it’s rougher 200x200 m grid, which makes working with the data much easier. This data contains <code class="language-plaintext highlighter-rouge">x,y,z</code> coordinates of a mesh covering Switzerland and parts of the neighboring countries. The latitude (<code class="language-plaintext highlighter-rouge">x</code>) and longitude (<code class="language-plaintext highlighter-rouge">y</code>) are represented in the <code class="language-plaintext highlighter-rouge">MN03/LV03</code> coordinate system. This coordinate system is centered around the old observatory of Bern, nowadays the location of the Institute of Exact Sciences of Bern University, in downtown Bern (Sidlerstrasse 5 - 46°57’3.9” N, 7°26’19.1” E). We could just plot the data as is, but because we are going to use a <code class="language-plaintext highlighter-rouge">Geopandas</code> later on to plot the country’s boundary, it is much more convenient to map the data into a more common space, the <code class="language-plaintext highlighter-rouge">EPSG-4216 - WGS84</code>.</p>
 
-<p><a href="https://www.swisstopo.admin.ch/content/swisstopo-internet/en/topics/survey/reference-systems/switzerland/_jcr_content/contentPar/tabs/items/dokumente_publikatio/tabPar/downloadlist/downloadItems/516_1459343097192.download/ch1903wgs84-EN.pdf">Approximate formulas for the transformation between Swiss projection coordinates and-WGS84</a></p>
+<p>Conversion between well-known coordinate systems can be performed directly in <code class="language-plaintext highlighter-rouge">GeoPandas</code>, unfortunately, the Swiss coordinate system is not so common, which means we have to map the data “by hand”. <a href="https://www.swisstopo.admin.ch/content/swisstopo-internet/en/topics/survey/reference-systems/switzerland/_jcr_content/contentPar/tabs/items/dokumente_publikatio/tabPar/downloadlist/downloadItems/516_1459343097192.download/ch1903wgs84-EN.pdf">Approximate formulas for the transformation between Swiss projection coordinates and WGS84</a> can be found in the article referenced. These formulas take <code class="language-plaintext highlighter-rouge">x</code>, <code class="language-plaintext highlighter-rouge">y' coordinates and height (</code>z`) and map those onto longitude, latitudes, and elevation.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">MN03_to_WGS84</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">height</span><span class="p">):</span>
     <span class="s">""""
@@ -356,19 +365,32 @@
     <span class="n">lon</span> <span class="o">=</span> <span class="mf">2.6779094</span> <span class="o">+</span> <span class="mf">4.728982</span> <span class="o">*</span> <span class="n">y</span>  <span class="o">+</span> <span class="mf">0.791484</span> <span class="o">*</span> <span class="n">y</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mf">0.1306</span> <span class="o">*</span> <span class="n">y</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">0.0436</span> <span class="o">*</span> <span class="n">y</span><span class="o">**</span><span class="mi">3</span>
     <span class="n">lat</span> <span class="o">=</span> <span class="n">lat</span> <span class="o">*</span> <span class="mi">100</span><span class="o">/</span><span class="mi">36</span>
     <span class="n">lon</span> <span class="o">=</span> <span class="n">lon</span> <span class="o">*</span> <span class="mi">100</span><span class="o">/</span><span class="mi">36</span>
-    <span class="n">height</span> <span class="o">=</span> <span class="n">height</span> <span class="o">+</span> <span class="mf">49.55</span> <span class="o">-</span> <span class="mf">12.60</span> <span class="o">*</span> <span class="n">y</span> <span class="o">-</span> <span class="mf">22.64</span> <span class="o">*</span> <span class="n">x</span>
-    <span class="k">return</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">,</span> <span class="n">height</span>
+    <span class="n">elev</span> <span class="o">=</span> <span class="n">elev</span> <span class="o">+</span> <span class="mf">49.55</span> <span class="o">-</span> <span class="mf">12.60</span> <span class="o">*</span> <span class="n">y</span> <span class="o">-</span> <span class="mf">22.64</span> <span class="o">*</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">,</span> <span class="n">elev</span>
 </code></pre></div></div>
+
+<p>Now that we have this, we can load the <code class="language-plaintext highlighter-rouge">.xyz</code> data obtained from <code class="language-plaintext highlighter-rouge">swisstopo</code>, extract the relevant information, and map it into the <code class="language-plaintext highlighter-rouge">WGS84</code> coordinate system.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># read elevation data
 </span><span class="n">xyz_data</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">genfromtxt</span><span class="p">(</span><span class="s">"DHM200.xyz"</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="n">xyz_data</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
 
 <span class="c1"># extract xyz data, MN03 NF02 coordinate system
 </span><span class="n">x</span> <span class="o">=</span> <span class="n">xyz_data</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">xyz_data</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">height</span> <span class="o">=</span> <span class="n">xyz_data</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="c1"># transform manually
+</span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="nc">MN03_to_WGS84</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">height</span><span class="p">)</span>
 </code></pre></div></div>
+
+<p>We could plot the data like this, but it doesn’t look very nice. We need to remove the parts of the data that fall outside of Switzerland.</p>
+
+<p><img src="../assets/images/Figure_1.png" alt="" />
+<strong>Figure 1</strong>: Topographic data.</p>
+
+<h3 id="masking-boundaries">Masking boundaries</h3>
+
+<p>To remove the elevation points that fall outside Switzerland, we can use the mask function of <code class="language-plaintext highlighter-rouge">GeoPandas</code> and use the Swiss boundary data to mask parts outside of the country. The shape files (<code class="language-plaintext highlighter-rouge">.shp</code>) that contain the polygon data can be found <a href="https://data.geo.admin.ch/ch.swisstopo.swissboundaries3d/swissboundaries3d_2023-01/swissboundaries3d_2023-01_2056_5728.shp.zip">here</a>. The data contains boundary data for Switzerland and part of the neighboring countries, we don’t need those, and we can simply drop them (stored at index <code class="language-plaintext highlighter-rouge">1,2,3</code>). Then we need to map this data onto the <code class="language-plaintext highlighter-rouge">WGS84</code> projection.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Read file using gpd.read_file()
 </span><span class="n">data</span> <span class="o">=</span> <span class="n">gpd</span><span class="p">.</span><span class="nf">read_file</span><span class="p">(</span><span class="s">"swissBOUNDARIES3D_1_3_TLM_LANDESGEBIET.shp"</span><span class="p">)</span>
@@ -377,18 +399,19 @@
 <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">.</span><span class="nf">to_crs</span><span class="p">(</span><span class="s">"EPSG:4326"</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>We then need to map the <code class="language-plaintext highlighter-rouge">x,y,z</code> data from the projection used of the elevation data (<code class="language-plaintext highlighter-rouge">MN03</code>) onto the projection used for the boundary data (<code class="language-plaintext highlighter-rouge">EPSG:4326 - WGS 84</code>). For this, we use the custom function MN03_to_WGS84.</p>
+<p>To mask the data, we will first create a <code class="language-plaintext highlighter-rouge">Polygon</code> that englobes the full dataset and the perform a boolean operation with the boundary data, such that only the parts outside Switzerland are masked.</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># transform manually
-</span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="nc">MN03_to_WGS84</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">height</span><span class="p">)</span>
-
-<span class="c1"># generate mask for switzerland
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># generate mask for Switzerland
 </span><span class="n">mask</span> <span class="o">=</span> <span class="n">gpd</span><span class="p">.</span><span class="nc">GeoSeries</span><span class="p">(</span><span class="nc">Polygon</span><span class="p">([(</span><span class="nf">min</span><span class="p">(</span><span class="n">lon</span><span class="p">),</span><span class="nf">min</span><span class="p">(</span><span class="n">lat</span><span class="p">)),</span>
                               <span class="p">(</span><span class="nf">min</span><span class="p">(</span><span class="n">lon</span><span class="p">),</span><span class="nf">max</span><span class="p">(</span><span class="n">lat</span><span class="p">)),</span>
                               <span class="p">(</span><span class="nf">max</span><span class="p">(</span><span class="n">lon</span><span class="p">),</span><span class="nf">max</span><span class="p">(</span><span class="n">lat</span><span class="p">)),</span>
                               <span class="p">(</span><span class="nf">max</span><span class="p">(</span><span class="n">lon</span><span class="p">),</span><span class="nf">min</span><span class="p">(</span><span class="n">lat</span><span class="p">))]),</span> <span class="n">crs</span><span class="o">=</span><span class="s">"EPSG:4326"</span><span class="p">)</span>
 <span class="n">mask</span> <span class="o">=</span> <span class="n">mask</span><span class="p">.</span><span class="nf">difference</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> 
 </code></pre></div></div>
+
+<h3 id="plotting-the-data">Plotting the data</h3>
+
+<p>We can now finally plot the data; here I use <code class="language-plaintext highlighter-rouge">matplotlib</code> for that. The elevation data is plotted with the <code class="language-plaintext highlighter-rouge">tricontourf</code> function that first generates a Delauney triangulation of the data and then interpolates the elevation data onto this triangular mesh. The mask data is applied as a subsequent white layer on the exterior of Switzerland, effectively masking the data that overfills the plot. Here I have deliberately clipped the elevation data between 0 and 5000 meters.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># plot contour
 </span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="nf">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="nf">cm_</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
@@ -402,15 +425,24 @@
 </code></pre></div></div>
 
 <p><img src="../assets/images//topo_map_Switzerland.png" alt="" />
-<strong>Figure 1</strong>: Topographic map of Switzerland.</p>
+<strong>Figure 2</strong>: Topographic map of Switzerland.</p>
 
-<p><a href="../assets/scripts/figure.py">script</a></p>
+<p>The full script to load the data and generate the figure can be obtained below</p>
+
+<ul>
+  <li><a href="../assets/scripts/figure.py">script</a></li>
+</ul>
 
 <h3 id="data-link">data link</h3>
 
-<p><a href="https://data.geo.admin.ch/ch.swisstopo.swissboundaries3d/swissboundaries3d_2023-01/swissboundaries3d_2023-01_2056_5728.shp.zip">Boundary of Switzerland</a></p>
-
-<p><a href="https://data.geo.admin.ch/ch.swisstopo.digitales-hoehenmodell_25/data.zip">Elevation data</a></p>
+<ul>
+  <li>
+    <p><a href="https://data.geo.admin.ch/ch.swisstopo.swissboundaries3d/swissboundaries3d_2023-01/swissboundaries3d_2023-01_2056_5728.shp.zip">Boundary of Switzerland</a></p>
+  </li>
+  <li>
+    <p><a href="https://data.geo.admin.ch/ch.swisstopo.digitales-hoehenmodell_25/data.zip">Elevation data</a></p>
+  </li>
+</ul>
 
 
 <!-- <ul class="taxonomy__index">
@@ -470,7 +502,7 @@
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          1 minute read
+          3 minute read
         
       </span>
     

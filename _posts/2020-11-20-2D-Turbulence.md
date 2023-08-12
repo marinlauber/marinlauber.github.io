@@ -4,6 +4,9 @@ title: "Pseudo-spectral method for 2D Turbulence"
 date: 2020-11-20
 ---
 
+![](../assets/images/background2.png)
+
+
 Accurate simulation of 2D Turbulence
 
 ## Mathematical Formualtion

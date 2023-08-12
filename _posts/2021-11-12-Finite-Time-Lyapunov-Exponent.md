@@ -4,7 +4,7 @@ title: "Lagrangian Coherent Structures: Finite-Time Lyapunov Exponent"
 date: 2021-11-12
 ---
 
-Computing FTLE fields with Julia
+![](../assets/images/Lyapunov_fig.png)
 
 ## Introduction
 

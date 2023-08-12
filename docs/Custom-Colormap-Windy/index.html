@@ -9,8 +9,8 @@
   <head>
     <meta charset="utf-8">
 
-<!-- begin _includes/seo.html --><title>Advanced Scientific Matplotlib - Part 1/n - Marin Lauber</title>
-<meta name="description" content="This series of blog post is here to give some of the tricks I use to produce high-quality figures, suitable for publications.">
+<!-- begin _includes/seo.html --><title>Installing custom colormap in windy.com - Marin Lauber</title>
+<meta name="description" content="">
 
 
   <meta name="author" content="Marin Lauber">
@@ -22,30 +22,30 @@
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Marin Lauber">
-<meta property="og:title" content="Advanced Scientific Matplotlib - Part 1/n">
-<meta property="og:url" content="http://localhost:4000/Avdanced-Matplotlib-1/">
+<meta property="og:title" content="Installing custom colormap in windy.com">
+<meta property="og:url" content="http://localhost:4000/Custom-Colormap-Windy/">
 
 
-  <meta property="og:description" content="This series of blog post is here to give some of the tricks I use to produce high-quality figures, suitable for publications.">
-
-
-
-
-
-
-
-  <meta property="article:published_time" content="2021-07-05T00:00:00+02:00">
+  <meta property="og:description" content="">
 
 
 
 
 
-  
+
+
+  <meta property="article:published_time" content="2023-08-02T00:00:00+02:00">
+
+
+
+
 
   
 
+  
 
-<link rel="canonical" href="http://localhost:4000/Avdanced-Matplotlib-1/">
+
+<link rel="canonical" href="http://localhost:4000/Custom-Colormap-Windy/">
 
 
 
@@ -300,15 +300,15 @@
 
 
   <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Advanced Scientific Matplotlib - Part 1/n">
-    <meta itemprop="description" content="This series of blog post is here to give some of the tricks I use to produce high-quality figures, suitable for publications.">
-    <meta itemprop="datePublished" content="2021-07-05T00:00:00+02:00">
+    <meta itemprop="headline" content="Installing custom colormap in windy.com">
+    <meta itemprop="description" content="">
+    <meta itemprop="datePublished" content="2023-08-02T00:00:00+02:00">
     
 
     <div class="page__inner-wrap">
       
         <header>
-          <h1 id="page-title" class="page__title" itemprop="headline">Advanced Scientific Matplotlib - Part 1/n
+          <h1 id="page-title" class="page__title" itemprop="headline">Installing custom colormap in windy.com
 </h1>
           
 
@@ -336,92 +336,80 @@
 
       <section class="page__content" itemprop="text">
         
-        <p>This series of blog post is here to give some of the tricks I use to produce high-quality figures, suitable for publications.</p>
+        <p><img src="/assets/images/windy_2.png" /></p>
 
 <h2 id="introduction">Introduction</h2>
 
-<p>Of course I am using <code class="language-plaintext highlighter-rouge">matplotlib</code> to create all sorts of figures and animations! Coupled with <code class="language-plaintext highlighter-rouge">numpy</code> and somethimes <code class="language-plaintext highlighter-rouge">pandas</code> to read and handle all sorts of data, these are some very powerful tools. I am not going to cover the basics of matplotlib, such as importing the library, or doing simple plots. There have been lots of excellent examples on the subjects already.</p>
+<p><a href="https://www.windy.com/?52.325,4.971,5">Windy.com</a> is a fantastic weather visualization website, but the default colormap for wind speed can be misleading as it is not perceptually uniform (color and light contrasts distort the data), see the brilliant <a href="https://youtu.be/xAoljeRJ3lU">video</a> about the design of better colormaps. However, <code class="language-plaintext highlighter-rouge">Windy.com</code> allows us to specify custom colormaps for any variable! This post will detail how to get the famous <code class="language-plaintext highlighter-rouge">viridis</code> colormap into <code class="language-plaintext highlighter-rouge">windy.com</code>.</p>
 
-<p>Instead I will dig a bit deeper in what <code class="language-plaintext highlighter-rouge">matplotlib</code> has to offer and how we can benefit from it to show the results of our research.</p>
+<p><img src="/assets/images/windy_1.png" /></p>
 
-<h2 id="using-style-sheets">Using Style Sheets</h2>
+<h4 id="requirements">Requirements</h4>
+<ol>
+  <li>A computer able to run <code class="language-plaintext highlighter-rouge">python</code> with <code class="language-plaintext highlighter-rouge">numpy</code> and <code class="language-plaintext highlighter-rouge">matplotlib</code></li>
+  <li>A colormap you like</li>
+</ol>
 
-<p>Custom style-sheets are a very efficient way to improve the default plotting style from matplotlib. You can get some excellent one from <a href="https://github.com/garrettj403/SciencePlots">here</a>. Once they are installed in the correct directory, you can simply use them with</p>
+<p><code class="language-plaintext highlighter-rouge">Windy.com</code> requires a <code class="language-plaintext highlighter-rouge">file.txt</code> that maps a wind speed (or any other variable is SI units) onto an RGBA color. RGBA colors are defined by a list of integers (called channels), ranging from 0 to 255, representing the portion of red, green, blue, and transparency (alpha) of the color. For the default wind colormap, this looks something like this</p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plt</span><span class="p">.</span><span class="n">use</span><span class="p">.</span><span class="nf">style</span><span class="p">(</span><span class="s">"my_amazing_style"</span><span class="p">)</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[[</span><span class="mi">0</span><span class="p">,[</span><span class="mi">98</span><span class="p">,</span><span class="mi">113</span><span class="p">,</span><span class="mi">183</span><span class="p">,</span><span class="mi">255</span><span class="p">]],</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,[</span><span class="mi">57</span><span class="p">,</span><span class="mi">97</span><span class="p">,</span><span class="mi">159</span><span class="p">,</span><span class="mi">255</span><span class="p">]],</span>
+<span class="p">[</span><span class="mi">3</span><span class="p">,[</span><span class="mi">74</span><span class="p">,</span><span class="mi">148</span><span class="p">,</span><span class="mi">169</span><span class="p">,</span><span class="mi">255</span><span class="p">]],</span>
+<span class="p">[</span><span class="mi">5</span><span class="p">,[</span><span class="mi">77</span><span class="p">,</span><span class="mi">141</span><span class="p">,</span><span class="mi">123</span><span class="p">,</span><span class="mi">255</span><span class="p">]],</span>
+<span class="p">[</span><span class="mi">7</span><span class="p">,[</span><span class="mi">83</span><span class="p">,</span><span class="mi">165</span><span class="p">,</span><span class="mi">83</span><span class="p">,</span><span class="mi">255</span><span class="p">]],</span>
+<span class="p">[</span><span class="mi">9</span><span class="p">,[</span><span class="mi">53</span><span class="p">,</span><span class="mi">159</span><span class="p">,</span><span class="mi">53</span><span class="p">,</span><span class="mi">255</span><span class="p">]],</span>
+<span class="p">[</span><span class="mi">11</span><span class="p">,[</span><span class="mi">167</span><span class="p">,</span><span class="mi">157</span><span class="p">,</span><span class="mi">81</span><span class="p">,</span><span class="mi">255</span><span class="p">]],</span>
+<span class="p">[</span><span class="mi">13</span><span class="p">,[</span><span class="mi">159</span><span class="p">,</span><span class="mi">127</span><span class="p">,</span><span class="mi">58</span><span class="p">,</span><span class="mi">255</span><span class="p">]],</span>
+<span class="p">[</span><span class="mi">15</span><span class="p">,[</span><span class="mi">161</span><span class="p">,</span><span class="mi">108</span><span class="p">,</span><span class="mi">92</span><span class="p">,</span><span class="mi">255</span><span class="p">]],</span>
+<span class="p">[</span><span class="mi">17</span><span class="p">,[</span><span class="mi">129</span><span class="p">,</span><span class="mi">58</span><span class="p">,</span><span class="mi">78</span><span class="p">,</span><span class="mi">255</span><span class="p">]],</span>
+<span class="p">[</span><span class="mi">19</span><span class="p">,[</span><span class="mi">175</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">136</span><span class="p">,</span><span class="mi">255</span><span class="p">]],</span>
+<span class="p">[</span><span class="mi">21</span><span class="p">,[</span><span class="mi">117</span><span class="p">,</span><span class="mi">74</span><span class="p">,</span><span class="mi">147</span><span class="p">,</span><span class="mi">255</span><span class="p">]],</span>
+<span class="p">[</span><span class="mi">24</span><span class="p">,[</span><span class="mi">109</span><span class="p">,</span><span class="mi">97</span><span class="p">,</span><span class="mi">163</span><span class="p">,</span><span class="mi">255</span><span class="p">]],</span>
+<span class="p">[</span><span class="mi">27</span><span class="p">,[</span><span class="mi">68</span><span class="p">,</span><span class="mi">105</span><span class="p">,</span><span class="mi">141</span><span class="p">,</span><span class="mi">255</span><span class="p">]],</span>
+<span class="p">[</span><span class="mi">29</span><span class="p">,[</span><span class="mi">92</span><span class="p">,</span><span class="mi">144</span><span class="p">,</span><span class="mi">152</span><span class="p">,</span><span class="mi">255</span><span class="p">]],</span>
+<span class="p">[</span><span class="mi">36</span><span class="p">,[</span><span class="mi">125</span><span class="p">,</span><span class="mi">68</span><span class="p">,</span><span class="mi">165</span><span class="p">,</span><span class="mi">255</span><span class="p">]],</span>
+<span class="p">[</span><span class="mi">46</span><span class="p">,[</span><span class="mi">231</span><span class="p">,</span><span class="mi">215</span><span class="p">,</span><span class="mi">215</span><span class="p">,</span><span class="mi">256</span><span class="p">]],</span>
+<span class="p">[</span><span class="mi">51</span><span class="p">,[</span><span class="mi">219</span><span class="p">,</span><span class="mi">212</span><span class="p">,</span><span class="mi">135</span><span class="p">,</span><span class="mi">256</span><span class="p">]],</span>
+<span class="p">[</span><span class="mi">77</span><span class="p">,[</span><span class="mi">205</span><span class="p">,</span><span class="mi">202</span><span class="p">,</span><span class="mi">112</span><span class="p">,</span><span class="mi">256</span><span class="p">]],</span>
+<span class="p">[</span><span class="mi">104</span><span class="p">,[</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">255</span><span class="p">]]]</span>
 </code></pre></div></div>
 
-<p>The style-sheets are save in a <code class="language-plaintext highlighter-rouge">.mplstyle</code> format. Here is an axample from a basic style sheet</p>
+<p>where the first entry of every data point is the wind speed in m/s, and the second list is the RGBA color code. To change this to your favorite colormap, you simply have to paste the custom colormap file in the box that contains these values at the bottom of the <a href="https://www.windy.com/colors?">costomize color scale</a> page. This can also be found under <code class="language-plaintext highlighter-rouge">My Account</code>, <code class="language-plaintext highlighter-rouge">Settings</code>, <code class="language-plaintext highlighter-rouge">customize color scale</code> and <code class="language-plaintext highlighter-rouge">wind</code>.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Matplotlib style for general scientific plots</span>
+<h2 id="generating-the-custom-colormap">Generating the custom colormap</h2>
 
-<span class="c"># Set color cycle</span>
-axes.prop_cycle : cycler<span class="o">(</span><span class="s1">'color'</span>, <span class="o">[</span><span class="s1">'0C5DA5'</span>, <span class="s1">'00B945'</span>, <span class="s1">'FF9500'</span>, <span class="s1">'FF2C00'</span>, <span class="s1">'845B97'</span>, <span class="s1">'474747'</span>, <span class="s1">'9e9e9e'</span><span class="o">])</span>
+<p>To generate the custom colormap, we will need <code class="language-plaintext highlighter-rouge">python3</code> and the two most common (perhaps) libraries, which can be imported in this way</p>
 
-<span class="c"># Set default figure size</span>
-figure.figsize : 3.5, 2.625
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="n">matplotlib</span> <span class="k">as</span> <span class="n">mpl</span>
+</code></pre></div></div>
+<p>which allows access to the colormap functionality. Next, we must define the wind speed we want to sample the colormap at. Here I have decided that I am interested in the range 0-30 knots (1 knot = 0.5144 m/s), as it is what we commonly sail/kite in. This means that wind speed greater than 30 knots will not be mapped correctly on the color scale.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">21</span><span class="p">)</span><span class="o">*</span><span class="mf">0.5144</span>
+</code></pre></div></div>
+<p>Now we can choose a colormap that we like, I choose <code class="language-plaintext highlighter-rouge">viridis</code> but there are plenty more to choose from, see <a href="https://matplotlib.org/stable/tutorials/colors/colormaps.html">here</a>.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">viridis</span> <span class="o">=</span> <span class="n">mpl</span><span class="p">.</span><span class="n">colormaps</span><span class="p">[</span><span class="s">'viridis'</span><span class="p">]</span>
+</code></pre></div></div>
+<p>The next step is to sample the colormap at the wind speed values but on the interval [0,1]. Here I have chosen to have 21 samples, as <code class="language-plaintext highlighter-rouge">windy</code> will then interpolate; this is sufficient.</p>
 
-<span class="c"># Set x axis</span>
-xtick.direction : <span class="k">in
-</span>xtick.major.size : 3
-xtick.major.width : 0.5
-xtick.minor.size : 1.5
-xtick.minor.width : 0.5
-xtick.minor.visible :   True
-xtick.top : True
-
-<span class="c"># Set y axis</span>
-ytick.direction : <span class="k">in
-</span>ytick.major.size : 3
-ytick.major.width : 0.5
-ytick.minor.size : 1.5
-ytick.minor.width : 0.5
-ytick.minor.visible :   True
-ytick.right : True
-
-<span class="c"># Set line widths</span>
-axes.linewidth : 0.5
-grid.linewidth : 0.5
-lines.linewidth : 1.
-
-<span class="c"># Remove legend frame</span>
-legend.frameon : False
-
-<span class="c"># Always save as 'tight'</span>
-savefig.bbox : tight
-savefig.pad_inches : 0.05
-
-<span class="c"># Use serif fonts</span>
-font.serif : Times New Roman
-font.family : serif
-
-<span class="c"># Use LaTeX for math formatting</span>
-text.usetex : True
-text.latex.preamble : <span class="se">\u</span>sepackage<span class="o">{</span>amsmath<span class="o">}</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_cmap</span> <span class="o">=</span> <span class="nf">viridis</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="nf">len</span><span class="p">(</span><span class="n">v</span><span class="p">)))</span>
+</code></pre></div></div>
+<p>The last step is to generate a <code class="language-plaintext highlighter-rouge">.txt.</code> file with the correct formatting to paste it straight into <code class="language-plaintext highlighter-rouge">windy</code>. This requires a manual conversion from the RGBA from <code class="language-plaintext highlighter-rouge">matplotlib</code> (0-1) to the <code class="language-plaintext highlighter-rouge">windy</code> RGBA (0-255)</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">output</span> <span class="o">=</span> <span class="nf">open</span><span class="p">(</span><span class="s">"windy_viridis.txt"</span><span class="p">,</span><span class="s">"w"</span><span class="p">)</span>
+<span class="n">output</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="s">"["</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">v</span><span class="p">)):</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="s">"[%.4f,["</span> <span class="o">%</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">text</span> <span class="o">+=</span> <span class="s">"%d,%d,%d,%d]],</span><span class="se">\n</span><span class="s">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">my_cmap</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">255</span><span class="p">,</span>
+                                  <span class="n">my_cmap</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mi">255</span><span class="p">,</span>
+                                  <span class="n">my_cmap</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="mi">255</span><span class="p">,</span>
+                                  <span class="n">my_cmap</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span><span class="o">*</span><span class="mi">255</span><span class="p">)</span>
+    <span class="nf">if</span><span class="p">(</span><span class="n">i</span><span class="o">==</span><span class="nf">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span> <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="s">"]"</span>
+    <span class="n">output</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="n">output</span><span class="p">.</span><span class="nf">close</span><span class="p">()</span>
 </code></pre></div></div>
 
-<center>
-<img src="/assets/images/figure_0.png" alt="" pading="1px" style="width:1200" />
-</center>
+<p>The entire script is available <a href="/assets/scripts/windy.py">here</a>, and the final result should look like below. If you want the <code class="language-plaintext highlighter-rouge">.txt</code> file, it can also be found <a href="/assets/scripts/windy_viridis.txt">here</a>.</p>
 
-<p>There are a few interesting things to note, first, we have changed the default plotting colors. We have also enabled <code class="language-plaintext highlighter-rouge">LaTeX</code> to be used for the labels.</p>
-
-<p>We also changed the direction on the tickmarks on the axis.</p>
-
-<blockquote>
-  <p><strong><em>Note:</em></strong>  Under <code class="language-plaintext highlighter-rouge">OSX</code> the directory that stores your stylsheets is located at <code class="language-plaintext highlighter-rouge">.matplotlib/stylelib/</code> and in Linux (Ubuntu 18.04) under <code class="language-plaintext highlighter-rouge">.config/matplotlib/stylelib/</code>.</p>
-</blockquote>
-
-<p>and yes, we have plotted a figure with two axes, and the axes have different style, simply like this</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="nf">figure</span><span class="p">()</span>
-<span class="n">gs</span> <span class="o">=</span> <span class="n">fig</span><span class="p">.</span><span class="nf">add_gridspec</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="p">.</span><span class="nf">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
-<span class="p">...</span> <span class="c1"># plot what you want
-</span><span class="n">plt</span><span class="p">.</span><span class="n">style</span><span class="p">.</span><span class="nf">use</span><span class="p">(</span><span class="s">"new_style"</span><span class="p">)</span>
-<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="p">.</span><span class="nf">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="n">sharey</span><span class="o">=</span><span class="n">ax1</span><span class="p">)</span>
-<span class="p">...</span> <span class="c1"># plot what you want
-</span></code></pre></div></div>
+<p><img src="/assets/images/windy_2.png" /></p>
 
 
 <!-- <ul class="taxonomy__index">
@@ -569,7 +557,7 @@ text.latex.preamble : <span class="se">\u</span>sepackage<span class="o">{</span
       <span class="page__meta-readtime">
         <i class="far fa-clock" aria-hidden="true"></i>
         
-          7 minute read
+          6 minute read
         
       </span>
     
@@ -804,7 +792,7 @@ text.latex.preamble : <span class="se">\u</span>sepackage<span class="o">{</span
 
 
         
-  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-07-05T00:00:00+02:00">July 5, 2021</time></p>
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2023-08-02T00:00:00+02:00">August 2, 2023</time></p>
 
 
       </footer>
@@ -814,22 +802,22 @@ text.latex.preamble : <span class="se">\u</span>sepackage<span class="o">{</span
     <h4 class="page__share-title">Share on</h4>
   
 
-  <a href="https://twitter.com/intent/tweet?text=Advanced+Scientific+Matplotlib+-+Part+1%2Fn%20http%3A%2F%2Flocalhost%3A4000%2FAvdanced-Matplotlib-1%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+  <a href="https://twitter.com/intent/tweet?text=Installing+custom+colormap+in+windy.com%20http%3A%2F%2Flocalhost%3A4000%2FCustom-Colormap-Windy%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
 
-  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2FAvdanced-Matplotlib-1%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A4000%2FCustom-Colormap-Windy%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
 
-  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2FAvdanced-Matplotlib-1%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Flocalhost%3A4000%2FCustom-Colormap-Windy%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
 </section>
 
 
       
   <nav class="pagination">
     
-      <a href="/Compact-Poisson-Equation/" class="pagination--pager" title="Compact Schemes for the Poisson Equation
+      <a href="/Finite-Time-Lyapunov-Exponent/" class="pagination--pager" title="Lagrangian Coherent Structures: Finite-Time Lyapunov Exponent
 ">Previous</a>
     
     
-      <a href="/Finite-Time-Lyapunov-Exponent/" class="pagination--pager" title="Lagrangian Coherent Structures: Finite-Time Lyapunov Exponent
+      <a href="/Topographic-Map-Switzerland/" class="pagination--pager" title="Topographic map of Switzerland
 ">Next</a>
     
   </nav>
@@ -894,7 +882,47 @@ text.latex.preamble : <span class="se">\u</span>sepackage<span class="o">{</span
     
     <h2 class="archive__item-title no_toc" itemprop="headline">
       
-        <a href="/Custom-Colormap-Windy/" rel="permalink">Installing custom colormap in windy.com
+        <a href="/Finite-Time-Lyapunov-Exponent/" rel="permalink">Lagrangian Coherent Structures: Finite-Time Lyapunov Exponent
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          6 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/Avdanced-Matplotlib-1/" rel="permalink">Advanced Scientific Matplotlib - Part 1/n
 </a>
       
     </h2>
@@ -919,47 +947,7 @@ text.latex.preamble : <span class="se">\u</span>sepackage<span class="o">{</span
   </p>
 
 
-    <p class="archive__item-excerpt" itemprop="description">
-</p>
-  </article>
-</div>
-
-        
-          
-
-
-
-<div class="grid__item">
-  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
-    
-    <h2 class="archive__item-title no_toc" itemprop="headline">
-      
-        <a href="/Finite-Time-Lyapunov-Exponent/" rel="permalink">Lagrangian Coherent Structures: Finite-Time Lyapunov Exponent
-</a>
-      
-    </h2>
-    
-
-  <p class="page__meta">
-    
-
-    
-
-    
-      
-      
-
-      <span class="page__meta-readtime">
-        <i class="far fa-clock" aria-hidden="true"></i>
-        
-          7 minute read
-        
-      </span>
-    
-  </p>
-
-
-    <p class="archive__item-excerpt" itemprop="description">
+    <p class="archive__item-excerpt" itemprop="description">This series of blog post is here to give some of the tricks I use to produce high-quality figures, suitable for publications.
 </p>
   </article>
 </div>

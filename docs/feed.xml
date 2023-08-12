@@ -1,4 +1,151 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-05-10T09:51:44+02:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Marin Lauber</title><subtitle>Marin Lauber</subtitle><author><name>Marin Lauber</name><email>M.Lauber@tudelft.nl</email></author><entry><title type="html">Lagrangian Coherent Structures: Finite-Time Lyapunov Exponent</title><link href="http://localhost:4000/Finite-Time-Lyapunov-Exponent/" rel="alternate" type="text/html" title="Lagrangian Coherent Structures: Finite-Time Lyapunov Exponent" /><published>2021-11-12T00:00:00+01:00</published><updated>2021-11-12T00:00:00+01:00</updated><id>http://localhost:4000/Finite-Time-Lyapunov-Exponent</id><content type="html" xml:base="http://localhost:4000/Finite-Time-Lyapunov-Exponent/"><![CDATA[<p>Computing FTLE fields with Julia</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-08-12T11:08:58+02:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Marin Lauber</title><subtitle>Marin Lauber</subtitle><author><name>Marin Lauber</name><email>M.Lauber@tudelft.nl</email></author><entry><title type="html">Topographic map of Switzerland</title><link href="http://localhost:4000/Topographic-Map-Switzerland/" rel="alternate" type="text/html" title="Topographic map of Switzerland" /><published>2023-08-03T00:00:00+02:00</published><updated>2023-08-03T00:00:00+02:00</updated><id>http://localhost:4000/Topographic-Map-Switzerland</id><content type="html" xml:base="http://localhost:4000/Topographic-Map-Switzerland/"><![CDATA[<p><img src="../assets/images//topo_map_Switzerland.png" alt="" /></p>
+
+<h1 id="introduction">Introduction</h1>
+
+<h3 id="mapping-the-data">Mapping the data</h3>
+
+<p>MN03 or LV03 into the more common WGS84</p>
+
+<p><a href="https://www.swisstopo.admin.ch/content/swisstopo-internet/en/topics/survey/reference-systems/switzerland/_jcr_content/contentPar/tabs/items/dokumente_publikatio/tabPar/downloadlist/downloadItems/516_1459343097192.download/ch1903wgs84-EN.pdf">Approximate formulas for the transformation between Swiss projection coordinates and-WGS84</a></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">MN03_to_WGS84</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">height</span><span class="p">):</span>
+    <span class="s">""""
+    transform MN03/LV03 into WGS84
+    """</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">200000</span><span class="p">)</span><span class="o">/</span><span class="mi">1000000</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="mi">600000</span><span class="p">)</span><span class="o">/</span><span class="mi">1000000</span>
+    <span class="n">lat</span> <span class="o">=</span> <span class="mf">16.9023892</span> <span class="o">+</span> <span class="mf">3.238272</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="mf">0.270978</span> <span class="o">*</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">0.002528</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">0.0447</span> <span class="o">*</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">-</span> <span class="mf">0.0140</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> 
+    <span class="n">lon</span> <span class="o">=</span> <span class="mf">2.6779094</span> <span class="o">+</span> <span class="mf">4.728982</span> <span class="o">*</span> <span class="n">y</span>  <span class="o">+</span> <span class="mf">0.791484</span> <span class="o">*</span> <span class="n">y</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mf">0.1306</span> <span class="o">*</span> <span class="n">y</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mf">0.0436</span> <span class="o">*</span> <span class="n">y</span><span class="o">**</span><span class="mi">3</span>
+    <span class="n">lat</span> <span class="o">=</span> <span class="n">lat</span> <span class="o">*</span> <span class="mi">100</span><span class="o">/</span><span class="mi">36</span>
+    <span class="n">lon</span> <span class="o">=</span> <span class="n">lon</span> <span class="o">*</span> <span class="mi">100</span><span class="o">/</span><span class="mi">36</span>
+    <span class="n">height</span> <span class="o">=</span> <span class="n">height</span> <span class="o">+</span> <span class="mf">49.55</span> <span class="o">-</span> <span class="mf">12.60</span> <span class="o">*</span> <span class="n">y</span> <span class="o">-</span> <span class="mf">22.64</span> <span class="o">*</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">,</span> <span class="n">height</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># read elevation data
+</span><span class="n">xyz_data</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">genfromtxt</span><span class="p">(</span><span class="s">"DHM200.xyz"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">xyz_data</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1"># extract xyz data, MN03 NF02 coordinate system
+</span><span class="n">x</span> <span class="o">=</span> <span class="n">xyz_data</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">xyz_data</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">height</span> <span class="o">=</span> <span class="n">xyz_data</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Read file using gpd.read_file()
+</span><span class="n">data</span> <span class="o">=</span> <span class="n">gpd</span><span class="p">.</span><span class="nf">read_file</span><span class="p">(</span><span class="s">"swissBOUNDARIES3D_1_3_TLM_LANDESGEBIET.shp"</span><span class="p">)</span>
+<span class="n">data</span><span class="p">.</span><span class="nf">drop</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">gpd</span><span class="p">.</span><span class="nc">GeoSeries</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">geometry</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">.</span><span class="nf">to_crs</span><span class="p">(</span><span class="s">"EPSG:4326"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>We then need to map the <code class="language-plaintext highlighter-rouge">x,y,z</code> data from the projection used of the elevation data (<code class="language-plaintext highlighter-rouge">MN03</code>) onto the projection used for the boundary data (<code class="language-plaintext highlighter-rouge">EPSG:4326 - WGS 84</code>). For this, we use the custom function MN03_to_WGS84.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># transform manually
+</span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="nc">MN03_to_WGS84</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">height</span><span class="p">)</span>
+
+<span class="c1"># generate mask for switzerland
+</span><span class="n">mask</span> <span class="o">=</span> <span class="n">gpd</span><span class="p">.</span><span class="nc">GeoSeries</span><span class="p">(</span><span class="nc">Polygon</span><span class="p">([(</span><span class="nf">min</span><span class="p">(</span><span class="n">lon</span><span class="p">),</span><span class="nf">min</span><span class="p">(</span><span class="n">lat</span><span class="p">)),</span>
+                              <span class="p">(</span><span class="nf">min</span><span class="p">(</span><span class="n">lon</span><span class="p">),</span><span class="nf">max</span><span class="p">(</span><span class="n">lat</span><span class="p">)),</span>
+                              <span class="p">(</span><span class="nf">max</span><span class="p">(</span><span class="n">lon</span><span class="p">),</span><span class="nf">max</span><span class="p">(</span><span class="n">lat</span><span class="p">)),</span>
+                              <span class="p">(</span><span class="nf">max</span><span class="p">(</span><span class="n">lon</span><span class="p">),</span><span class="nf">min</span><span class="p">(</span><span class="n">lat</span><span class="p">))]),</span> <span class="n">crs</span><span class="o">=</span><span class="s">"EPSG:4326"</span><span class="p">)</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">mask</span><span class="p">.</span><span class="nf">difference</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> 
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># plot contour
+</span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="p">.</span><span class="nf">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="nf">cm_</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">cntr</span> <span class="o">=</span> <span class="n">ax</span><span class="p">.</span><span class="nf">tricontourf</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="nf">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5000</span><span class="p">,</span><span class="mi">101</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="s">"gist_earth"</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">.</span><span class="nf">colorbar</span><span class="p">(</span><span class="n">cntr</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.84</span><span class="p">,</span> <span class="n">ticks</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="nf">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5000</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s">"Elevation (m)"</span><span class="p">)</span>
+
+<span class="c1"># plot boundary
+</span><span class="n">mask</span><span class="p">.</span><span class="nf">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">"white"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">axis</span><span class="p">(</span><span class="s">"off"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="../assets/images//topo_map_Switzerland.png" alt="" />
+<strong>Figure 1</strong>: Topographic map of Switzerland.</p>
+
+<p><a href="../assets/scripts/figure.py">script</a></p>
+
+<h3 id="data-link">data link</h3>
+
+<p><a href="https://data.geo.admin.ch/ch.swisstopo.swissboundaries3d/swissboundaries3d_2023-01/swissboundaries3d_2023-01_2056_5728.shp.zip">Boundary of Switzerland</a></p>
+
+<p><a href="https://data.geo.admin.ch/ch.swisstopo.digitales-hoehenmodell_25/data.zip">Elevation data</a></p>]]></content><author><name>Marin Lauber</name><email>M.Lauber@tudelft.nl</email></author><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Installing custom colormap in windy.com</title><link href="http://localhost:4000/Custom-Colormap-Windy/" rel="alternate" type="text/html" title="Installing custom colormap in windy.com" /><published>2023-08-02T00:00:00+02:00</published><updated>2023-08-02T00:00:00+02:00</updated><id>http://localhost:4000/Custom-Colormap-Windy</id><content type="html" xml:base="http://localhost:4000/Custom-Colormap-Windy/"><![CDATA[<p><img src="/assets/images/windy_2.png" /></p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p><a href="https://www.windy.com/?52.325,4.971,5">Windy.com</a> is a fantastic weather visualization website, but the default colormap for wind speed can be misleading as it is not perceptually uniform (color and light contrasts distort the data), see the brilliant <a href="https://youtu.be/xAoljeRJ3lU">video</a> about the design of better colormaps. However, <code class="language-plaintext highlighter-rouge">Windy.com</code> allows us to specify custom colormaps for any variable! This post will detail how to get the famous <code class="language-plaintext highlighter-rouge">viridis</code> colormap into <code class="language-plaintext highlighter-rouge">windy.com</code>.</p>
+
+<p><img src="/assets/images/windy_1.png" /></p>
+
+<h4 id="requirements">Requirements</h4>
+<ol>
+  <li>A computer able to run <code class="language-plaintext highlighter-rouge">python</code> with <code class="language-plaintext highlighter-rouge">numpy</code> and <code class="language-plaintext highlighter-rouge">matplotlib</code></li>
+  <li>A colormap you like</li>
+</ol>
+
+<p><code class="language-plaintext highlighter-rouge">Windy.com</code> requires a <code class="language-plaintext highlighter-rouge">file.txt</code> that maps a wind speed (or any other variable is SI units) onto an RGBA color. RGBA colors are defined by a list of integers (called channels), ranging from 0 to 255, representing the portion of red, green, blue, and transparency (alpha) of the color. For the default wind colormap, this looks something like this</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">[[</span><span class="mi">0</span><span class="p">,[</span><span class="mi">98</span><span class="p">,</span><span class="mi">113</span><span class="p">,</span><span class="mi">183</span><span class="p">,</span><span class="mi">255</span><span class="p">]],</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,[</span><span class="mi">57</span><span class="p">,</span><span class="mi">97</span><span class="p">,</span><span class="mi">159</span><span class="p">,</span><span class="mi">255</span><span class="p">]],</span>
+<span class="p">[</span><span class="mi">3</span><span class="p">,[</span><span class="mi">74</span><span class="p">,</span><span class="mi">148</span><span class="p">,</span><span class="mi">169</span><span class="p">,</span><span class="mi">255</span><span class="p">]],</span>
+<span class="p">[</span><span class="mi">5</span><span class="p">,[</span><span class="mi">77</span><span class="p">,</span><span class="mi">141</span><span class="p">,</span><span class="mi">123</span><span class="p">,</span><span class="mi">255</span><span class="p">]],</span>
+<span class="p">[</span><span class="mi">7</span><span class="p">,[</span><span class="mi">83</span><span class="p">,</span><span class="mi">165</span><span class="p">,</span><span class="mi">83</span><span class="p">,</span><span class="mi">255</span><span class="p">]],</span>
+<span class="p">[</span><span class="mi">9</span><span class="p">,[</span><span class="mi">53</span><span class="p">,</span><span class="mi">159</span><span class="p">,</span><span class="mi">53</span><span class="p">,</span><span class="mi">255</span><span class="p">]],</span>
+<span class="p">[</span><span class="mi">11</span><span class="p">,[</span><span class="mi">167</span><span class="p">,</span><span class="mi">157</span><span class="p">,</span><span class="mi">81</span><span class="p">,</span><span class="mi">255</span><span class="p">]],</span>
+<span class="p">[</span><span class="mi">13</span><span class="p">,[</span><span class="mi">159</span><span class="p">,</span><span class="mi">127</span><span class="p">,</span><span class="mi">58</span><span class="p">,</span><span class="mi">255</span><span class="p">]],</span>
+<span class="p">[</span><span class="mi">15</span><span class="p">,[</span><span class="mi">161</span><span class="p">,</span><span class="mi">108</span><span class="p">,</span><span class="mi">92</span><span class="p">,</span><span class="mi">255</span><span class="p">]],</span>
+<span class="p">[</span><span class="mi">17</span><span class="p">,[</span><span class="mi">129</span><span class="p">,</span><span class="mi">58</span><span class="p">,</span><span class="mi">78</span><span class="p">,</span><span class="mi">255</span><span class="p">]],</span>
+<span class="p">[</span><span class="mi">19</span><span class="p">,[</span><span class="mi">175</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mi">136</span><span class="p">,</span><span class="mi">255</span><span class="p">]],</span>
+<span class="p">[</span><span class="mi">21</span><span class="p">,[</span><span class="mi">117</span><span class="p">,</span><span class="mi">74</span><span class="p">,</span><span class="mi">147</span><span class="p">,</span><span class="mi">255</span><span class="p">]],</span>
+<span class="p">[</span><span class="mi">24</span><span class="p">,[</span><span class="mi">109</span><span class="p">,</span><span class="mi">97</span><span class="p">,</span><span class="mi">163</span><span class="p">,</span><span class="mi">255</span><span class="p">]],</span>
+<span class="p">[</span><span class="mi">27</span><span class="p">,[</span><span class="mi">68</span><span class="p">,</span><span class="mi">105</span><span class="p">,</span><span class="mi">141</span><span class="p">,</span><span class="mi">255</span><span class="p">]],</span>
+<span class="p">[</span><span class="mi">29</span><span class="p">,[</span><span class="mi">92</span><span class="p">,</span><span class="mi">144</span><span class="p">,</span><span class="mi">152</span><span class="p">,</span><span class="mi">255</span><span class="p">]],</span>
+<span class="p">[</span><span class="mi">36</span><span class="p">,[</span><span class="mi">125</span><span class="p">,</span><span class="mi">68</span><span class="p">,</span><span class="mi">165</span><span class="p">,</span><span class="mi">255</span><span class="p">]],</span>
+<span class="p">[</span><span class="mi">46</span><span class="p">,[</span><span class="mi">231</span><span class="p">,</span><span class="mi">215</span><span class="p">,</span><span class="mi">215</span><span class="p">,</span><span class="mi">256</span><span class="p">]],</span>
+<span class="p">[</span><span class="mi">51</span><span class="p">,[</span><span class="mi">219</span><span class="p">,</span><span class="mi">212</span><span class="p">,</span><span class="mi">135</span><span class="p">,</span><span class="mi">256</span><span class="p">]],</span>
+<span class="p">[</span><span class="mi">77</span><span class="p">,[</span><span class="mi">205</span><span class="p">,</span><span class="mi">202</span><span class="p">,</span><span class="mi">112</span><span class="p">,</span><span class="mi">256</span><span class="p">]],</span>
+<span class="p">[</span><span class="mi">104</span><span class="p">,[</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">128</span><span class="p">,</span><span class="mi">255</span><span class="p">]]]</span>
+</code></pre></div></div>
+
+<p>where the first entry of every data point is the wind speed in m/s, and the second list is the RGBA color code. To change this to your favorite colormap, you simply have to paste the custom colormap file in the box that contains these values at the bottom of the <a href="https://www.windy.com/colors?">costomize color scale</a> page. This can also be found under <code class="language-plaintext highlighter-rouge">My Account</code>, <code class="language-plaintext highlighter-rouge">Settings</code>, <code class="language-plaintext highlighter-rouge">customize color scale</code> and <code class="language-plaintext highlighter-rouge">wind</code>.</p>
+
+<h2 id="generating-the-custom-colormap">Generating the custom colormap</h2>
+
+<p>To generate the custom colormap, we will need <code class="language-plaintext highlighter-rouge">python3</code> and the two most common (perhaps) libraries, which can be imported in this way</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="n">matplotlib</span> <span class="k">as</span> <span class="n">mpl</span>
+</code></pre></div></div>
+<p>which allows access to the colormap functionality. Next, we must define the wind speed we want to sample the colormap at. Here I have decided that I am interested in the range 0-30 knots (1 knot = 0.5144 m/s), as it is what we commonly sail/kite in. This means that wind speed greater than 30 knots will not be mapped correctly on the color scale.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">21</span><span class="p">)</span><span class="o">*</span><span class="mf">0.5144</span>
+</code></pre></div></div>
+<p>Now we can choose a colormap that we like, I choose <code class="language-plaintext highlighter-rouge">viridis</code> but there are plenty more to choose from, see <a href="https://matplotlib.org/stable/tutorials/colors/colormaps.html">here</a>.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">viridis</span> <span class="o">=</span> <span class="n">mpl</span><span class="p">.</span><span class="n">colormaps</span><span class="p">[</span><span class="s">'viridis'</span><span class="p">]</span>
+</code></pre></div></div>
+<p>The next step is to sample the colormap at the wind speed values but on the interval [0,1]. Here I have chosen to have 21 samples, as <code class="language-plaintext highlighter-rouge">windy</code> will then interpolate; this is sufficient.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">my_cmap</span> <span class="o">=</span> <span class="nf">viridis</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="nf">len</span><span class="p">(</span><span class="n">v</span><span class="p">)))</span>
+</code></pre></div></div>
+<p>The last step is to generate a <code class="language-plaintext highlighter-rouge">.txt.</code> file with the correct formatting to paste it straight into <code class="language-plaintext highlighter-rouge">windy</code>. This requires a manual conversion from the RGBA from <code class="language-plaintext highlighter-rouge">matplotlib</code> (0-1) to the <code class="language-plaintext highlighter-rouge">windy</code> RGBA (0-255)</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">output</span> <span class="o">=</span> <span class="nf">open</span><span class="p">(</span><span class="s">"windy_viridis.txt"</span><span class="p">,</span><span class="s">"w"</span><span class="p">)</span>
+<span class="n">output</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="s">"["</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">v</span><span class="p">)):</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="s">"[%.4f,["</span> <span class="o">%</span> <span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">text</span> <span class="o">+=</span> <span class="s">"%d,%d,%d,%d]],</span><span class="se">\n</span><span class="s">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">my_cmap</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">255</span><span class="p">,</span>
+                                  <span class="n">my_cmap</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mi">255</span><span class="p">,</span>
+                                  <span class="n">my_cmap</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="mi">255</span><span class="p">,</span>
+                                  <span class="n">my_cmap</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span><span class="o">*</span><span class="mi">255</span><span class="p">)</span>
+    <span class="nf">if</span><span class="p">(</span><span class="n">i</span><span class="o">==</span><span class="nf">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span> <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="s">"]"</span>
+    <span class="n">output</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="n">output</span><span class="p">.</span><span class="nf">close</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>The entire script is available <a href="/assets/scripts/windy.py">here</a>, and the final result should look like below. If you want the <code class="language-plaintext highlighter-rouge">.txt</code> file, it can also be found <a href="/assets/scripts/windy_viridis.txt">here</a>.</p>
+
+<p><img src="/assets/images/windy_2.png" /></p>]]></content><author><name>Marin Lauber</name><email>M.Lauber@tudelft.nl</email></author><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Lagrangian Coherent Structures: Finite-Time Lyapunov Exponent</title><link href="http://localhost:4000/Finite-Time-Lyapunov-Exponent/" rel="alternate" type="text/html" title="Lagrangian Coherent Structures: Finite-Time Lyapunov Exponent" /><published>2021-11-12T00:00:00+01:00</published><updated>2021-11-12T00:00:00+01:00</updated><id>http://localhost:4000/Finite-Time-Lyapunov-Exponent</id><content type="html" xml:base="http://localhost:4000/Finite-Time-Lyapunov-Exponent/"><![CDATA[<p><img src="../assets/images/Lyapunov_fig.png" alt="" /></p>
 
 <h2 id="introduction">Introduction</h2>
 
@@ -211,7 +358,7 @@
 
 <p><a href="https://www.youtube.com/watch?v=lveOu7jLNh0">Steve Brunton’s brillant video!</a></p>
 
-<hr />]]></content><author><name>Marin Lauber</name><email>M.Lauber@tudelft.nl</email></author><summary type="html"><![CDATA[Computing FTLE fields with Julia]]></summary></entry><entry><title type="html">Advanced Scientific Matplotlib - Part 1/n</title><link href="http://localhost:4000/Avdanced-Matplotlib-1/" rel="alternate" type="text/html" title="Advanced Scientific Matplotlib - Part 1/n" /><published>2021-07-05T00:00:00+02:00</published><updated>2021-07-05T00:00:00+02:00</updated><id>http://localhost:4000/Avdanced-Matplotlib-1</id><content type="html" xml:base="http://localhost:4000/Avdanced-Matplotlib-1/"><![CDATA[<p>This series of blog post is here to give some of the tricks I use to produce high-quality figures, suitable for publications.</p>
+<hr />]]></content><author><name>Marin Lauber</name><email>M.Lauber@tudelft.nl</email></author><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Advanced Scientific Matplotlib - Part 1/n</title><link href="http://localhost:4000/Avdanced-Matplotlib-1/" rel="alternate" type="text/html" title="Advanced Scientific Matplotlib - Part 1/n" /><published>2021-07-05T00:00:00+02:00</published><updated>2021-07-05T00:00:00+02:00</updated><id>http://localhost:4000/Avdanced-Matplotlib-1</id><content type="html" xml:base="http://localhost:4000/Avdanced-Matplotlib-1/"><![CDATA[<p>This series of blog post is here to give some of the tricks I use to produce high-quality figures, suitable for publications.</p>
 
 <h2 id="introduction">Introduction</h2>
 
@@ -668,7 +815,9 @@ We show by means of numerical simulation of a 3D flapping wings that the correct
 </p>
 
 <h3 style="margin-top: 30px; margin-bottom: 0px"> <a href="https://meetings.aps.org/Meeting/DFD20/Session/F12.12" id="Marin-thin-BDIM"> Immersed boundary simulations of thin flexible structures</a></h3>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/0hK1I5bEBOM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>]]></content><author><name>Marin Lauber</name><email>M.Lauber@tudelft.nl</email></author><summary type="html"><![CDATA[Abstract and video of my talk at APS-DFD 2020]]></summary></entry><entry><title type="html">Pseudo-spectral method for 2D Turbulence</title><link href="http://localhost:4000/2D-Turbulence/" rel="alternate" type="text/html" title="Pseudo-spectral method for 2D Turbulence" /><published>2020-11-20T00:00:00+01:00</published><updated>2020-11-20T00:00:00+01:00</updated><id>http://localhost:4000/2D-Turbulence</id><content type="html" xml:base="http://localhost:4000/2D-Turbulence/"><![CDATA[<p>Accurate simulation of 2D Turbulence</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/0hK1I5bEBOM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>]]></content><author><name>Marin Lauber</name><email>M.Lauber@tudelft.nl</email></author><summary type="html"><![CDATA[Abstract and video of my talk at APS-DFD 2020]]></summary></entry><entry><title type="html">Pseudo-spectral method for 2D Turbulence</title><link href="http://localhost:4000/2D-Turbulence/" rel="alternate" type="text/html" title="Pseudo-spectral method for 2D Turbulence" /><published>2020-11-20T00:00:00+01:00</published><updated>2020-11-20T00:00:00+01:00</updated><id>http://localhost:4000/2D-Turbulence</id><content type="html" xml:base="http://localhost:4000/2D-Turbulence/"><![CDATA[<p><img src="../assets/images/background2.png" alt="" /></p>
+
+<p>Accurate simulation of 2D Turbulence</p>
 
 <h2 id="mathematical-formualtion">Mathematical Formualtion</h2>
 
@@ -1140,7 +1289,7 @@ Linf-norm of the error in the Taylor-Green vortex on a 128x128 grid is 9.661161e
 
 <p>[4]<a id="MW"></a> J. C. McWilliams. <a href="https://www.cambridge.org/core/journals/journal-of-fluid-mechanics/article/emergence-of-isolated-coherent-vortices-in-turbulent-flow/3EB789299B1A730265A5EC522E35B630"><em>The emergence of isolated coherent vortices in turbulent flow</em></a>. Journal of fluid mechanics 146. p: 21–43. 1984.</p>
 
-<hr />]]></content><author><name>Marin Lauber</name><email>M.Lauber@tudelft.nl</email></author><summary type="html"><![CDATA[Accurate simulation of 2D Turbulence]]></summary></entry><entry><title type="html">My First Post</title><link href="http://localhost:4000/HelloWorld/" rel="alternate" type="text/html" title="My First Post" /><published>2020-10-03T00:00:00+02:00</published><updated>2020-10-03T00:00:00+02:00</updated><id>http://localhost:4000/HelloWorld</id><content type="html" xml:base="http://localhost:4000/HelloWorld/"><![CDATA[<p>Trying all that <code class="language-plaintext highlighter-rouge">markdown</code>  has to offers</p>
+<hr />]]></content><author><name>Marin Lauber</name><email>M.Lauber@tudelft.nl</email></author><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">My First Post</title><link href="http://localhost:4000/HelloWorld/" rel="alternate" type="text/html" title="My First Post" /><published>2020-10-03T00:00:00+02:00</published><updated>2020-10-03T00:00:00+02:00</updated><id>http://localhost:4000/HelloWorld</id><content type="html" xml:base="http://localhost:4000/HelloWorld/"><![CDATA[<p>Trying all that <code class="language-plaintext highlighter-rouge">markdown</code>  has to offers</p>
 
 <p><strong>Code Snippets</strong></p>
 

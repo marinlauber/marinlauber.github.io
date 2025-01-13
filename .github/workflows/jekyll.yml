@@ -27,26 +27,25 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  if: github.repository == 'marinlauber/marinlauber.github.io'
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
+  runs-on: ubuntu-latest
+  steps:
+  - uses: actions/checkout@v4
+    with:
+      fetch-depth: 0
 
-    - uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: '3.2'
-    - name: Setup cache for Bundler
-      id: cache
-      uses: actions/cache@v4
-      with:
-        path: |
-          docs/Gemfile.lock
-          docs/vendor/bundle
-        key: ${{ runner.os }}-bundler-${{ hashFiles('docs/Gemfile') }}
-        restore-keys: |
-          ${{ runner.os }}-bundler-
+  - uses: ruby/setup-ruby@v1
+    with:
+      ruby-version: '3.2'
+  - name: Setup cache for Bundler
+    id: cache
+    uses: actions/cache@v4
+    with:
+      path: |
+        docs/Gemfile.lock
+        docs/vendor/bundle
+      key: ${{ runner.os }}-bundler-${{ hashFiles('docs/Gemfile') }}
+      restore-keys: |
+        ${{ runner.os }}-bundler-
 
   # Deployment job
   deploy:

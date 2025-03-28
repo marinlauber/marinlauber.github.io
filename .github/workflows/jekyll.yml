@@ -37,11 +37,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          submodules: 'true' # Allows to clone CV.tex  as submodule and use its main.bib file
-      - name: Update CV.tex submodule
-        run: |
-          git pull --recurse-submodules
-          git submodule update --remote --recursive
+          fetch-depth: 0
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:

@@ -2,9 +2,14 @@
 layout: article
 title: "Lagrangian Coherent Structures: Finite-Time Lyapunov Exponent"
 date: 2021-11-12
+tags: Lyapunov, chaos, dynamics, fluid-mechanics, julia
+cover: /assets/images/Lyapunov.png
+aside:
+  toc: true
 ---
 
-![](../assets/images/Lyapunov_fig.png)
+
+![](/assets/images/Lyapunov.png)
 
 ## Introduction
 
@@ -134,14 +139,14 @@ Once we have our particle position at time $T$ (I will detail later how to achie
 
 ```julia
 function Jacobian(x, y, delta)
-    
+
     # pre-processing
     nx, ny = size(x)
     J = Array{Float64}(undef, 2, 2)
     FTLE = Array{Float64}(undef, nx-2, ny-2)
 
     for j ∈ 1:ny-2, i ∈ 1:nx-2
-        
+
         # jacobian of that particle
         J[1,1] = (x[i+2,j]-x[i,j])/(2*delta)
         J[1,2] = (x[i,j+2]-x[i,j])/(2*delta)
@@ -150,7 +155,7 @@ function Jacobian(x, y, delta)
 
         # Green-Cauchy tensor
         D = transpose(J).*J
-        
+
         # its largest eigenvalue
         lamda = eigvals(D)
         FTLE[i,j] = maximum(lamda)

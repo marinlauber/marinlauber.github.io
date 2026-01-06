@@ -2,6 +2,10 @@
 layout: article
 title: "Installing custom colormap in windy.com"
 date: 2023-08-02
+tags: windy graphics python
+cover: /assets/images/windy_2.png
+aside:
+  toc: true
 ---
 
 
@@ -14,7 +18,7 @@ date: 2023-08-02
 <img src="/assets/images/windy_1.png"/>
 
 #### Requirements
-1. A computer able to run `python` with `numpy` and `matplotlib` 
+1. A computer able to run `python` with `numpy` and `matplotlib`
 1. A colormap you like
 
 `Windy.com` requires a `file.txt` that maps a wind speed (or any other variable is SI units) onto an RGBA color. RGBA colors are defined by a list of integers (called channels), ranging from 0 to 255, representing the portion of red, green, blue, and transparency (alpha) of the color. For the default wind colormap, this looks something like this
@@ -56,7 +60,7 @@ which allows access to the colormap functionality. Next, we must define the wind
 ```python
 v = np.linspace(0,30,21)*0.5144
 ```
-Now we can choose a colormap that we like, I choose `viridis` but there are plenty more to choose from, see [here](https://matplotlib.org/stable/tutorials/colors/colormaps.html). 
+Now we can choose a colormap that we like, I choose `viridis` but there are plenty more to choose from, see [here](https://matplotlib.org/stable/tutorials/colors/colormaps.html).
 ```python
 viridis = mpl.colormaps['viridis']
 ```

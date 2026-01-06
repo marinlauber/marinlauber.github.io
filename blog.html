@@ -1,14 +1,13 @@
 ---
-layout: article
+layout: articles
+title: Latest Posts
+articles:
+  data_source: site.posts
+  show_excerpt: true
+  show_readmore: true
+  show_info: true
+  reverse: true
+  show_title: false
+  type: grid
+  size: md
 ---
-
-<h1 style="text-align:justify; margin-left:20px">Latest Posts</h1>
-
-<ul>
-  {% for post in site.posts %}
-    <li>
-      <h2 style="text-align:justify; margin-left:20px"><a href="{{ post.url }}">{{ post.title }}</a></h2>
-      <!-- {{ post.excerpt }} -->
-    </li>
-  {% endfor %}
-</ul>

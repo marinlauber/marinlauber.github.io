@@ -18,28 +18,27 @@
 ##############################
 text_skin: default # "default" (default), "dark", "forest", "ocean", "chocolate", "orange"
 highlight_theme: default # "default" (default), "tomorrow", "tomorrow-night", "tomorrow-night-eighties", "tomorrow-night-blue", "tomorrow-night-bright"
-url     : # the base hostname & protocol for your site e.g. https://www.someone.com
+url     : "https://marinlauber.github.io" # the base hostname & protocol for your site e.g. https://www.someone.com
 baseurl : # does not include hostname
-title   : Your Site Title
+title   : Marin Lauber
 description: > # this means to ignore newlines until "Language & timezone"
-  Your Site Description
-
+  Marin Lauber
 
 ## => Language and Timezone
 ##############################
 lang: # the language of your site, default as "en"
-timezone: # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for the available values
+timezone: Europe/Amsterdam # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for the available values
 
 
 ## => Author and Social
 ##############################
 author:
-  type      : # "person" (default), "organization"
-  name      : Your Name
+  type      : "person" # "person" (default), "organization"
+  name      : Marin Lauber
   url       :
   avatar    : # path or url of avatar image (square)
-  bio       : I am an amazing person.
-  email     :
+  bio       : PhD, Computational Fluid-Structure Interaction
+  email     : M.Lauber@tudelft.nl
   facebook  : # "user_name" the last part of your profile url, e.g. https://www.facebook.com/user_name
   twitter   : # "user_name" the last part of your profile url, e.g. https://twitter.com/user_name
   weibo     : # "user_id"   the last part of your profile url, e.g. https://www.weibo.com/user_id/profile?...
@@ -49,14 +48,17 @@ author:
   zhihu     : # "user_name" the last part of your profile url, e.g. https://www.zhihu.com/people/user_name
   douban    : # "user_name" the last part of your profile url, e.g. https://www.douban.com/people/user_name
   linkedin  : # "user_name" the last part of your profile url, e.g. https://www.linkedin.com/in/user_name
-  github    : # "user_name" the last part of your profile url, e.g. https://github.com/user_name
+  github    : marinlauber # "user_name" the last part of your profile url, e.g. https://github.com/user_name
   npm       : # "user_name" the last part of your profile url, e.g. https://www.npmjs.com/~user_name
+  researchgate: "Marin-Lauber"
+  googlescholar: "nwKYHN8AAAAJ&hl"
+  scholar: "nwKYHN8AAAAJ&hl"
 
 
 ## => GitHub Repository (if the site is hosted by GitHub)
 ##############################
-repository: user_name/repo_name
-repository_tree: master
+# repository: user_name/repo_name
+# repository_tree: master
 
 
 ## => Paths
@@ -84,7 +86,7 @@ toc:
 ## => Markdown Enhancements
 ##############################
 ## Mathjax
-mathjax: # false (default), true
+mathjax: true # false (default), true
 mathjax_autoNumber: # false (default), true
 
 ## Mermaid
@@ -113,6 +115,16 @@ sharing:
   ## AddThis
   addthis:
     id: # AddThis pubid, e.g. ra-5xxxxxxxxxxx
+
+
+
+## => GitHub Stats
+##############################
+repo_theme: default # user 'default' or 'dark' https://github.com/anuraghazra/github-readme-stats/blob/master/themes/README.md https://github.com/anuraghazra/github-readme-stats/blob/master/themes/README.md
+repo_trophies:
+  enabled: false
+  theme_light: flat # https://github.com/ryo-ma/github-profile-trophy
+  theme_dark: gitdimmed # https://github.com/ryo-ma/github-profile-trophy
 
 
 ## => Comments
@@ -179,19 +191,20 @@ analytics:
 sass:
   quiet_deps: true    # Disable printing deprecation warnings to terminal
 
+
 ## => Build
 ##############################
 markdown    : kramdown
 highlighter : rouge
 permalink   : date
 
+include: ['_pages']
 exclude:
   - CHANGELOG.md
   - HOW_TO_RELEASE.md
   - Gemfile
   - Gemfile.lock
   - LICENSE
-  - README-*.md
   - README.md
   - gulpfile.js
   - jekyll-text-theme.gemspec
@@ -203,6 +216,7 @@ exclude:
   - /test
   - /vendor
 
+
 defaults:
   - scope:
       path: ""
@@ -210,12 +224,53 @@ defaults:
     values:
       layout: article
       sharing: true
-      license: true
+      license: false
       aside:
         toc: true
       show_edit_on_github: true
-      show_subscribe: true
+      show_subscribe: false
       pageview: true
+  - scope:
+      path: ""
+      type: lab
+    values:
+      layout: article
+      sharing: true
+      license: false
+      category: post
+      aside:
+        toc: true
+      show_edit_on_github: true
+      show_subscribe: false
+      pageview: true
+      lightbox: true
+  - scope:
+      path: ""
+      type: research
+    values:
+      layout: article
+      sharing: true
+      license: false
+      category: post
+      aside:
+        toc: true
+      show_edit_on_github: true
+      show_subscribe: false
+      pageview: true
+      lightbox: true
+
+
+collections:
+  lab:
+    output: true
+  research:
+    output: true
+  news:
+    output: true
+    permalink: /_pages/news/:path/
+    defaults:
+      layout: article
+news_limit: 9
 
 
 ## => Plugins
@@ -225,3 +280,4 @@ plugins:
   - jekyll-paginate
   - jekyll-sitemap
   - jemoji
+  - jekyll-scholar

@@ -1,29 +1,31 @@
 ---
 layout: article
-titles:
-  # @start locale config
-  en      : &EN       About
-  en-GB   : *EN
-  en-US   : *EN
-  en-CA   : *EN
-  en-AU   : *EN
-  zh-Hans : &ZH_HANS  关于
-  zh      : *ZH_HANS
-  zh-CN   : *ZH_HANS
-  zh-SG   : *ZH_HANS
-  zh-Hant : &ZH_HANT  關於
-  zh-TW   : *ZH_HANT
-  zh-HK   : *ZH_HANT
-  ko      : &KO       소개
-  ko-KR   : *KO
-  fr      : &FR       À propos
-  fr-BE   : *FR
-  fr-CA   : *FR
-  fr-CH   : *FR
-  fr-FR   : *FR
-  fr-LU   : *FR
-  # @end locale config
-key: page-about
+title: About Me
+show_title: false
 ---
 
-Hello, 
+<header>
+  <hr>
+  <h2 style="font-size:18px">About me</h2>
+  <p style="font-size:16px">
+    Hi! My name is Marin and I am currently a Post-doctoral researcher within the <a href="https://www.tudelft.nl/me/over/afdelingen/biomechanical-engineering" style="color:grey">BioMechanical</a> departement at <a href="https://www.tudelft.nl" style="color:grey">TU Delft</a>.
+    I am working together with <a href="https://peirlincklab.com/" style="color:grey">Professor Mathias Peirlinck </a> on the numerical modelling of a soft total artificial heart for the <a href="https://hollandhybridheart.nl/" style="color:grey">Holland Hybrid Heart consortium </a>.
+  </p>
+  <p style="font-size:16px">
+    Prior to this I completed my PhD at the <a href="http://www.ngcm.soton.ac.uk/" style="color:grey">Center for Doctoral training in Next Generation Computational Modelling</a> (CTD-NGCM) at the <a href="https://www.southampton.ac.uk/" style="color:grey">University of Southampton</a>under the supervision of <a href="https://www.tudelft.nl/staff/g.d.weymouth/?cHash=a5cd372875e05348d1a0a4a8cb6e5f8f" style="color:grey">Professor Gabriel Weymouth</a> and <a href="https://www.southampton.ac.uk/people/5x5lr2/professor-georges-limbert" style="color:grey">Professor Georges Limbert</a>
+  </p>
+  <p style="font-size:16px">
+    My academic background includes a Bachelor of Engineering (First Class) in Yacht and Powercraft Design, during which my dissertation received the (<a style="color:grey">2017 RINA – BAE Systems Student Naval Architect Award - Final Year Project</a>). Following this, I pursued a Master of Science (First Class) in Computational Fluid Dynamics, where I focused on the numerical modeling of ship maneuvering using computational fluid dynamics.
+  </p>
+
+  <hr>
+  <h2 style="font-size:18px">Interests</h2>
+  <p style="font-size:16px">
+    My research interests span several fields of computational fluid mechanics, ranging from fluid-structure interaction and the associated complex mechanics, to classical turbulence problems. My current research focuses on modeling the interplay between flexible membranes and unsteady flow, where I am coupling a Finite-Volume Cartesian grid fluid solver and a Finite-Element solid mechanics solver. This has wide-ranging applications, including modeling of foliage, parachutes, sails, heart valves, and insect wings. In addition to computational fluid dynamics.
+  </p>
+  <p style="font-size:16px">I am also interested in sailing yacht performance prediction, weather forecasting, numerical methods (as applied to the aforementioned problems), and non-linear systems/chaos theory.
+  </p>
+  <p style="font-size:16px">
+    Outside of my academic pursuits, I enjoy engaging in my favorite activities such as sailing, kitesurfing, and hiking.
+  </p>
+</header>

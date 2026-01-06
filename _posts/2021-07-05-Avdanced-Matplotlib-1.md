@@ -1,6 +1,11 @@
 ---
 layout: article
 title: "Advanced Scientific Matplotlib - Part 1/n"
+date: 2021-07-05
+tags: matplotlib, python, graphics
+cover: /assets/images/figure_0.png
+aside:
+  toc: true
 ---
 
 This series of blog post is here to give some of the tricks I use to produce high-quality figures, suitable for publications.

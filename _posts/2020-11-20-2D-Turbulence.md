@@ -3,6 +3,7 @@ layout: article
 title: "Pseudo-spectral method for 2D Turbulence"
 mathjax: true
 date: 2020-11-20
+tags: Lyapunov chaos dynamics fluid-mechanics julia
 mode: immersive
 header:
   theme: dark
@@ -11,7 +12,11 @@ article_header:
   theme: dark
   background_image:
     src: /assets/images/background.png
+cover: /assets/images/background.png
+aside:
+  toc: true
 ---
+
 
 Accurate simulation of 2D Turbulence
 

@@ -2,9 +2,13 @@
 layout: article
 title: "Topographic map of Switzerland"
 date: 2023-08-03
+tags: topography graphics python
+cover: /assets/images/topo_map_Switzerland.png
+aside:
+  toc: true
 ---
 
-![](../assets/images/topo_map_Switzerland.png)
+![](/assets/images/topo_map_Switzerland.png)
 
 
 # Introduction
@@ -13,12 +17,12 @@ Switzerland is well known for it's mountains, covering roughly 70% of the countr
 
 #### Requirements
 
-For this, you will need: 
+For this, you will need:
 * Python with `numpy`, `matplotlib`, `geopandas` and `shapely`
 
 ### Mapping the data
 
-The data is freely available [here](https://data.geo.admin.ch/ch.swisstopo.digitales-hoehenmodell_25/data.zip) in it's rougher 200x200 m grid, which makes working with the data much easier. This data contains `x,y,z` coordinates of a mesh covering Switzerland and parts of the neighboring countries. The latitude (`x`) and longitude (`y`) are represented in the `MN03/LV03` coordinate system. This coordinate system is centered around the old observatory of Bern, nowadays the location of the Institute of Exact Sciences of Bern University, in downtown Bern (Sidlerstrasse 5 - 46°57'3.9" N, 7°26'19.1" E). We could just plot the data as is, but because we are going to use a `Geopandas` later on to plot the country's boundary, it is much more convenient to map the data into a more common space, the `EPSG-4216 - WGS84`. 
+The data is freely available [here](https://data.geo.admin.ch/ch.swisstopo.digitales-hoehenmodell_25/data.zip) in it's rougher 200x200 m grid, which makes working with the data much easier. This data contains `x,y,z` coordinates of a mesh covering Switzerland and parts of the neighboring countries. The latitude (`x`) and longitude (`y`) are represented in the `MN03/LV03` coordinate system. This coordinate system is centered around the old observatory of Bern, nowadays the location of the Institute of Exact Sciences of Bern University, in downtown Bern (Sidlerstrasse 5 - 46°57'3.9" N, 7°26'19.1" E). We could just plot the data as is, but because we are going to use a `Geopandas` later on to plot the country's boundary, it is much more convenient to map the data into a more common space, the `EPSG-4216 - WGS84`.
 
 Conversion between well-known coordinate systems can be performed directly in `GeoPandas`, unfortunately, the Swiss coordinate system is not so common, which means we have to map the data "by hand". [Approximate formulas for the transformation between Swiss projection coordinates and WGS84](https://www.swisstopo.admin.ch/content/swisstopo-internet/en/topics/survey/reference-systems/switzerland/_jcr_content/contentPar/tabs/items/dokumente_publikatio/tabPar/downloadlist/downloadItems/516_1459343097192.download/ch1903wgs84-EN.pdf) can be found in the article referenced. These formulas take `x`, `y' coordinates and height (`z`) and map those onto longitude, latitudes, and elevation.
 
@@ -54,7 +58,7 @@ lat, lon, height = MN03_to_WGS84(x,y,height)
 
 We could plot the data like this, but it doesn't look very nice. We need to remove the parts of the data that fall outside of Switzerland.
 
-![](../assets/images/Figure_1.png)
+![](/assets/images/Figure_1.png)
 **Figure 1**: Topographic data.
 
 
@@ -78,7 +82,7 @@ mask = gpd.GeoSeries(Polygon([(min(lon),min(lat)),
                               (min(lon),max(lat)),
                               (max(lon),max(lat)),
                               (max(lon),min(lat))]), crs="EPSG:4326")
-mask = mask.difference(data) 
+mask = mask.difference(data)
 ```
 
 ### Plotting the data
@@ -97,12 +101,12 @@ plt.axis("off")
 plt.show()
 ```
 
-![](../assets/images//topo_map_Switzerland.png)
+![](/assets/images//topo_map_Switzerland.png)
 **Figure 2**: Topographic map of Switzerland.
 
 The full script to load the data and generate the figure can be obtained below
 
-* [script](../assets/scripts/figure.py)
+* [script](/assets/scripts/figure.py)
 
 ### data link
 

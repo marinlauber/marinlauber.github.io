@@ -7,14 +7,13 @@ show_title: false
 **Preprint Articles**
 
 <p style="text-align:justify; margin-left:20px">
-Lauber M., Arfaee M. and Pierlinck M. (2026) <b>The mechanics of Less in More Out: modeling fabric-based soft robotic hearts</b>. <em>arXiv preprint arXiv:2510.14984
-</em> <a href="https://arxiv.org/abs/2510.14984" class="mono_link">[Article]</a></p>
-
-<p style="text-align:justify; margin-left:20px">
 Weymouth G. D. Lauber M. (2025) <b>Using Biot-Savart boundary conditions for unbounded external flow on Eulerian meshes
 </b>. <em>arXiv preprint arXiv:2404.09034 </em> <a href="https://arxiv.org/abs/2404.09034" class="mono_link">[Article]</a></p>
 
 **Peer-reviewed Articles**
+
+<p style="text-align:justify; margin-left:20px">
+Lauber, M., Arfaee, M. and Peirlinck, M. (2026) <b>The mechanics of the Less In More Out artificial heart: modeling fabric-based soft robotic devices</b>. <em>Journal of the Mechanics and Physics of Solids, 106565</em> <a href="https://doi.org/10.1016/j.jmps.2026.106565" class="mono_link">[Article]</a></p>
 
 <p style="text-align:justify; margin-left:20px">
 Lauber, M., Weymouth G. D. and G. Limbert (2024) <b>Immersed-Boundary Fluid-Structure Interaction of Membranes and Shells</b>. <em>Journal of Physics: Conference Series</em> <a href="https://doi.org/10.1088/1742-6596/2647/5/052002" class="mono_link">[Article]</a></p>

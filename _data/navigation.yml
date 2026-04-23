@@ -2,8 +2,8 @@ header:
 
   - titles:
       # @start locale config
-      en      : &EN       Post
-      fr      : &FR       Blog
+      en      : &EN       Projects
+      fr      : &FR       Projets
       # @end locale config
     url: /blog.html
 
@@ -27,3 +27,10 @@ header:
       fr      : &FR       Publications
       # @end locale config
     url: /_pages/publications.html
+
+  - titles:
+      # @start locale config
+      en      : &EN       Repositories
+      fr      : &FR       Dépôts
+      # @end locale config
+    url: /_pages/repositories.html

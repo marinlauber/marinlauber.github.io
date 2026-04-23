@@ -1,0 +1,12 @@
+github_users:
+  - marinlauber
+
+repo_description_lines_max: 2
+
+github_repos:
+  - WaterLily-jl/WaterLily.jl
+  - marinlauber/Python-VPP
+  - marinlauber/2D-Turbulence-Python
+  - marinlauber/FerriteShells.jl
+  - peirlincklab/UniversalMaterialModel.jl
+  - marinlauber/ForcePartition.jl

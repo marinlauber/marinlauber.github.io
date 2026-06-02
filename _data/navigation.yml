@@ -30,6 +30,13 @@ header:
 
   - titles:
       # @start locale config
+      en      : &EN       Gallery
+      fr      : &FR       Galerie
+      # @end locale config
+    url: /_pages/gallery.html
+
+  - titles:
+      # @start locale config
       en      : &EN       Repositories
       fr      : &FR       Dépôts
       # @end locale config

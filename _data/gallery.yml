@@ -1,0 +1,55 @@
+# Gallery entries. Each item supports:
+#   src     : path or URL to an image/GIF (PNG, JPG, GIF, WebP)
+#             e.g. /assets/gallery/foo.gif  or  https://raw.githubusercontent.com/...
+#   youtube : YouTube video ID (the part after ?v=, e.g. "dQw4w9WgXcQ")
+#             use this instead of src for YouTube videos
+#   title   : short label shown above the media (optional)
+#   caption : one or two sentences describing what is shown
+#
+# Use either src OR youtube per entry, not both.
+# Order here = order on the page.
+
+- title: "Flow around a Wing"
+  src: /assets/images/wing.gif
+  caption: "Unsteady flow around a wing at an angle of attack of π/16 and a Reynolds number of Re=50,000. Vortex structures visualized using iso-surface of the λ₂-criterion. Simulation performed using [WaterLily.jl](https://github.com/WaterLily-jl/WaterLily.jl)."
+
+- title: "Pillow inflation"
+  src: /assets/images/pillow.gif
+  aspect-ratio: 4/3
+  caption: "Dynamic inflation of a Reissner-Mindlin quadratic shell with MITC shear treatment. The dynamic solution is obtained using the HHTα method. Simulation performed using [FerriteShells.jl](https://github.com/marinlauber/FerriteShells.jl)."
+
+- title: "Falling ellipse in infinite domain"
+  src: /assets/images/falling.gif
+  caption: "Simulation of a falling ellipse in a fluid. The motion is obtained through a balance of gravitational and fluid forces. The domain tracks the linear motion of the ellipse and our immersed-boundary method resolves the rotational motion. The infinite domain is obtained through Biot-Savart boundary conditions. Simulation performed using [WaterLily.jl](https://github.com/WaterLily-jl/WaterLily.jl)."
+
+- title: "Falling ellipse in a fixed domain"
+  src: /assets/images/falling_ellipse_fixed.gif
+  caption: "Simulation of a falling ellipse in a fluid. The motion is obtained through a balance of gravitational and fluid forces. Simulation performed using [WaterLily.jl](https://github.com/WaterLily-jl/WaterLily.jl)."
+
+- title: "Disk"
+  youtube: tbf06uhnAEQ
+  caption: "Square disk accelerated in a static fluid at a final Reynolds number of Re=125,000. Vortex structures visualized using iso-surface of the λ₂-criterion. Simulation performed using [WaterLily.jl](https://github.com/WaterLily-jl/WaterLily.jl)."
+
+- title: Dorritos
+  youtube: spFlx2YW0pg
+  caption: "Vortex structures behind a Dorritos accelerated in a static fluid at a final Reynolds number of Re=25,000. Vortex structures visualized using iso-surface of the λ₂-criterion. Simulation performed using [WaterLily.jl](https://github.com/WaterLily-jl/WaterLily.jl)."
+
+- title: Flapping elastic plate
+  youtube: WLoTFBnY1vs
+  caption: "Flapping motion of an elastic plate at a Reynolds number of Re=1,000 and a Strouhal number of St=0.2. Vortex structures visualized using iso-surface of the λ₂-criterion."
+
+- title: Circle at Re=1,000,000
+  src: /assets/images/cylinder_Re1e6.mp4
+  caption: "Flow around a circle at a Reynolds number of Re=1,000,000. Vortex structures visualized using vorticity. The flow uses the unbounded boundary conditions from [BiotSavartBCs.jl](https://github.com/weymouth/BiotSavartBCs.jl), what you see is the complete computational domain."
+
+- title: Unsteady flapping wing
+  src: /assets/images/Dickinson_BiotSavart_3.mp4
+  caption: "Unsteady flow around a flapping wing with combined pitch roll and yaw motion, mimicking an insect wing. Vortex structures visualized using iso-surface of the λ₂-criterion and domain fluxes from the [BiotSavartBCs.jl](https://github.com/weymouth/BiotSavartBCs.jl) boundary conditions."
+
+- title: Inverted flag
+  src: /assets/images/flag_FTLE.mp4
+  caption: "Inverted flag in a uniform flow at a Reynolds number of Re=200. Vortex structures visualized using finite-time Lyapunov exponent (FTLE) fields."
+
+- title: Asymmetric Kite
+  src: /assets/images/kite.mp4
+  caption: "Asymmetric kite in a uniform flow at a Reynolds number of Re=100,000. Vortex structures visualized using λ₂-criterion."

@@ -7,6 +7,10 @@ show_title: false
 **Preprint Articles**
 
 <p style="text-align:justify; margin-left:20px">
+Weymouth G. D. Lauber M. (2026) <b>Stability of Kirigami parachutes in effectively infinite numerical domains
+</b>. <em>arXiv preprint arXiv:2606.17661 </em> <a href="https://arxiv.org/abs/2606.17661" class="mono_link">[Article]</a></p>
+
+<p style="text-align:justify; margin-left:20px">
 Weymouth G. D. Lauber M. (2025) <b>Using Biot-Savart boundary conditions for unbounded external flow on Eulerian meshes
 </b>. <em>arXiv preprint arXiv:2404.09034 </em> <a href="https://arxiv.org/abs/2404.09034" class="mono_link">[Article]</a></p>
 
